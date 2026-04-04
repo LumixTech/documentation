@@ -1,0 +1,66 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Security & Compliance": {
+    "message": "Security & Compliance",
+    "description": "The label for category 'Security & Compliance' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Security & Compliance.link.generated-index.title": {
+    "message": "Security & Compliance",
+    "description": "The generated-index page title for category 'Security & Compliance' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Security & Compliance.link.generated-index.description": {
+    "message": "Authentication, authorization, privacy, and governance decisions for product security architecture.",
+    "description": "The generated-index page description for category 'Security & Compliance' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Database Architecture": {
+    "message": "Database Architecture",
+    "description": "The label for category 'Database Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Database Architecture.link.generated-index.title": {
+    "message": "Database Architecture",
+    "description": "The generated-index page title for category 'Database Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Database Architecture.link.generated-index.description": {
+    "message": "Data-layer design decisions for indexing, isolation, scaling, and operational safety.",
+    "description": "The generated-index page description for category 'Database Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Frontend Architecture": {
+    "message": "Frontend Architecture",
+    "description": "The label for category 'Frontend Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Frontend Architecture.link.generated-index.title": {
+    "message": "Frontend Architecture",
+    "description": "The generated-index page title for category 'Frontend Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Frontend Architecture.link.generated-index.description": {
+    "message": "Route, URL, and navigation architecture patterns for maintainable user interfaces.",
+    "description": "The generated-index page description for category 'Frontend Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Engineering Notes": {
+    "message": "Engineering Notes",
+    "description": "The label for category 'Engineering Notes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Engineering Notes.link.generated-index.title": {
+    "message": "Engineering Notes",
+    "description": "The generated-index page title for category 'Engineering Notes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Engineering Notes.link.generated-index.description": {
+    "message": "Problem-solution narratives, trade-offs, and architecture decision stories from product development.",
+    "description": "The generated-index page description for category 'Engineering Notes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Glossary": {
+    "message": "Glossary",
+    "description": "The label for category 'Glossary' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Glossary.link.generated-index.title": {
+    "message": "Glossary",
+    "description": "The generated-index page title for category 'Glossary' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Glossary.link.generated-index.description": {
+    "message": "Shared terminology used across security, database, frontend, and compliance documentation.",
+    "description": "The generated-index page description for category 'Glossary' in sidebar 'tutorialSidebar'"
+  }
+}

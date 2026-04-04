@@ -1,0 +1,9 @@
+{
+  "label": "Frontend Architecture",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Frontend Architecture",
+    "description": "Route, URL, and navigation architecture patterns for maintainable user interfaces."
+  }
+}

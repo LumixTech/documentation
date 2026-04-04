@@ -1,0 +1,9 @@
+﻿{
+  "label": "Sözlük",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Sözlük",
+    "description": "Dokümantasyonun tamamında kullanılan ortak teknik terimler."
+  }
+}

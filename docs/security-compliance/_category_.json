@@ -1,0 +1,9 @@
+{
+  "label": "Security & Compliance",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Security & Compliance",
+    "description": "Authentication, authorization, privacy, and governance decisions for product security architecture."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Engineering Notes",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Engineering Notes",
+    "description": "Problem-solution narratives, trade-offs, and architecture decision stories from product development."
+  }
+}

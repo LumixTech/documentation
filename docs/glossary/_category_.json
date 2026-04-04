@@ -1,0 +1,9 @@
+{
+  "label": "Glossary",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Glossary",
+    "description": "Shared terminology used across security, database, frontend, and compliance documentation."
+  }
+}
