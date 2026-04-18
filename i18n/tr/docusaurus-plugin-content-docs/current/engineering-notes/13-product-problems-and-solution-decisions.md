@@ -43,7 +43,7 @@ Karar notu şablonu:
 
 | Problem Alanı | Seçilen Yön | Temel Trade-off |
 | --- | --- | --- |
-| Authentication kontrolü | Hibrit access/refresh/session modeli | Ek state yönetimi |
+| Authentication kontrolü | Redis'te stateful access/refresh/session modeli | Redis bağımlılığı ve key yaşam döngüsü karmaşıklığı |
 | Authorization esnekliği | RBAC + ABAC | Policy tasarım maliyeti |
 | Tenant izolasyonu | App + `RLS policy` | DB policy yönetişimi |
 | Veri hakları yönetimi | `DSAR workflow` + anonymization | Workflow orkestrasyon yükü |

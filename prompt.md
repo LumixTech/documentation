@@ -149,7 +149,14 @@ Generate documentation pages for these topics:
 
 - We need rule-based thinking for read/write replica usage.
 
-12. Product Development Problems and Solution Decisions
+12. Flyway Migrations and Zero-Downtime DB Changes
+    Notes:
+
+- Production database changes must be rollout-safe.
+- Use backward-compatible schema changes and expand/contract pattern.
+- Include a two-stage column rename and table split migration scenario.
+
+13. Product Development Problems and Solution Decisions
     Notes:
 
 - We want blog-style / engineering-note-style writing about:
@@ -178,6 +185,10 @@ Use these terms consistently where relevant:
 - smart navigation
 - read replica
 - write primary
+- Flyway migration
+- zero-downtime migration
+- backward-compatible schema change
+- expand and contract
 
 ## Preferred Structure Hint
 

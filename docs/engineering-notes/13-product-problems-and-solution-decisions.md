@@ -52,7 +52,7 @@ Use a repeatable decision record format:
 
 | Problem Area | Chosen Direction | Primary Trade-off |
 | --- | --- | --- |
-| Authentication control | Hybrid access token + refresh token + session | More state management complexity |
+| Authentication control | Stateful access token + refresh token + session in Redis | Redis dependency and key lifecycle complexity |
 | Authorization flexibility | RBAC + ABAC with explicit allow/deny precedence | More policy design effort |
 | Tenant isolation | App checks + `RLS policy` | Added DB policy governance |
 | Data rights handling | Structured `DSAR workflow` + anonymization pipeline | More workflow orchestration |
@@ -111,4 +111,3 @@ for each significant product problem:
 ## Conclusion
 
 Strong engineering documentation explains decisions, not only implementations. By keeping problem-solution narratives explicit, we preserve institutional memory and make future architecture changes faster and safer.
-

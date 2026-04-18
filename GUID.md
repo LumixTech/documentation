@@ -88,6 +88,7 @@ database-architecture/
   08-postgresql-extensions-evaluation.md
   09-tenant-based-rls-policy-design.md
   10-read-write-replica-strategy.md
+  14-flyway-zero-downtime-migration-strategy.md
 
 frontend-architecture/
   11-parameterized-id-visible-routing-strategy.md
@@ -830,7 +831,73 @@ engineering-notes/
 
 ---
 
-# 12) Ürün Geliştirirken Karşılaşılan Problemler ve Çözüm Kararları
+# 12) Flyway Migration ve Zero-Downtime DB Değişiklikleri
+
+## Dosya adı
+
+`14-flyway-zero-downtime-migration-strategy.md`
+
+## Konu başlığı
+
+**Flyway Migration ve Zero-Downtime DB Değişiklikleri: Backward-Compatible Expand/Contract Yaklaşımı**
+
+## Giriş
+
+- Production'da veritabanı değişikliğinin neden en riskli release adımlarından biri olduğu
+- SQL doğru olsa bile rollout-safe tasarım yoksa canlı sistemin nasıl bozulabileceği
+
+## Gelişme
+
+- Flyway migration disiplini (versiyonlama, sıralı çalıştırma, rollback stratejisi)
+- Backward-compatible schema değişikliği prensibi
+- Expand and contract pattern
+- Dual-read / dual-write yaklaşımı
+- Backfill (batch) stratejisi
+- Contract adımına geçiş için gözlem ve parity kontrolü
+- PostgreSQL lock etkisi ve düşük-lock teknikleri
+- 2 aşamalı kolon rename senaryosu
+- 2 aşamalı tablo split senaryosu
+
+## Sonuç
+
+- Veritabanı değişikliklerinin tek migration dosyasıyla değil release akışıyla tasarlanması gerektiği
+- Flyway + expand/contract kombinasyonunun production güvenliği için zorunlu olduğu
+
+## Teknik terimler sözlüğü
+
+- Flyway
+- Zero-downtime migration
+- Backward-compatible schema change
+- Expand and contract
+- Dual-write
+- Backfill
+- Contract phase
+- Data parity
+
+## Senin notundan özel vurgu
+
+- `flyway migrations`
+- `backward compatible schema changes`
+- `expand and contract pattern`
+- `2 aşamalı kolon rename / tablo split migration senaryosu`
+
+## Keywordler
+
+- `flyway zero downtime migration strategy`
+- `expand contract database migration pattern`
+- `backward compatible schema changes`
+- `postgresql column rename without downtime`
+- `table split migration dual write backfill`
+
+## Alt başlık önerileri
+
+- Expand ve contract aynı release'te yapılır mı?
+- Kolon rename neden doğrudan `RENAME COLUMN` ile geçilmemeli?
+- Table split geçişinde veri parity nasıl doğrulanır?
+
+---
+
+# 13) Ürün Geliştirirken Karşılaşılan Problemler ve Çözüm Kararları
 
 ## Dosya adı
 
@@ -1001,5 +1068,6 @@ Bu çok işine yarar çünkü her dokümanda tekrar tekrar açıklamak zorunda k
 - PostgreSQL Extension Evaluation
 - Tenant-based Row-Level Security Policies
 - Read/Write Replica Decision Rules
+- Flyway Migrations and Zero-Downtime DB Changes
 - Config-driven URL and Navigation Strategy
 - Product Engineering Decisions and Solution Notes

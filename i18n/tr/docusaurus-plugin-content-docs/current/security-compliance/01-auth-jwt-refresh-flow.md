@@ -1,6 +1,6 @@
 ﻿---
 title: JWT ve Refresh Token ile Spring Security Authentication Flow
-description: Stateless access token doğrulaması ile stateful refresh token ve device session yönetimini birleştiren kimlik doğrulama mimarisi.
+description: Redis tabanlı stateful access token, refresh token ve device session yaşam döngüsü ile kimlik doğrulama mimarisi.
 sidebar_position: 1
 ---
 
@@ -8,63 +8,78 @@ sidebar_position: 1
 
 Authentication flow ürünün ana güvenlik kapısıdır. Bu katman zayıfsa aşağıdaki authorization, tenant izolasyonu ve `audit log` kontrolleri de güvenilmez hale gelir.
 
-Bu tasarım hibrit yaklaşım kullanır:
+Bu tasarım Redis tabanlı stateful model kullanır:
 
-- `access token`: stateless, kısa ömürlü
-- `refresh token`: stateful, revoke edilebilir
-- `session` ve `device session`: stateful, yaşam döngüsü yönetimli
+- `access token`: kısa ömürlü JWT, Redis'te state takibi var
+- `refresh token`: stateful, revoke edilebilir, Redis'te rotation yönetimli
+- `session` ve `device session`: Redis'te yaşam döngüsü yönetimli
 
 Detaylı yaşam döngüsü için: [Session, Device ve Refresh Token Yaşam Döngüsü](./session-device-refresh-lifecycle).
 
 ## Neden Önemli
 
-Sadece JWT yaklaşımı gerçek üründe yetersiz kalır:
+Sadece JWT imza doğrulaması üretim ortamı için yeterli değildir:
 
-- `logout-all` güvenilir biçimde yönetilemez.
-- Token hırsızlığında hızlı karşılık verilemez.
-- Cihaz bazlı oturum davranışı açıklanamaz.
+- `logout-all` merkezi token/session state olmadan güvenilir uygulanamaz.
+- Token hırsızlığında aktif token zinciri izlenmiyorsa hızlı tepki verilemez.
+- Cihaz bazlı güven ve revoke kararları sunucu tarafı state gerektirir.
+
+Redis destekli state modeli, düşük gecikmeli doğrulama ile operasyonel kontrolü birlikte sağlar.
 
 ## Temel Kavramlar
 
-- `access token`: API çağrılarında taşınan kısa ömürlü doğrulama token'ı.
-- `refresh token`: yeni access token üretimi için kullanılan stateful kayıt.
-- `session`: sunucu tarafı oturum bağlamı.
-- `device session`: cihaz bazlı oturum kaydı.
-- Rotation: refresh çağrısında token yenileme ve eskisini kapatma.
-- Revocation: süre dolmadan token/oturum geçersizleme.
+- `access token`: API çağrılarında taşınan JWT; `jti`, `session_id` ve kısa TTL içerir.
+- `refresh token`: yeni access token üretimi için kullanılır; hashlenerek Redis'te izlenir.
+- `session`: kullanıcı + cihaz bağlamını tutan sunucu tarafı kayıt.
+- `device session`: cihaz/app instance bazlı oturum sınırı.
+- Rotation: her refresh çağrısında yeni refresh token üretip eskisini kapatma.
+- Revocation: süresi dolmadan token/session geçersizleme.
 
 ## Gerçek Ürün Geliştirmede Problem
 
-Kullanıcılar birden fazla cihazdan giriş yapar, cihaz kaybeder, riskli oturum oluşur. Tamamen stateless modelde destek ve güvenlik ekipleri "hangi oturum ne yaptı" sorusunu cevaplamakta zorlanır.
+Kullanıcılar birden fazla cihazdan giriş yapar, ağ değiştirir, cihaz kaybeder. Güvenlik olaylarında anlık revoke ve izlenebilirlik gerekir.
+
+`access token` sadece stateless ele alınırsa:
+
+- güvenlik ekibi riskli oturumu anında kapatamaz,
+- destek ekibi hangi aktif token/session'ın hangi aksiyonu yaptığını açıklayamaz,
+- uyumluluk incelemelerinde revoke zamanlaması kanıtlanamaz.
 
 ## Yaklaşım / Tasarım
 
-Temel endpoint akışı:
+### Endpoint Akışı
 
 - `POST /auth/login`
 - `POST /auth/refresh`
 - `POST /auth/logout`
 - `POST /auth/logout-all`
 
-Tasarım ilkeleri:
+### Tasarım İlkeleri
 
-- Access doğrulaması stateless kalsın.
-- Refresh ve session stateful izlensin.
-- Refresh token `device session` ile ilişkilensin.
-- Rotation + replay detection zorunlu olsun.
+- JWT kriptografik doğrulaması (`iss`, `aud`, imza, exp) request path'te korunur.
+- Buna ek olarak Redis'te token/session durumu (`active`, `revoked`, `expired`) doğrulanır.
+- Tüm tokenlar `device session` kayıtlarına bağlanır.
+- Refresh token rotation ve replay detection zorunludur.
+- Logout akışlarında access + refresh + session birlikte revoke edilir.
 
-Spring Security entegrasyonu:
+### Spring Security Entegrasyonu
 
-- Route korumaları `SecurityFilterChain` içinde.
-- Domain seviyeli kontroller method-level authorization ile.
-- Refresh lifecycle işlemleri servis katmanında yönetilsin.
+- Route korumaları `SecurityFilterChain` içinde yönetilir.
+- Önce JWT claim doğrulanır, sonra Redis'te `jti` ve `session_id` state kontrolü yapılır.
+- Refresh lifecycle servis katmanında açık state geçişleriyle yönetilir.
 
 ## Sektör Standardı / Best Practice
 
 - Kısa TTL access token
-- DB'de izlenen refresh token
+- Redis tabanlı token/session state yönetimi
+- Refresh token hash + rotation
 - Açık logout/revoke semantiği
-- Güvenlik olayları için izlenebilir kayıt modeli
+- Session etkileyen olaylar için audit izlenebilirliği
+
+Spring Security kullanımında ayrım genelde şöyledir:
+
+- request authentication/authorization filter chain'de,
+- token/session lifecycle orkestrasyonu servis katmanında.
 
 ## Pseudocode / Karar Akışı / Yaşam Döngüsü / Politika Örneği
 
@@ -75,45 +90,78 @@ on LOGIN(credentials, device_info):
     deny
 
   session = create_session(user.id, device_info)
-  access_token = issue_access_token(user.id, session.id, user.tenant_id)
+  redis_set("session:" + session.id, status='active', user_id=user.id, tenant_id=user.tenant_id)
+
+  access_token = issue_access_token(user.id, session.id, user.tenant_id, jti=random_id())
   refresh_token = issue_refresh_token(session.id)
-  store_refresh(hash(refresh_token), session.id)
+
+  redis_set("token:access:" + access_token.jti, session_id=session.id, status='active', ttl=access_token.ttl)
+  redis_set("token:refresh:" + hash(refresh_token), session_id=session.id, status='active', ttl=refresh_token.ttl)
+
   return access_token, refresh_token
 
+on AUTHENTICATED_REQUEST(access_token):
+  claims = verify_jwt(access_token)
+  token_state = redis_get("token:access:" + claims.jti)
+  session_state = redis_get("session:" + claims.session_id)
+
+  if token_state missing or token_state.status != 'active':
+    deny
+  if session_state missing or session_state.status != 'active':
+    deny
+
+  allow
+
 on REFRESH(refresh_token):
-  record = find_active_refresh(hash(refresh_token))
-  if record missing or invalid:
+  record = redis_get("token:refresh:" + hash(refresh_token))
+  if record missing or record.status != 'active':
     deny
 
   rotate_refresh(record)
-  new_access = issue_access_token(record.user_id, record.session_id, record.tenant_id)
+  new_access = issue_access_token(record.user_id, record.session_id, record.tenant_id, jti=random_id())
   new_refresh = issue_refresh_token(record.session_id)
+
+  redis_set("token:access:" + new_access.jti, session_id=record.session_id, status='active', ttl=new_access.ttl)
+  redis_set("token:refresh:" + hash(new_refresh), session_id=record.session_id, status='active', ttl=new_refresh.ttl)
+
   return new_access, new_refresh
+
+on LOGOUT(session_id):
+  revoke_session(session_id)
+  revoke_access_tokens_by_session(session_id)
+  revoke_refresh_tokens_by_session(session_id)
 
 on LOGOUT_ALL(user_id):
   revoke_all_sessions(user_id)
+  revoke_all_access_tokens(user_id)
   revoke_all_refresh_tokens(user_id)
 ```
 
 ## Bizim Notlarımız / Takım Kararları
 
-- Hibrit model net: `access token` stateless, `refresh token` stateful, `session` stateful.
+- Runtime kontrol için tam stateful auth modeli kullanıyoruz: `access token`, `refresh token` ve `session` Redis'te takip ediliyor.
 - `logout-all` iş gereksinimidir, opsiyon değildir.
-- Yetki davranışı [Hibrit Yetkilendirme Modeli: RBAC + ABAC](./hybrid-rbac-abac-authorization) ile uyumlu olmalıdır.
+- Revoke kararları açık token/session durum geçişleriyle izlenebilir olmalıdır.
+- Yetki davranışı [Hibrit Yetkilendirme Modeli: RBAC + ABAC](./hybrid-rbac-abac-authorization) ile uyumlu kalmalıdır.
 
 ## Sözlük
 
-- Authentication: Kimlik doğrulama.
-- Authorization: Yetki kontrolü.
-- Rotation: Eski refresh token'ı kapatıp yenisini üretme.
-- Revocation: Süre dolmadan geçersizleme.
+- `access token`: API çağrılarında kullanılan kısa ömürlü JWT; Redis token/session state'i ile doğrulanır.
+- `refresh token`: yeni access token üretimi için kullanılan uzun ömürlü token.
+- `session`: sunucu tarafı yönetilen kimlik doğrulama bağlamı.
+- `device session`: belirli cihaz/client için oturum kaydı.
+- `jti`: Redis state lookup için kullanılan benzersiz token kimliği.
+- Rotation: yeni refresh token üretirken eskisini kapatma.
+- Revocation: süresi dolmadan sunucu taraflı geçersizleme.
 
 ## Araştırma Keywordleri
 
-- `spring security jwt refresh token flow`
-- `stateless access token stateful refresh token`
+- `spring security jwt redis token state`
+- `stateful access token redis session validation`
+- `refresh token rotation replay detection`
 - `logout all devices authentication design`
+- `jwt jti revocation redis`
 
 ## Sonuç
 
-Üretim seviyesinde auth mimarisi, stateless ve stateful parçaları birlikte tasarlamalıdır. Bu denge hem performans hem operasyonel kontrol sağlar.
+Üretim seviyesinde auth mimarisi, JWT bütünlük kontrolünü stateful operasyonel kontrolle birleştirmelidir. Token ve session runtime state'ini Redis'te tutmak; hızlı revoke, güçlü incident response ve net operasyonel görünürlük sağlar.

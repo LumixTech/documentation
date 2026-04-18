@@ -70,9 +70,9 @@ on NEW_TERM_PROPOSAL(term):
 
 ## Glossary
 
-- `access token`: short-lived token for API request authentication.
-- `refresh token`: token used to issue new access tokens through controlled flow.
-- `session`: persistent server-side authentication context.
+- `access token`: short-lived JWT for API request authentication, validated against Redis token/session state.
+- `refresh token`: token used to issue new access tokens through a Redis-backed controlled lifecycle.
+- `session`: persistent Redis-backed server-side authentication context.
 - `device session`: per-device/session tracking unit.
 - `role_permission`: permission inherited from a role.
 - `user_permission`: permission granted directly to a user.
