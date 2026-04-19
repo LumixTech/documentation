@@ -1,6 +1,6 @@
 ---
-title: DLQ ve Outbox Pattern: Event İşleme, Retry ve Hata Yönetimi
-description: Outbox relay, retry stratejisi, DLQ davranışı, replay ve idempotent consumer tasarımı için uçtan uca mimari rehber.
+title: "DLQ ve Outbox Pattern: Event İşleme, Retry ve Hata Yönetimi"
+description: "Outbox relay, retry stratejisi, DLQ davranışı, replay ve idempotent consumer tasarımı için uçtan uca mimari rehber."
 sidebar_position: 5
 ---
 

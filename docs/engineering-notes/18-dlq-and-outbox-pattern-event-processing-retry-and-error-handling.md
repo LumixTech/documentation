@@ -1,6 +1,6 @@
 ---
-title: DLQ and Outbox Pattern: Event Processing, Retry, and Error Handling
-description: End-to-end architecture guidance for outbox relay, retry strategy, DLQ behavior, replay, and idempotent consumers.
+title: "DLQ and Outbox Pattern: Event Processing, Retry, and Error Handling"
+description: "End-to-end architecture guidance for outbox relay, retry strategy, DLQ behavior, replay, and idempotent consumers."
 sidebar_position: 5
 ---
 
