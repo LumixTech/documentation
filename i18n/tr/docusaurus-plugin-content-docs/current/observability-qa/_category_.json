@@ -1,0 +1,9 @@
+{
+  "label": "Observability ve QA",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Observability ve QA",
+    "description": "Güvenilir ürün teslimi için observability, tracing, yük testi ve kalite güvence pratikleri."
+  }
+}

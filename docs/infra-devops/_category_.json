@@ -1,0 +1,9 @@
+{
+  "label": "Infra & DevOps",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Infra & DevOps",
+    "description": "Infrastructure, delivery, storage, and operational design notes for production-ready systems."
+  }
+}

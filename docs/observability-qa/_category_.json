@@ -1,0 +1,9 @@
+{
+  "label": "Observability & QA",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Observability & QA",
+    "description": "Observability, tracing, load testing, and quality assurance practices for reliable product delivery."
+  }
+}

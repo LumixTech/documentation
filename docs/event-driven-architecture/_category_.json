@@ -1,0 +1,9 @@
+{
+  "label": "Event-Driven Architecture",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Event-Driven Architecture",
+    "description": "DDD-oriented event modeling, integration contracts, asynchronous messaging, and coupling control patterns."
+  }
+}

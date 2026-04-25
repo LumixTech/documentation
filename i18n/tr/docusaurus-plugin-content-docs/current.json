@@ -39,6 +39,18 @@
     "message": "Route, URL, and navigation architecture patterns for maintainable user interfaces.",
     "description": "The generated-index page description for category 'Frontend Architecture' in sidebar 'tutorialSidebar'"
   },
+  "sidebar.tutorialSidebar.category.Event-Driven Architecture": {
+    "message": "Event-Driven Mimari",
+    "description": "The label for category 'Event-Driven Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Event-Driven Architecture.link.generated-index.title": {
+    "message": "Event-Driven Mimari",
+    "description": "The generated-index page title for category 'Event-Driven Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Event-Driven Architecture.link.generated-index.description": {
+    "message": "DDD odaklı event modelleme, integration contract, asenkron mesajlaşma ve coupling kontrol desenleri.",
+    "description": "The generated-index page description for category 'Event-Driven Architecture' in sidebar 'tutorialSidebar'"
+  },
   "sidebar.tutorialSidebar.category.Engineering Notes": {
     "message": "Engineering Notes",
     "description": "The label for category 'Engineering Notes' in sidebar 'tutorialSidebar'"
