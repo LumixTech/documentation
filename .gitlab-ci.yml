@@ -176,8 +176,9 @@ deploy:staging:
   image: alpine:3.20
   needs: ["backend:image"]
   script:
-    - echo "PLACEHOLDER: deploy henuz tanimli degil (K8s manifest/helm chart bekliyor)."
-    - echo "Push edilen image: $CI_REGISTRY_IMAGE/service-template:$CI_COMMIT_SHORT_SHA"
+    - |
+      echo "PLACEHOLDER: deploy henuz tanimli degil (K8s manifest/helm chart bekliyor)."
+      echo "Push edilen image: $CI_REGISTRY_IMAGE/service-template:$CI_COMMIT_SHORT_SHA"
   environment:
     name: staging
   rules:
