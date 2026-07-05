@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+<!--
+  Checkstyle bastırmaları — yalnızca TEST kaynakları için.
+  Testlerde BDD tarzı Türkçe snake_case adlandırma kullanılır:
+    - test metodları:  void bos_isim_reddedilir()            → MethodName
+    - @ArchTest alanları: static final ArchRule application_adapteri_bilmez  → ConstantName
+  Üretim kodu bu gevşetmelerden etkilenmez; tüm adlandırma kuralları orada geçerlidir.
+-->
+<suppressions>
+    <suppress checks="MethodName|ConstantName" files="[\\/]src[\\/]test[\\/]"/>
+</suppressions>

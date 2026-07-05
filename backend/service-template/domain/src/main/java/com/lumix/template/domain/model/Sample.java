@@ -1,12 +1,13 @@
 package com.lumix.template.domain.model;
 
-import com.lumix.template.domain.event.DomainEvent;
-import com.lumix.template.domain.event.SampleCreatedEvent;
-import com.lumix.template.domain.exception.SampleAlreadyActiveException;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.lumix.template.domain.event.DomainEvent;
+import com.lumix.template.domain.event.SampleCreatedEvent;
+import com.lumix.template.domain.exception.SampleAlreadyActiveException;
 
 /**
  * Örnek aggregate root. Şablon amaçlıdır — gerçek serviste kendi aggregate'inle değiştir.

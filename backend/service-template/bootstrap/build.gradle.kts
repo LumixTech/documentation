@@ -17,6 +17,9 @@ dependencies {
     implementation(libs.logstash.logback.encoder)
 
     testImplementation(libs.spring.boot.starter.test)
+    // Spring Boot 4.x: TestRestTemplate artık ayrı `spring-boot-resttestclient` modülünde
+    // (paket: org.springframework.boot.resttestclient) — starter-test'e dahil değil.
+    testImplementation("org.springframework.boot:spring-boot-resttestclient")
     // Hexagonal bağımlılık yönü testi tüm modülleri gördüğü için burada.
     testImplementation(libs.archunit.junit5)
     testImplementation(platform(libs.testcontainers.bom))

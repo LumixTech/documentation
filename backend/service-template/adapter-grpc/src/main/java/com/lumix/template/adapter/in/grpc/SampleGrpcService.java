@@ -6,8 +6,10 @@ import com.lumix.template.domain.model.SampleId;
 import com.lumix.template.grpc.v1.CreateSampleRequest;
 import com.lumix.template.grpc.v1.CreateSampleResponse;
 import com.lumix.template.grpc.v1.SampleServiceGrpc;
-import io.grpc.stub.StreamObserver;
+
 import net.devh.boot.grpc.server.service.GrpcService;
+
+import io.grpc.stub.StreamObserver;
 
 /**
  * Inbound gRPC adapter — REST ile AYNI inbound port'u (use case) çağırır.

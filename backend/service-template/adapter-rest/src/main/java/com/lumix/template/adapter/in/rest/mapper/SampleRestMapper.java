@@ -9,6 +9,7 @@ public final class SampleRestMapper {
     private SampleRestMapper() {}
 
     public static SampleResponse toResponse(Sample sample) {
-        return new SampleResponse(sample.id().value(), sample.name(), sample.status().name());
+        return new SampleResponse(
+                sample.id().value(), sample.name(), sample.status().name());
     }
 }
