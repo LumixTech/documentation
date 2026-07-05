@@ -1,0 +1,9 @@
+﻿{
+  "label": "Güvenlik ve Uyumluluk",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Güvenlik ve Uyumluluk",
+    "description": "Kimlik doğrulama, yetkilendirme, gizlilik ve yönetişim kararları."
+  }
+}

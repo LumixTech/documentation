@@ -1,0 +1,9 @@
+{
+  "label": "04 · Authentication & Authorization",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Authentication ve Authorization",
+    "description": "Fully stateful token modeli, session/device lifecycle, Keycloak (opsiyonel) entegrasyonu, RBAC + ABAC hibriti, organizational scope resolver, httpOnly cookie stratejisi, permission revoke flow."
+  }
+}

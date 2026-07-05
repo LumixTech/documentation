@@ -1,0 +1,9 @@
+{
+  "label": "23 · Workflow (Temporal)",
+  "position": 23,
+  "link": {
+    "type": "generated-index",
+    "title": "Workflow Orchestration (Temporal.io)",
+    "description": "Temporal temelleri (workflow + activity + signal), Saga implementation, DSAR workflow, scheduled background jobs."
+  }
+}

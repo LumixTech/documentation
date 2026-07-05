@@ -1,0 +1,9 @@
+﻿{
+  "label": "Frontend Mimarisi",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Frontend Mimarisi",
+    "description": "Bakımı kolay URL, route ve gezinme mimarisi desenleri."
+  }
+}

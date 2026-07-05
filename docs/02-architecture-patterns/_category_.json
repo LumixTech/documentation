@@ -1,0 +1,9 @@
+{
+  "label": "02 · Mimari Patterns",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Mimari Patterns",
+    "description": "Microservices, DDD, Hexagonal Architecture, Saga, Outbox, CQRS, Event-Driven Architecture. Lumix'in iskeletini oluşturan mimari yaklaşımlar."
+  }
+}

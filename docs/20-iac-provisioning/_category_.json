@@ -1,0 +1,9 @@
+{
+  "label": "21 · IaC ve Provisioning",
+  "position": 21,
+  "link": {
+    "type": "generated-index",
+    "title": "Infrastructure as Code ve Customer Provisioning",
+    "description": "Terraform (VPS + DNS provisioning), Ansible (OS config + K3s install + customer seed), customer onboarding pipeline, license file (JWT signed) management."
+  }
+}

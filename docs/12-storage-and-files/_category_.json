@@ -1,0 +1,9 @@
+{
+  "label": "13 · Storage ve Dosyalar",
+  "position": 13,
+  "link": {
+    "type": "generated-index",
+    "title": "Storage ve Dosyalar (RustFS)",
+    "description": "Object storage temelleri, RustFS self-host kurulumu, S3-compatible API, pre-signed URL upload/download, lifecycle policies, ClamAV virus scanning."
+  }
+}

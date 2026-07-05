@@ -1,0 +1,9 @@
+{
+  "label": "10 · Frontend (Web)",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "Frontend Web (React + Redux Toolkit + RTK Query)",
+    "description": "React CSR temelleri, FSD mimari, Redux Toolkit + RTK Query, smart navigation, form, i18n, permission cache, E2E test."
+  }
+}

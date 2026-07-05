@@ -1,0 +1,9 @@
+{
+  "label": "Event-Driven Mimari",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Event-Driven Mimari",
+    "description": "DDD odaklı event modelleme, integration contract, asenkron mesajlaşma ve coupling kontrol desenleri."
+  }
+}

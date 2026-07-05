@@ -1,0 +1,9 @@
+{
+  "label": "17 · Notification",
+  "position": 17,
+  "link": {
+    "type": "generated-index",
+    "title": "Notification (Email + SMS + Push)",
+    "description": "Notification adapter pattern, email/SMS/push provider'ları, MJML email template rendering, i18n template, delivery tracking."
+  }
+}

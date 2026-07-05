@@ -1,0 +1,9 @@
+{
+  "label": "24 · Local Development",
+  "position": 24,
+  "link": {
+    "type": "generated-index",
+    "title": "Local Development (Tilt)",
+    "description": "Tilt ile 10 microservice'i tek komutla ayağa kaldırma, hot reload, local K8s (k3d), test data seed, contract test workflow."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "03 · Backend (Spring + Java)",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Backend (Spring Boot 3.6 + Java 25)",
+    "description": "Spring Boot 3.6 + Java 25 LTS yığını, virtual threads, Spring Security, JPA/Hibernate, validation, error handling, gRPC service communication."
+  }
+}

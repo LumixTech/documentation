@@ -1,0 +1,9 @@
+﻿{
+  "label": "Veritabanı Mimarisi",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Veritabanı Mimarisi",
+    "description": "İndeksleme, izolasyon, ölçekleme ve operasyonel güvenlik kararları."
+  }
+}
