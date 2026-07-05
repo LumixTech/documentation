@@ -31,4 +31,12 @@ public class HexagonalArchitectureTest {
             .should()
             .dependOnClassesThat()
             .resideInAPackage("..adapter..");
+
+    @ArchTest
+    static final ArchRule domain_framework_bagimsizdir = noClasses()
+            .that()
+            .resideInAPackage("..domain..")
+            .should()
+            .dependOnClassesThat()
+            .resideInAnyPackage("org.springframework..", "jakarta..", "javax..");
 }

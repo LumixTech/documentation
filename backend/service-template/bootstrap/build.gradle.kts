@@ -20,6 +20,9 @@ dependencies {
     // Spring Boot 4.x: TestRestTemplate artık ayrı `spring-boot-resttestclient` modülünde
     // (paket: org.springframework.boot.resttestclient) — starter-test'e dahil değil.
     testImplementation("org.springframework.boot:spring-boot-resttestclient")
+    // resttestclient, RestTemplateBuilder'ı bu modülden bekliyor (Boot 4.x'te RestTemplate
+    // desteği ayrı modül) — yoksa context NoClassDefFoundError ile çöker.
+    testImplementation("org.springframework.boot:spring-boot-restclient")
     // Hexagonal bağımlılık yönü testi tüm modülleri gördüğü için burada.
     testImplementation(libs.archunit.junit5)
     testImplementation(platform(libs.testcontainers.bom))

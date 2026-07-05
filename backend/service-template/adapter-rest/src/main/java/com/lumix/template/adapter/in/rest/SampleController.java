@@ -37,8 +37,14 @@ public class SampleController {
     @PostMapping
     public ResponseEntity<SampleResponse> create(@RequestBody @Valid CreateSampleRequest request) {
         SampleId id = createSampleUseCase.create(new CreateSampleCommand(request.name()));
+        // Yanıt kalıcı hâlden okunur — domain'in normalize ettiği değerler (ör. name.strip())
+        // aynen döner; adapter domain durumu (status) hakkında varsayım yapmaz.
+        SampleResponse body = getSampleUseCase
+                .byId(id)
+                .map(SampleRestMapper::toResponse)
+                .orElseThrow(() -> new IllegalStateException("Yeni oluşturulan Sample bulunamadı: " + id.value()));
         return ResponseEntity.created(URI.create("/api/v1/samples/" + id.value()))
-                .body(new SampleResponse(id.value(), request.name(), "DRAFT"));
+                .body(body);
     }
 
     @GetMapping("/{id}")

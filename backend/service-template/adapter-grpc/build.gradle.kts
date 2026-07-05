@@ -11,12 +11,15 @@ plugins {
 dependencies {
     api(project(":service-template:application"))
 
+    // gRPC/protobuf BOM'ları: runtime kütüphaneleri codegen araçlarıyla (protoc,
+    // protoc-gen-grpc-java) AYNI sürüme sabitler — üretilen kod ↔ runtime kayması olmaz.
+    implementation(platform(libs.grpc.bom))
+    implementation(platform(libs.protobuf.bom))
+
     implementation(libs.grpc.server.spring.boot.starter)
     implementation(libs.grpc.stub)
     implementation(libs.grpc.protobuf)
     implementation(libs.protobuf.java)
-    // Üretilen gRPC kodundaki @javax.annotation.Generated için (derleme zamanı).
-    compileOnly(libs.javax.annotation.api)
 
     testImplementation(libs.spring.boot.starter.test)
 }
