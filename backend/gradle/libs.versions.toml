@@ -1,0 +1,79 @@
+# =====================================================================
+# Lumix backend — merkezi bağımlılık kataloğu (single source of truth).
+# Sürüm değişikliği SADECE burada yapılır; modüller versiyonsuz alias kullanır.
+# Uyumluluk notu: Spring Boot BOM zaten çoğu sürümü pinler — burada yalnızca
+# BOM dışındaki veya sürümü sabitlenmek istenen bağımlılıklar tutulur.
+# =====================================================================
+[versions]
+# Platform
+springBoot = "3.6.0"
+# gRPC / Protobuf (Spring Boot BOM bunları yönetmez → burada pinlenir)
+grpc = "1.68.1"
+protobuf = "3.25.5"
+protobufPlugin = "0.9.4"
+grpcSpringBootStarter = "3.1.0.RELEASE"   # net.devh — bkz. 03-grpc §4.8 (Spring gRPC geçiş notu)
+javaxAnnotation = "1.3.2"
+# Gözlemlenebilirlik / log
+logstashLogback = "8.0"
+# Test
+archunit = "1.3.0"
+testcontainers = "1.20.4"
+# Statik analiz araç sürümleri (plugin'ler tarafından kullanılır)
+checkstyle = "10.20.1"
+spotlessPlugin = "6.25.0"
+dependencyCheckPlugin = "10.0.4"
+sonarqubePlugin = "5.1.0.4882"
+
+[libraries]
+# --- Platform / BOM ---
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
+grpc-bom = { module = "io.grpc:grpc-bom", version.ref = "grpc" }
+protobuf-bom = { module = "com.google.protobuf:protobuf-bom", version.ref = "protobuf" }
+
+# --- Spring Boot starter'lar (sürüm BOM'dan) ---
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-kafka = { module = "org.springframework.kafka:spring-kafka" }
+spring-kafka-test = { module = "org.springframework.kafka:spring-kafka-test" }
+spring-context = { module = "org.springframework:spring-context" }
+spring-tx = { module = "org.springframework:spring-tx" }
+micrometer-registry-prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
+
+# --- Persistence ---
+flyway-core = { module = "org.flywaydb:flyway-core" }
+flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql" }
+postgresql = { module = "org.postgresql:postgresql" }
+
+# --- gRPC ---
+grpc-server-spring-boot-starter = { module = "net.devh:grpc-server-spring-boot-starter", version.ref = "grpcSpringBootStarter" }
+grpc-client-spring-boot-starter = { module = "net.devh:grpc-client-spring-boot-starter", version.ref = "grpcSpringBootStarter" }
+grpc-stub = { module = "io.grpc:grpc-stub" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
+grpc-services = { module = "io.grpc:grpc-services" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java" }
+javax-annotation-api = { module = "javax.annotation:javax.annotation-api", version.ref = "javaxAnnotation" }
+
+# --- Logging ---
+logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstashLogback" }
+
+# --- Test ---
+archunit-junit5 = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "archunit" }
+testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
+testcontainers-junit = { module = "org.testcontainers:junit-jupiter" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql" }
+testcontainers-kafka = { module = "org.testcontainers:kafka" }
+
+# codegen araçları (protobuf plugin locator'ları için)
+protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+protoc-gen-grpc-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotlessPlugin" }
+dependency-check = { id = "org.owasp.dependencycheck", version.ref = "dependencyCheckPlugin" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqubePlugin" }
