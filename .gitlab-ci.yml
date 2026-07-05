@@ -23,9 +23,13 @@ pages:
   stage: deploy
   script:
     - npm ci
-    - npm run build -- --out-dir public   # Docusaurus varsayılan olarak build/'e yazar; public/'e yönlendiriyoruz
+    # Docusaurus varsayılan olarak build/'e yazar; GitLab Pages public/ ister, yönlendiriyoruz.
+    - npm run build -- --out-dir public
   artifacts:
     paths:
       - public
+  environment:
+    name: pages
+    url: $CI_PAGES_URL   # Pipeline bitince GitLab arayüzünde tıklanabilir canlı URL gösterir
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH   # sadece main'e push'ta çalışır

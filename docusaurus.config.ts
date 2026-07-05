@@ -15,9 +15,11 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://lumixtech.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'http://lumix.pages.gitlab.hsoylu.dev',
+  // Set the /<baseUrl>/ pathname under which your site is served.
+  // GitLab Pages standart (wildcard) kurulumda site şu yoldan sunulur:
+  //   http://lumix.pages.gitlab.hsoylu.dev/documentation/
+  // namespace_in_path=true kullanıyorsan bunu '/lumix/documentation/' yap.
   baseUrl: '/documentation/',
 
   // GitHub pages deployment config.
