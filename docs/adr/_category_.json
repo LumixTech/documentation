@@ -1,0 +1,10 @@
+{
+  "label": "ADR · Mimari Kararlar",
+  "position": 90,
+  "link": {
+    "type": "generated-index",
+    "title": "Architecture Decision Records (ADR)",
+    "description": "\"Karar yazılı\" prensibi: Lumix'in kalıcı mimari kararları burada numaralı, değişmez kayıtlar olarak tutulur. Her ADR bir kararı, bağlamını, sonuçlarını ve elenen alternatifleri belgeler. Bir karar değişirse eski ADR silinmez; 'Superseded' işaretlenip yeni ADR ona referans verir. Şablon: _TEMPLATE.md.",
+    "slug": "/adr"
+  }
+}
