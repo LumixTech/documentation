@@ -82,8 +82,8 @@ backend:build:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: [backend/**/*]
+    # default branch (main): her zaman calis — main yesil kalmali (changes filtresi YOK)
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      changes: [backend/**/*]
     - if: $CI_COMMIT_TAG
 
 # ---- Commit mesaj formati (Conventional Commits) — sadece MR ----
@@ -123,7 +123,9 @@ commit-lint:
 backend:dependency-check:
   extends: .gradle-backend
   stage: security
-  needs: ["backend:build"]
+  needs:
+    - job: backend:build
+      optional: true
   script:
     - *timing-helper
     - emit_metric backend_dependency_check ./gradlew dependencyCheckAggregate
@@ -147,7 +149,9 @@ backend:image:
   image:
     name: gcr.io/kaniko-project/executor:v1.23.2-debug
     entrypoint: [""]
-  needs: ["backend:build"]
+  needs:
+    - job: backend:build
+      optional: true
   before_script:
     - mkdir -p /kaniko/.docker
     - |
@@ -167,14 +171,15 @@ backend:image:
     expire_in: 1 week
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      changes: [backend/**/*]
     - if: $CI_COMMIT_TAG
 
 # ---- Deploy — PLACEHOLDER (manuel). K8s manifest/helm eklenince doldurulacak. ----
 deploy:staging:
   stage: deploy
   image: alpine:3.20
-  needs: ["backend:image"]
+  needs:
+    - job: backend:image
+      optional: true
   script:
     - |
       echo "PLACEHOLDER: deploy henuz tanimli degil (K8s manifest/helm chart bekliyor)."
