@@ -31,7 +31,8 @@ nbproject/
 # --- JVM / Gradle / Kotlin ---
 .gradle/
 build/
-out/
+# NOT: anchor'siz "out/" hexagonal "port/out" kaynak paketini de yok sayiyor; sadece kok.
+/out/
 target/
 *.class
 hs_err_pid*

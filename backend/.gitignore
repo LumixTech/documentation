@@ -6,7 +6,9 @@
 
 # --- Build ciktilari ---
 build/
-out/
+# NOT: IntelliJ cikti klasoru sadece kokte; anchor'sız "out/" hexagonal
+# "port/out" kaynak paketini de yok sayiyordu (CI derleme hatasi). Bu yuzden /out/.
+/out/
 target/
 .gradle/
 
