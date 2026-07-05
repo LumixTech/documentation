@@ -3,6 +3,13 @@
 # Kapsam: build + test + statik analiz (gradle check) → commit-lint →
 #         distroless image build+push (GitLab Container Registry) → deploy (manuel placeholder).
 # Backend job'lari yalnizca backend/ degisince calisir (rules:changes).
+#
+# TIMING OLCUMU (iki katman):
+#   1) Gradle --profile  → task-bazli HTML rapor (backend/build/reports/profile/), artifact.
+#   2) metrics.txt (OpenMetrics) → her job'un sure(sn)'si; GitLab MR widget'inda trend gosterir
+#      (artifacts:reports:metrics). GitLab'in native job suresi + CI/CD Analytics de ayrica var.
+#   Derin/tarihsel analitik istenirse: Develocity (self-host) — bkz. en alttaki not.
+#
 # NOT: Repodaki .github/workflows/ci.yml GitLab'da CALISMAZ (GitHub Actions) — asil pipeline budur.
 # =====================================================================
 
@@ -13,18 +20,16 @@ stages:
   - deploy
 
 variables:
-  # Gradle cache'i proje icinde tut ki GitLab cache'leyebilsin; daemon CI'da kapali.
   GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.console=plain"
 
-# MR + default branch + tag disinda pipeline acma (mukerrer pipeline'i onler).
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# ---- Ortak Gradle ayarlari (backend job'lari extend eder) ----
+# ---- Ortak Gradle ayarlari ----
 .gradle-backend:
   image: eclipse-temurin:25-jdk
   cache:
@@ -39,18 +44,40 @@ workflow:
     - cd backend
     - chmod +x ./gradlew
 
-# ---- Backend: derle + test + spotless + checkstyle ----
+# ---- Timing yardimcisi: verilen komutu wall-clock ile olcup metrics.txt yazar ----
+# Kullanim (script icinde):  emit_metric <job_adi> <komut...>
+.timing-helper: &timing-helper |
+  emit_metric() {
+    local job="$1"; shift
+    local start end rc
+    start=$(date +%s)
+    "$@"; rc=$?
+    end=$(date +%s)
+    mkdir -p "$CI_PROJECT_DIR/metrics"
+    {
+      echo "# HELP ci_job_duration_seconds CI job wall-clock suresi (saniye)"
+      echo "# TYPE ci_job_duration_seconds gauge"
+      echo "ci_job_duration_seconds{job=\"${job}\"} $((end - start))"
+    } > "$CI_PROJECT_DIR/metrics/${job}.txt"
+    echo ">> TIMING ${job}: $((end - start))s (rc=${rc})"
+    return $rc
+  }
+
+# ---- Backend: derle + test + spotless + checkstyle (+ Gradle --profile) ----
 backend:build:
   extends: .gradle-backend
   stage: build
   script:
-    - ./gradlew check
+    - *timing-helper
+    - emit_metric backend_build ./gradlew check --profile
   artifacts:
     when: always
     reports:
       junit: backend/**/build/test-results/test/TEST-*.xml
+      metrics: metrics/backend_build.txt
     paths:
-      - backend/**/build/reports/
+      - backend/**/build/reports/       # test + checkstyle + spotless raporlari
+      - backend/build/reports/profile/  # Gradle --profile: task-bazli timing HTML
     expire_in: 1 week
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -65,7 +92,7 @@ commit-lint:
   image: alpine:3.20
   needs: []
   variables:
-    GIT_DEPTH: "0" # rev-list icin tam gecmis lazim
+    GIT_DEPTH: "0"
   before_script:
     - apk add --no-cache git grep
   script:
@@ -77,17 +104,15 @@ commit-lint:
       for sha in $(git rev-list "$base"..HEAD); do
         subject="$(git log -1 --format=%s "$sha")"
         case "$subject" in
-          # '!' kacis kapisi ve ozel mesajlar (lokal commit-msg hook ile ayni liste)
           "!"*|"Merge "*|"Revert "*|"fixup!"*|"squash!"*|"amend!"*) continue ;;
         esac
         if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
-          echo "::Gecersiz commit mesaji: $subject"
+          echo "Gecersiz commit mesaji: $subject"
           fail=1
         fi
       done
       if [ "$fail" -ne 0 ]; then
-        echo "Commit mesajlari Conventional Commits formatina uymuyor."
-        echo "Ornek: feat(auth): kullanici giris akisi eklendi"
+        echo "Commit mesajlari Conventional Commits formatina uymuyor. Ornek: feat(auth): giris akisi"
         exit 1
       fi
       echo "Tum commit mesajlari formata uygun."
@@ -95,14 +120,17 @@ commit-lint:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 # ---- OWASP dependency-check — manuel (NVD verisi indirir, yavas) ----
-# Gerekli CI degiskeni (opsiyonel, rate-limit icin): NVD_API_KEY (masked).
 backend:dependency-check:
   extends: .gradle-backend
   stage: security
   needs: ["backend:build"]
   script:
-    - ./gradlew dependencyCheckAggregate
+    - *timing-helper
+    - emit_metric backend_dependency_check ./gradlew dependencyCheckAggregate
   artifacts:
+    when: always
+    reports:
+      metrics: metrics/backend_dependency_check.txt
     paths:
       - backend/build/reports/dependency-check-report.html
       - backend/build/reports/dependency-check-report.sarif
@@ -113,9 +141,7 @@ backend:dependency-check:
       when: manual
       allow_failure: true
 
-# ---- Distroless image build + push (Kaniko, privileged/dind gerektirmez) ----
-# Dockerfile: service-template/Dockerfile, context = backend/ (multi-module build).
-# Yeni servis eklerken bu job'i kopyalayip --dockerfile / --destination yolunu degistir.
+# ---- Distroless image build + push (Kaniko) + build timing ----
 backend:image:
   stage: image
   image:
@@ -127,11 +153,18 @@ backend:image:
     - |
       echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(printf '%s:%s' "$CI_REGISTRY_USER" "$CI_REGISTRY_PASSWORD" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
   script:
-    - /kaniko/executor
-      --context "$CI_PROJECT_DIR/backend"
-      --dockerfile "$CI_PROJECT_DIR/backend/service-template/Dockerfile"
-      --destination "$CI_REGISTRY_IMAGE/service-template:$CI_COMMIT_SHORT_SHA"
-      --destination "$CI_REGISTRY_IMAGE/service-template:latest"
+    - *timing-helper
+    - |
+      emit_metric backend_image /kaniko/executor \
+        --context "$CI_PROJECT_DIR/backend" \
+        --dockerfile "$CI_PROJECT_DIR/backend/service-template/Dockerfile" \
+        --destination "$CI_REGISTRY_IMAGE/service-template:$CI_COMMIT_SHORT_SHA" \
+        --destination "$CI_REGISTRY_IMAGE/service-template:latest"
+  artifacts:
+    when: always
+    reports:
+      metrics: metrics/backend_image.txt
+    expire_in: 1 week
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes: [backend/**/*]
@@ -145,10 +178,18 @@ deploy:staging:
   script:
     - echo "PLACEHOLDER: deploy henuz tanimli degil (K8s manifest/helm chart bekliyor)."
     - echo "Push edilen image: $CI_REGISTRY_IMAGE/service-template:$CI_COMMIT_SHORT_SHA"
-    - echo "Yapilacak: helm upgrade --install ...  /  kubectl set image ..."
   environment:
     name: staging
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: manual
       allow_failure: true
+
+# =====================================================================
+# DERIN TIMING ANALITIGI (opsiyonel, self-host) — Develocity / Gradle Enterprise:
+#   - settings.gradle.kts'e `com.gradle.develocity` plugin'i eklenir.
+#   - CI degiskeni DEVELOCITY_URL set edilirse her build bir "Build Scan" yayinlar:
+#     task-bazli timing, cache isabet orani, tarihsel trend dashboard'u.
+#   - ON-PREM ZORUNLU: build scan'ler public scans.gradle.com'a GITMEMELI (kod gizli).
+#     Kendi Develocity sunucunuzu verirseniz wiring'i eklerim.
+# =====================================================================
