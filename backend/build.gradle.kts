@@ -8,6 +8,7 @@
 // =====================================================================
 import com.diffplug.gradle.spotless.SpotlessExtension
 import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.api.plugins.quality.Checkstyle
 import org.gradle.api.plugins.quality.CheckstyleExtension
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JvmVendorSpec
@@ -22,6 +23,10 @@ plugins {
 
 group = "com.lumix"
 version = "0.1.0-SNAPSHOT"
+
+// Gradle 9'da tip-güvenli `libs` accessor'ı `subprojects {}` bloğu içinde çözülemiyor
+// (accessor kök projeye bağlı). Kök scriptte bir kez yakalayıp alt projelerde kullanıyoruz.
+val catalog = libs
 
 subprojects {
     apply(plugin = "java-library")
@@ -41,8 +46,8 @@ subprojects {
     // Spring Boot BOM — tüm modüllerde sürüm hizalama (starter'lar versiyonsuz kullanılır).
     // testImplementation, implementation'ı extend ettiği için BOM test classpath'ine de yansır.
     dependencies {
-        add("implementation", platform(libs.spring.boot.dependencies))
-        add("annotationProcessor", platform(libs.spring.boot.dependencies))
+        add("implementation", platform(catalog.spring.boot.dependencies))
+        add("annotationProcessor", platform(catalog.spring.boot.dependencies))
         // Ortak test yığını (sürümler BOM'dan) — her modül JUnit 5 + AssertJ kullanır.
         add("testImplementation", "org.junit.jupiter:junit-jupiter")
         add("testImplementation", "org.assertj:assertj-core")
@@ -50,10 +55,17 @@ subprojects {
     }
 
     configure<CheckstyleExtension> {
-        toolVersion = libs.versions.checkstyle.get()
+        toolVersion = catalog.versions.checkstyle.get()
         configFile = rootProject.file("config/checkstyle/checkstyle.xml")
         isIgnoreFailures = false
         maxWarnings = 0
+    }
+
+    // Üretilen protobuf/gRPC kaynakları (build/generated) Checkstyle dışında tutulur —
+    // checkstyle.xml başlığındaki niyetin uygulaması. Bu srcDir kök olduğundan pattern
+    // yerine gerçek dosya yolunu denetliyoruz.
+    tasks.withType<Checkstyle>().configureEach {
+        exclude { it.file.absolutePath.replace('\\', '/').contains("/build/generated/") }
     }
 
     configure<SpotlessExtension> {

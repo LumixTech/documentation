@@ -1,10 +1,11 @@
 package com.lumix.template.adapter.in.rest;
 
-import com.lumix.template.domain.exception.SampleAlreadyActiveException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.lumix.template.domain.exception.SampleAlreadyActiveException;
 
 /**
  * Domain/uygulama hatalarını RFC 7807 ProblemDetail'e çevirir (bkz. 05-error-handling-rfc7807).

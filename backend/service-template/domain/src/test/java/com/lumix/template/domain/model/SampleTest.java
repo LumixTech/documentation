@@ -3,9 +3,11 @@ package com.lumix.template.domain.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.lumix.template.domain.exception.SampleAlreadyActiveException;
 import java.time.Instant;
+
 import org.junit.jupiter.api.Test;
+
+import com.lumix.template.domain.exception.SampleAlreadyActiveException;
 
 class SampleTest {
 

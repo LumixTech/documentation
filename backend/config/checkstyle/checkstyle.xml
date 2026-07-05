@@ -12,6 +12,12 @@
     <property name="severity" value="warning"/>
     <property name="fileExtensions" value="java"/>
 
+    <!-- Test kaynaklarında BDD snake_case adlandırmaya izin (bkz. suppressions.xml).
+         Üretim kodu tüm adlandırma kurallarına tabidir. -->
+    <module name="SuppressionFilter">
+        <property name="file" value="${config_loc}/suppressions.xml"/>
+    </module>
+
     <!-- Dosya sonu newline (Spotless zaten uygular; burada güvence). -->
     <module name="NewlineAtEndOfFile">
         <property name="lineSeparator" value="lf"/>
