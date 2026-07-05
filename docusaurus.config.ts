@@ -4,6 +4,14 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+// --- Dağıtım hedefine göre URL / baseUrl ---
+// GitLab Pages: http://lumix.pages.gitlab.hsoylu.dev/documentation/  (alt yoldan sunulur)
+// Vercel:       https://<proje>.vercel.app/                          (kökten sunulur)
+// Vercel, build ortamında VERCEL=1 değişkenini otomatik set eder → elle ayar gerekmez.
+// (İstersen BASE_URL / SITE_URL env'leriyle her ortamda elle de ezebilirsin.)
+const isVercel = Boolean(process.env.VERCEL);
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+
 const config: Config = {
   title: 'Lumix Documentation',
   tagline: 'Documentation for Lumix',
@@ -15,12 +23,17 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'http://lumix.pages.gitlab.hsoylu.dev',
-  // Set the /<baseUrl>/ pathname under which your site is served.
   // GitLab Pages standart (wildcard) kurulumda site şu yoldan sunulur:
   //   http://lumix.pages.gitlab.hsoylu.dev/documentation/
-  // namespace_in_path=true kullanıyorsan bunu '/lumix/documentation/' yap.
-  baseUrl: '/documentation/',
+  // namespace_in_path=true kullanıyorsan baseUrl'i '/lumix/documentation/' yap.
+  url: process.env.SITE_URL
+    ? process.env.SITE_URL
+    : isVercel
+      ? `https://${vercelUrl ?? 'documentation-beryl-seven.vercel.app'}`
+      : 'http://lumix.pages.gitlab.hsoylu.dev',
+  // Set the /<baseUrl>/ pathname under which your site is served.
+  // Vercel kökten (/), GitLab Pages alt yoldan (/documentation/) sunar.
+  baseUrl: process.env.BASE_URL ?? (isVercel ? '/' : '/documentation/'),
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
