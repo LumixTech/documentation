@@ -187,7 +187,7 @@ backend:image:
   before_script:
     - mkdir -p /kaniko/.docker
     - |
-      echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(printf '%s:%s' "$CI_REGISTRY_USER" "$CI_REGISTRY_PASSWORD" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+      echo "{\"auths\":{\"192.168.1.9:5050\":{\"auth\":\"$(printf '%s:%s' "$CI_REGISTRY_USER" "$CI_REGISTRY_PASSWORD" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
   script:
     - *timing-helper
     - |
@@ -195,7 +195,8 @@ backend:image:
         --context "$CI_PROJECT_DIR/backend" \
         --dockerfile "$CI_PROJECT_DIR/backend/service-template/Dockerfile" \
         --destination "$CI_REGISTRY_IMAGE/service-template:$CI_COMMIT_SHORT_SHA" \
-        --destination "$CI_REGISTRY_IMAGE/service-template:latest"
+        --destination "$CI_REGISTRY_IMAGE/service-template:latest" \
+        --insecure-registry "192.168.1.9:5050"
   artifacts:
     when: always
     reports:
