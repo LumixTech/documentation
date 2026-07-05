@@ -1,0 +1,10 @@
+{
+  "label": "Sprint İmplementasyonları",
+  "position": 95,
+  "link": {
+    "type": "generated-index",
+    "title": "Sprint İmplementasyon Takibi",
+    "description": "Her sprintte fiilen NE kurulduğunun/yazıldığının kaydı: ne yapıldı, neden yapıldı, nasıl yapıldı — gerçek dosya yolları ve çalışan örneklerle. ADR'ler 'neden bu teknoloji' kararını, buradaki sayfalar o kararın repo'daki somut uygulamasını anlatır. Yeni bir ekleme yapacak geliştirici önce ilgili sprint sayfasını okuyarak mevcut yapının nasıl kullanılacağını öğrenir.",
+    "slug": "/sprint-implementations"
+  }
+}

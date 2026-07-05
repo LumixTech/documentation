@@ -1,0 +1,10 @@
+{
+  "label": "Kod Rehberi · Codebase",
+  "position": 24,
+  "link": {
+    "type": "generated-index",
+    "title": "Kod Rehberi — Repo'yu Sıfırdan Öğren",
+    "description": "campus/ mono-repo'sunu hiç bilmeyen bir geliştiriciyi, kodda kendi başına gezinip değişiklik yapabilecek seviyeye getiren öğrenme serisi. Sırayla oku: (1) repo haritası, (2) Gradle build sistemi, (3) service-template dosya dosya, (4) konfigürasyon & çalıştırma, (5) kalite güvencesi & git otomasyonu. Her sayfa gerçek dosyalardan gerçek kodla anlatır.",
+    "slug": "/codebase-guide"
+  }
+}
