@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# =====================================================================
+# Lumix commit-msg hook  (cross-platform: Windows Git Bash + Linux)
+#   1) Conventional Commits formatini dogrular (Turkce konu destekli)
+#   2) Branch adindaki ClickUp task ID'sini commit footer'ina ekler
+# Bu hook TUM commit'lerde calisir (komut satiri, IDE, script fark etmez).
+# =====================================================================
+set -euo pipefail
+
+msg_file="$1"
+
+# Ilk anlamli satiri (konu) al: yorumlari ve bos satirlari atla
+subject="$(grep -v '^#' "$msg_file" | sed '/^[[:space:]]*$/d' | head -n1 || true)"
+
+# KACIS KAPISI: mesaj '!' ile basliyorsa hicbir format kontrolu yapilmaz,
+# commit dogrudan kabul edilir. '!' isareti mesajda KORUNUR; boylece hem bu hook
+# hem de CI ayni commit'i bypass eder (sunucu/lokal tutarli) ve gecmiste bu
+# commit'in format kapisini bilerek atladigi gorulebilir.
+case "$subject" in
+  "!"*)
+    echo "Bilgi: Mesaj '!' ile basladi -> Conventional Commits kontrolu atlandi." >&2
+    exit 0
+    ;;
+esac
+
+# Otomatik/ozel mesajlari atla (merge, revert, fixup, squash)
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup!"*|"squash!"*|"amend!"*) exit 0 ;;
+esac
+
+if [ -z "$subject" ]; then
+  echo "HATA: Commit mesaji bos olamaz." >&2
+  exit 1
+fi
+
+types="feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
+# <tip>(<kapsam>)!: <konu>  -- kapsam ve ! opsiyonel
+pattern="^(${types})(\([a-z0-9._/-]+\))?(!)?: .+"
+
+if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
+  cat >&2 <<EOF
+HATA: Commit mesaji Conventional Commits formatina uymuyor.
+  Gelen : $subject
+  Format: <tip>(<kapsam>): <kisa aciklama>
+  Tipler: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+  Ornek : feat(auth): kullanici giris akisi eklendi
+          fix(payment): iade tutari yanlis hesaplaniyordu
+EOF
+  exit 1
+fi
+
+# Konu uzunlugu (oneri <=72, sert sinir 100)
+subj_len=${#subject}
+if [ "$subj_len" -gt 100 ]; then
+  echo "HATA: Konu satiri cok uzun ($subj_len karakter). 72'yi hedefleyin, en fazla 100." >&2
+  exit 1
+elif [ "$subj_len" -gt 72 ]; then
+  echo "UYARI: Konu satiri 72 karakteri asti ($subj_len). Kisaltmayi dusunun." >&2
+fi
+
+# Konu sonunda nokta olmamali
+case "$subject" in
+  *".") echo "HATA: Konu satiri nokta ile bitmemeli." >&2; exit 1 ;;
+esac
+
+# --- ClickUp task ID footer'i (branch adindan, yoksa LUMIX_CU_ID env'inden) ---
+branch="$(git symbolic-ref --short HEAD 2>/dev/null || echo '')"
+cu_id="$(printf '%s' "$branch" | grep -Eo 'CU-[A-Za-z0-9]+' | head -n1 || true)"
+# Detached HEAD / yanlis adli branch icin yedek:  LUMIX_CU_ID=86abc git commit ...
+if [ -z "$cu_id" ] && [ -n "${LUMIX_CU_ID:-}" ]; then
+  cu_id="CU-${LUMIX_CU_ID#CU-}"
+fi
+
+if [ -n "$cu_id" ]; then
+  if ! grep -q "$cu_id" "$msg_file"; then
+    printf '\nRefs: %s\n' "$cu_id" >> "$msg_file"
+    echo "Bilgi: '$cu_id' commit footer'ina otomatik eklendi." >&2
+  fi
+else
+  # Sert mod istenirse: git config lumix.requireClickUpId true
+  if [ "$(git config --bool lumix.requireClickUpId 2>/dev/null || echo false)" = "true" ]; then
+    echo "HATA: Branch adinda ClickUp ID (CU-...) yok ve LUMIX_CU_ID tanimsiz." >&2
+    echo "      Cozum: feature/CU-<id>-... adli branch acin veya LUMIX_CU_ID=<id> verin." >&2
+    exit 1
+  fi
+  echo "UYARI: ClickUp ID bulunamadi (branch adinda CU- yok) -> footer eklenmedi." >&2
+fi
+
+exit 0

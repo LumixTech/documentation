@@ -1,0 +1,82 @@
+# =====================================================================
+# Lumix mono-repo .gitattributes
+# Windows + Linux karisik takim icin satir sonu (EOL) normalizasyonu.
+# Kural: repoda her sey LF saklanir; sadece Windows'a ozel dosyalar CRLF.
+# Bu dosya, "benim makinemde calisiyor" tipi CRLF/LF kavgalarini bitirir.
+# =====================================================================
+
+# Varsayilan: Git metin dosyalarini otomatik tanisin, calisma agacinda LF kullansin.
+* text=auto eol=lf
+
+# --- Kaynak kod: her zaman LF ---
+*.kt          text eol=lf
+*.kts         text eol=lf
+*.java        text eol=lf
+*.proto       text eol=lf
+*.ts          text eol=lf
+*.tsx         text eol=lf
+*.js          text eol=lf
+*.jsx         text eol=lf
+*.mjs         text eol=lf
+*.cjs         text eol=lf
+*.vue         text eol=lf
+*.svelte      text eol=lf
+*.css         text eol=lf
+*.scss        text eol=lf
+*.html        text eol=lf
+*.json        text eol=lf
+*.json5       text eol=lf
+*.yml         text eol=lf
+*.yaml        text eol=lf
+*.xml         text eol=lf
+*.md          text eol=lf
+*.sql         text eol=lf
+*.sh          text eol=lf
+*.gradle      text eol=lf
+*.tf          text eol=lf
+*.toml        text eol=lf
+*.properties  text eol=lf
+*.svg         text eol=lf
+Dockerfile    text eol=lf
+.editorconfig text eol=lf
+.gitignore    text eol=lf
+.gitattributes text eol=lf
+
+# --- KRITIK: Git hook'lari ve gradlew MUTLAKA LF olmali ---
+# Windows'ta bu dosyalara CRLF bulasirsa "bash\r: command not found" hatasi alirsiniz.
+.githooks/**  text eol=lf
+gradlew       text eol=lf
+
+# --- Windows'a ozel dosyalar: CRLF ---
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+*.psm1  text eol=crlf
+*.sln   text eol=crlf
+gradlew.bat text eol=crlf
+
+# --- Ikili (binary) dosyalar: Git dokunmasin ---
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.tar   binary
+*.jar   binary
+*.war   binary
+*.keystore binary
+*.p12   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+
+# --- Lockfile'lar: diff gurultusunu azalt ---
+package-lock.json  -diff linguist-generated
+pnpm-lock.yaml     -diff linguist-generated
+yarn.lock          -diff linguist-generated
+gradle.lockfile    -diff linguist-generated

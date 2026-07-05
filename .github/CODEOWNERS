@@ -1,0 +1,17 @@
+# =====================================================================
+# Lumix CODEOWNERS
+# Her degisiklik iki gelistirici tarafindan da sahiplenilir.
+# Branch protection'da "2 approval" zorunlu kilinirsa, bu dosya
+# her PR'da ikinizden de review istenmesini saglar.
+#
+# !!! Asagidaki kullanici adlarini GERCEK GitHub hesaplariniyla degistirin.
+# =====================================================================
+
+# Tum repo: ikiniz de her path'te sahipsiniz
+*   @oner-lumix @arkadas-lumix
+
+# Ileride servis bazli sahiplik isterseniz asagidakileri acin:
+# /backend/   @oner-lumix @arkadas-lumix
+# /frontend/  @oner-lumix @arkadas-lumix
+# /infra/     @oner-lumix @arkadas-lumix
+# /.github/   @oner-lumix @arkadas-lumix

@@ -1,0 +1,7 @@
+# SDKMAN! - JVM surum sabitleme (nvm'in .nvmrc karsiligi, Java icin).
+# Kullanim (Linux/macOS/Git Bash):
+#   sdk env           -> bu dizinde tanimli surume gec
+#   sdk env install   -> eksikse kur
+# Java 25 LTS (ADR-002, 2026-06-06). Gecerli tam build icin: sdk list java
+# Surumu degistirirsen .tool-versions ve .github/workflows/ci.yml'i de guncelle.
+java=25.0.1-tem

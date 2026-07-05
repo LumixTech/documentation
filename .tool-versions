@@ -1,0 +1,6 @@
+# asdf / mise icin birlesik surum dosyasi (Java + Node tek dosyada).
+# Windows'ta MISE native calisir ve hem bunu hem .nvmrc'yi okur -> Windows dev icin onerilir.
+# Kurulum:  mise install      (veya: asdf install)
+# Surum degisirse .nvmrc, .sdkmanrc ve .github/workflows/ci.yml'i de guncelle.
+java temurin-25.0.1
+nodejs 24

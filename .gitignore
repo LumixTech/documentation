@@ -1,0 +1,82 @@
+# =====================================================================
+# Lumix mono-repo .gitignore
+# Servisler (backend) + frontend + infra ortak kurallari.
+# =====================================================================
+
+# --- Isletim sistemi ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# --- IDE: IntelliJ (sadece paylasilabilir kisimlar check-in edilir) ---
+.idea/*
+!.idea/codeStyles/
+!.idea/externalDependencies.xml
+!.idea/inspectionProfiles/
+*.iml
+
+# --- IDE: VS Code (paylasilan ayarlar disinda yoksay) ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# --- IDE: digerleri ---
+.project
+.classpath
+.settings/
+nbproject/
+
+# --- JVM / Gradle / Kotlin ---
+.gradle/
+build/
+out/
+target/
+*.class
+hs_err_pid*
+replay_pid*
+
+# --- Node / Frontend ---
+node_modules/
+dist/
+.pnpm-store/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+coverage/
+*.tsbuildinfo
+
+# --- Ortam degiskenleri / SIRLAR (asla commit edilmez) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets.*
+*-credentials.json
+*-secret.yaml
+
+# --- Infra / IaC ---
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+kubeconfig
+*.kubeconfig
+
+# --- Log / gecici / cikti ---
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig

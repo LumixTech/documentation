@@ -1,0 +1,105 @@
+# =====================================================================
+# Lumix CI -- sunucu tarafi guvenlik agi.
+# Lokal hook'lar atlanabilir; bu workflow PR'da build + commit formatini
+# zorunlu kilar. Branch protection'da bu kontrolleri "required" yapin.
+# Bilesenler henuz yoksa adimlar otomatik atlanir (erken evre dostu).
+# =====================================================================
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# En az ayricalik: GITHUB_TOKEN'a sadece okuma yetkisi ver.
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Backend (Gradle) ---
+      - name: Set up JDK
+        if: ${{ hashFiles('backend/gradlew') != '' || hashFiles('gradlew') != '' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'   # Java 25 LTS (ADR-002) — .sdkmanrc/.tool-versions ile ayni
+
+      - name: Backend build (Gradle)
+        if: ${{ hashFiles('backend/gradlew') != '' }}
+        working-directory: backend
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --console=plain build
+
+      - name: Root build (Gradle)
+        if: ${{ hashFiles('backend/gradlew') == '' && hashFiles('gradlew') != '' }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --console=plain build
+
+      # --- Frontend (pnpm) ---
+      - name: Set up Node + pnpm
+        if: ${{ hashFiles('frontend/package.json') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc   # surum tek kaynaktan: .nvmrc (drift yok)
+
+      - name: Enable corepack (pnpm)
+        if: ${{ hashFiles('frontend/package.json') != '' }}
+        run: corepack enable
+
+      - name: Frontend install & build
+        if: ${{ hashFiles('frontend/package.json') != '' }}
+        working-directory: frontend
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run lint --if-present
+          pnpm run build --if-present
+
+  commit-lint:
+    name: Commit mesaj formati
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Conventional Commits kontrolu
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          types="feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
+          pattern="^(${types})(\([a-z0-9._/-]+\))?(!)?: .+"
+          fail=0
+          # Force-push/rebase'ten bagimsiz olarak tam olarak bu PR'in commit'lerini al
+          base="$(git merge-base "$BASE_SHA" "$HEAD_SHA")"
+          while IFS= read -r sha; do
+            subject="$(git log -1 --format=%s "$sha")"
+            case "$subject" in
+              # '!' kacis kapisi ve ozel mesajlar (lokal commit-msg hook ile ayni liste)
+              "!"*|"Merge "*|"Revert "*|"fixup!"*|"squash!"*|"amend!"*) continue ;;
+            esac
+            if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
+              echo "::error::Gecersiz commit mesaji: $subject"
+              fail=1
+            fi
+          done < <(git rev-list "$base".."$HEAD_SHA")
+          if [ "$fail" -ne 0 ]; then
+            echo "Commit mesajlari Conventional Commits formatina uymuyor."
+            echo "Ornek: feat(auth): kullanici giris akisi eklendi"
+            exit 1
+          fi
+          echo "Tum commit mesajlari formata uygun."

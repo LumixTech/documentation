@@ -1,0 +1,31 @@
+# <tip>(<kapsam>): <konu>        <-- en fazla ~72 karakter, sonunda NOKTA YOK
+#
+# (yukaridaki satiri yazdiktan sonra bu yorumlari silebilirsiniz)
+#
+# --- GOVDE (opsiyonel ama onerilir) ---
+# Neden bu degisiklik gerekti? Ne degisti? Onemli kararlar neler?
+# Satirlari ~72 karakterde sarmalayin.
+#
+# --- FOOTER (opsiyonel) ---
+# Refs: CU-<taskID>            <-- branch adindan otomatik eklenir
+# BREAKING CHANGE: <aciklama>  <-- geriye donuk uyumsuzluk varsa
+#
+# =====================================================================
+# Tipler (Conventional Commits):
+#   feat     : yeni ozellik
+#   fix      : hata duzeltme
+#   docs     : sadece dokumantasyon
+#   style    : bicim/format (mantik degismez)
+#   refactor : davranisi degistirmeyen kod duzenleme
+#   perf     : performans iyilestirme
+#   test     : test ekleme/duzeltme
+#   build    : build sistemi veya bagimliliklar
+#   ci       : CI yapilandirmasi
+#   chore    : diger bakim isleri
+#   revert   : onceki bir commit'i geri al
+#
+# Ornekler:
+#   feat(auth): kullanici giris akisi eklendi
+#   fix(payment): iade tutari yanlis hesaplaniyordu
+#   refactor(tenant): kapsam cozumleyici sadelestirildi
+# =====================================================================

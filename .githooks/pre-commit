@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# =====================================================================
+# Lumix pre-commit hook  (cross-platform)
+# Hizli hijyen kontrolleri. Build BURADA calismaz (yavas olur);
+# build push aninda pre-push hook'unda zorunludur.
+# Yine de istersen: git config lumix.buildOnCommit true
+# =====================================================================
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+staged="$(git diff --cached --name-only --diff-filter=ACM)"
+[ -z "$staged" ] && exit 0
+
+fail=0
+
+# 1) Cozulmemis merge conflict isaretleri
+while IFS= read -r f; do
+  [ -n "$f" ] && [ -f "$f" ] || continue
+  if git diff --cached -U0 -- "$f" | grep -Eq '^\+(<<<<<<<|\|\|\|\|\|\|\||>>>>>>>|=======$)'; then
+    echo "HATA: '$f' icinde cozulmemis merge conflict isareti var." >&2
+    fail=1
+  fi
+done <<< "$staged"
+
+# 2) Yanlislikla eklenmis cok buyuk dosya (>2 MB)
+while IFS= read -r f; do
+  [ -n "$f" ] && [ -f "$f" ] || continue
+  size=$(wc -c < "$f" 2>/dev/null || echo 0)
+  if [ "$size" -gt 2097152 ]; then
+    echo "HATA: '$f' cok buyuk ($((size/1024)) KB). Buyuk dosyalar icin Git LFS dusunun." >&2
+    fail=1
+  fi
+done <<< "$staged"
+
+# 3) Basit sir/gizli anahtar sizinti tespiti (yalnizca EKLENEN satirlar taranir;
+#    boylece bir sirri TEMIZLEYEN/silen commit bloklanmaz)
+secret_pat='(BEGIN [A-Z ]*PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[posru]_[0-9A-Za-z]{30,}|AIza[0-9A-Za-z_-]{30,}|xox[baprs]-[0-9A-Za-z-]{10,})'
+if git diff --cached -U0 | grep -E '^\+' | grep -Ev '^\+\+\+' | grep -Eq "$secret_pat"; then
+  echo "HATA: Olasi bir sir / gizli anahtar tespit edildi. Lutfen kontrol edin." >&2
+  echo "      Yanlis alarm ise commit'i tekrar deneyin ve ilgili satiri gozden gecirin." >&2
+  fail=1
+fi
+
+# 4) Opsiyonel: commit aninda build (varsayilan kapali)
+if [ "$(git config --bool lumix.buildOnCommit 2>/dev/null || echo false)" = "true" ]; then
+  echo "Bilgi: lumix.buildOnCommit aktif -> build calistiriliyor..." >&2
+  if [ -f "$root/scripts/build-check.sh" ]; then
+    bash "$root/scripts/build-check.sh" --changed || fail=1
+  fi
+fi
+
+if [ "$fail" -ne 0 ]; then
+  echo "pre-commit kontrolleri basarisiz -> commit iptal." >&2
+  exit 1
+fi
+exit 0

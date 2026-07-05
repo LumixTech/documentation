@@ -1,0 +1,44 @@
+# EditorConfig - repo geneli kod stili (https://editorconfig.org)
+# IntelliJ, VS Code vb. bu dosyayi otomatik okur.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+max_line_length = 120
+
+# Java / Gradle
+[*.{java,gradle,gradle.kts}]
+indent_size = 4
+
+# Protobuf
+[*.proto]
+indent_size = 2
+
+# Frontend / TS / JS
+[*.{ts,tsx,js,jsx,mjs,cjs,vue,svelte}]
+indent_size = 2
+
+[*.{json,jsonc,json5}]
+indent_size = 2
+
+[*.{yml,yaml}]
+indent_size = 2
+
+# Markdown - satir sonu bosluklari anlamli olabilir
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+
+# Makefile - tab zorunlu
+[Makefile]
+indent_style = tab
+
+[*.{bat,cmd}]
+end_of_line = crlf
+
+[*.ps1]
+end_of_line = crlf

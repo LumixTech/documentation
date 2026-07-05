@@ -1,0 +1,44 @@
+# --- IDE (.idea): sadece paylasilabilir kisimlari check-in et ---
+/.idea/*
+!/.idea/codeStyles/
+!/.idea/externalDependencies.xml
+!/.idea/inspectionProfiles/
+
+# --- Build ciktilari ---
+build/
+out/
+target/
+.gradle/
+
+# --- Node / frontend ---
+node_modules/
+dist/
+.pnpm-store/
+
+# --- Protobuf uretilen kod (gerekirse acin) ---
+# generated/
+
+# --- Log ---
+*.log
+
+# --- Ortam degiskenleri / SIRLAR (asla commit edilmez) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets.*
+*-credentials.json
+*-secret.yaml
+
+# --- Infra / IaC sirlari ---
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+kubeconfig
+*.kubeconfig

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# =====================================================================
+# Lumix pre-push hook  (cross-platform)
+# Push oncesi ZORUNLU build kapisi: build basarili olmadan kod uzak
+# depoya gitmez. Bu, "committen once build basarili olmali" kuralinin
+# atlanamaz guvencesidir (commit hizli kalir, push'ta kapi devreye girer).
+# =====================================================================
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+
+# Acil kacis (cok dikkatli kullanin):  LUMIX_SKIP_BUILD=1 git push
+if [ "${LUMIX_SKIP_BUILD:-0}" = "1" ]; then
+  echo "UYARI: LUMIX_SKIP_BUILD=1 -> build atlandi. Sorumluluk sizde." >&2
+  exit 0
+fi
+
+if [ ! -f "$root/scripts/build-check.sh" ]; then
+  echo "UYARI: scripts/build-check.sh bulunamadi -> build atlandi." >&2
+  exit 0
+fi
+
+echo "pre-push: build kontrolu basliyor..." >&2
+# exec-bit'e GUVENME (Windows'tan klonlamada kaybolabilir) -> dogrudan bash ile calistir
+if ! bash "$root/scripts/build-check.sh"; then
+  cat >&2 <<EOF
+HATA: Build basarisiz -> push iptal edildi.
+  - Once hatalari giderip 'git push' tekrar deneyin.
+  - Gercekten zorunluysa (acil durum): LUMIX_SKIP_BUILD=1 git push
+EOF
+  exit 1
+fi
+echo "pre-push: build basarili -> push devam ediyor." >&2
+exit 0
