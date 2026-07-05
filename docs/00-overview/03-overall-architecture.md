@@ -49,7 +49,7 @@ Bu üçü **çakışmaz, üst üste oturur**. Detay: [Installation/Tenant/Scope 
 │   │   │  counseling  performance  communication  finance │    │         │
 │   │   │  file  audit  compliance                         │    │         │
 │   │   │                                                  │    │         │
-│   │   │  Each: Spring Boot 3.6 + Java 25 + gRPC server  │    │         │
+│   │   │  Each: Spring Boot 4.x + Java 25 + gRPC server  │    │         │
 │   │   │        + Kafka producer/consumer                 │    │         │
 │   │   │        + own PostgreSQL DB                       │    │         │
 │   │   └──────────────────────────────────────────────────┘    │         │

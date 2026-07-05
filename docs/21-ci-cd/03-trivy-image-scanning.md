@@ -29,7 +29,7 @@ Bir paket (image) içinden çıkanları sayan ve "bu üründe XYZ-2024 numaralı
 
 Container image'ı build edip prod'a gönderirken:
 - Base image'da eski OpenSSL → CVE-2024-XXXX
-- Spring Boot 3.6.x'te transitive dep'te Log4Shell-benzeri açık
+- Spring Boot 4.x'te transitive dep'te Log4Shell-benzeri açık
 - Hardcoded API key dosyada
 - Dockerfile RUN olarak `wget | sh` gibi anti-pattern
 

@@ -33,7 +33,7 @@ Her satır şu yapıda:
 | Konu | Karar | Sebep |
 |---|---|---|
 | Dil | **Java 25 LTS** | Virtual threads, modern Java (sequenced collections, pattern matching, structured concurrency stable), ~2030'a kadar destek |
-| Framework | **Spring Boot 3.6** | Java 25 LTS destekli en güncel kararlı sürüm; Java + Spring takım bilgisi, geniş ekosistem |
+| Framework | **Spring Boot 4.x** | Java 25 resmî desteği Boot 4.0+ ile gelir (Spring Framework 7 tabanı); Java + Spring takım bilgisi, geniş ekosistem |
 | Güvenlik | **Spring Security** | JWT + filter chain, geniş tooling |
 | ORM | **Spring Data JPA + Hibernate** | Standart Spring veri katmanı |
 | Migration | **Flyway** | Versiyonlu schema değişimi, expand/contract pattern |

@@ -70,7 +70,7 @@ Thread t3 = Thread.startVirtualThread(() -> doWork());
 
 ```java
 ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
-// Veya Spring Boot 3.6'da otomatik (Spring Boot 3.2'den beri)
+// Veya Spring Boot 4.x'te otomatik (Spring Boot 3.2'den beri)
 ```
 
 ## 2. Hangi problemi çözüyor?
@@ -206,9 +206,9 @@ Heap large ise (8GB+) önemli kazanç. Latency-sensitive servisler (identity, pa
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
-### 4.1. Spring Boot 3.6 + virtual threads
+### 4.1. Spring Boot 4.x + virtual threads
 
-Spring Boot 3.6 virtual thread'i tek satır config ile enable eder (özellik Spring Boot 3.2'den beri var):
+Spring Boot 4.x virtual thread'i tek satır config ile enable eder (özellik Spring Boot 3.2'den beri var):
 
 ```yaml
 spring:
@@ -590,7 +590,7 @@ Eski JNI lib, NIO olmayan I/O — carrier'ı blokla.
 
 **Tuzak 7 — Spring kütüphane uyumsuzluğu.**
 Bazı eski Spring projeleri (Spring AMQP eski versiyonları) virtual thread'le çakışabilir.
-**Önleme:** Spring 6.2+ + Spring Boot 3.6+ kullan. Sürüm sıkılığı.
+**Önleme:** Spring Framework 7+ + Spring Boot 4+ kullan. Sürüm sıkılığı.
 
 **Tuzak 8 — Long-running task'larda monitoring eksiği.**
 Milyon virtual thread var ama hangileri uzun süredir bekliyor görünmüyor.
@@ -614,7 +614,7 @@ Structured concurrency, scoped value, string templates — preview. Production'd
 
 ## 8. Diğer konularla ilişkisi
 
-- [Spring Boot Foundation](./01-spring-boot-foundation.md) — Java 25 + Spring Boot 3.6 birlikte
+- [Spring Boot Foundation](./01-spring-boot-foundation.md) — Java 25 + Spring Boot 4.x birlikte
 - [gRPC Service Communication](./03-grpc-service-communication.md) — virtual thread'le gRPC
 - [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture.md) — virtual thread per request
 - [Outbox Pattern](../02-architecture-patterns/06-outbox-pattern.md) — relay scheduler virtual thread'te

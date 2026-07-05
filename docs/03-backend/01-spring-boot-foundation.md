@@ -1,12 +1,12 @@
 ---
 title: Spring Boot Foundation
-description: Spring Boot 3.6, auto-configuration, profile yönetimi, config externalization ve Lumix'te kullanılan application.yml convention.
+description: Spring Boot 4.x, auto-configuration, profile yönetimi, config externalization ve Lumix'te kullanılan application.yml convention.
 sidebar_position: 1
 ---
 
 ## Bu sayfa ne anlatıyor?
 
-Bu sayfa Lumix'in backend temel taşı **Spring Boot 3.6**'in ne sunduğunu, **auto-configuration**'ın nasıl çalıştığını, **profile** mekanizmasının Lumix'te dev/staging/prod ayrımını nasıl yönettiğini ve **config externalization** (environment variable, K8s ConfigMap/Secret) ile yapılandırmanın nasıl dışsallaştırıldığını anlatıyor. Sonunda yeni gelen geliştirici bir microservice'in başlangıç yapısını, `application.yml` standardını, profile'ı ve cluster'da nasıl çalıştığını anlıyor olmalı.
+Bu sayfa Lumix'in backend temel taşı **Spring Boot 4.x**'in ne sunduğunu, **auto-configuration**'ın nasıl çalıştığını, **profile** mekanizmasının Lumix'te dev/staging/prod ayrımını nasıl yönettiğini ve **config externalization** (environment variable, K8s ConfigMap/Secret) ile yapılandırmanın nasıl dışsallaştırıldığını anlatıyor. Sonunda yeni gelen geliştirici bir microservice'in başlangıç yapısını, `application.yml` standardını, profile'ı ve cluster'da nasıl çalıştığını anlıyor olmalı.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -28,15 +28,16 @@ Spring Boot ikincidir. **Default'lar makul**, **gerek görmedikçe override etmi
 5. **Production-ready features** — Actuator (health, metric, info endpoint), graceful shutdown
 6. **Opinionated defaults** — JSON için Jackson, web için Tomcat, security için filter chain
 
-### Spring Boot 3.6 — ne yeni?
+### Spring Boot 4.x — ne yeni?
 
-- **Java 17 minimum** (Lumix Java 25 kullanıyor)
-- **Jakarta EE 10** (javax → jakarta paket geçişi)
+- **Spring Framework 7.x** tabanı (Boot 4.0 ile gelen major base)
+- **Java 17 minimum**, **Java 25 resmî destekli** (Lumix Java 25 kullanıyor)
+- **Jakarta EE 11** (Servlet 6.1 / JPA 3.2; `javax → jakarta` geçişi Boot 3'te tamamlanmıştı)
 - **Native image** desteği (GraalVM, Lumix kullanmıyor şimdilik)
 - **Observability** (Micrometer + OpenTelemetry hazır)
-- **Virtual threads** Spring entegrasyonu (Java 25 ile)
-- **Spring Security 6.x**, **Spring Data JPA 3.x**
-- LTS desteği 2025 sonuna kadar (commercial Tanzu support daha uzun)
+- **Virtual threads** Spring entegrasyonu (Java 25 ile; özellik Boot 3.2'den beri)
+- **Spring Security 7.x**, **Spring Data JPA 4.x**
+- OSS bakım desteği sürüm başına ~13 ay; ticari (Tanzu) uzatılmış destek daha uzun
 
 ## 2. Hangi problemi çözüyor?
 
@@ -219,14 +220,14 @@ public class MarkAttendanceService {
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
-### 4.1. Spring Boot 3.6 + Java 25 LTS
+### 4.1. Spring Boot 4.x + Java 25 LTS
 
 | Karar | Sebep |
 |---|---|
-| Spring Boot 3.6 | LTS, Java 25 destekli, 2025'e kadar destek, takım deneyimi |
-| Java 25 | LTS (2028 destek), virtual threads, modern Java |
+| Spring Boot 4.x | Java 25 resmî desteği (Boot 4.0+), Spring Framework 7 tabanı, takım deneyimi |
+| Java 25 | LTS (~2030 destek), virtual threads, modern Java |
 | Embedded Tomcat | Default seçim, K8s native (sidecar gerek yok) |
-| Jakarta EE 10 | `javax.*` → `jakarta.*` geçişi tamamlandı |
+| Jakarta EE 11 | `javax.*` → `jakarta.*` geçişi tamamlandı (Servlet 6.1 / JPA 3.2) |
 
 Detay: [Java 25 Virtual Threads](./02-java-25-virtual-threads.md), [Teknoloji Kararları](../00-overview/02-technology-stack-decisions.md).
 
@@ -802,7 +803,7 @@ Default 200, blocking workload için yetersiz olabilir.
 **Önleme:** Java 25 virtual threads enable. Veya `server.tomcat.threads.max` ayarla.
 
 **Tuzak 10 — Boot version mismatch.**
-Spring Kafka 3.0.x, Spring Boot 3.6.x ile uyumsuz olabilir. Manual version pin yapma.
+Spring Kafka'yı elle sürüm pinleme; Spring Boot 4.x BOM'u ile gelen sürümü kullan (uyumsuzluk riski).
 **Önleme:** Boot BOM'a güven, sürüm pin'leme.
 
 **Tuzak 11 — Embedded server'ı kapatmak.**

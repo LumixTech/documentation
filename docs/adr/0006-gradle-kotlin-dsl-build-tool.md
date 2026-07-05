@@ -30,7 +30,7 @@ Build aracı **Gradle**, script dili **Kotlin DSL** (`*.gradle.kts`). Sürümler
 `protobuf-gradle-plugin` ile bağlanır. Toolchain (JDK 25) `gradle/wrapper` + `.sdkmanrc`/CI ile pinlenir.
 
 > **Not:** Kotlin DSL bir **build-script dili** kararıdır — üretim kodu **saf Java**'dır
-> ([ADR-002](./0002-java-25-spring-boot-3-6.md)). Kotlin DSL ≠ projede Kotlin kullanımı.
+> ([ADR-002](./0002-java-25-spring-boot-4.md)). Kotlin DSL ≠ projede Kotlin kullanımı.
 
 ## Gradle vs Maven karşılaştırması
 

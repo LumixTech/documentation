@@ -160,7 +160,7 @@ INSTALL_K3S_EXEC="server \
 
 | Tarih | K3s versiyon | K8s upstream | Sebep |
 |---|---|---|---|
-| 2026 baseline | v1.30.x (k3s1) | 1.30 | LTS-benzeri, Spring Boot 3.6 ile uyumlu, 2027 sonuna kadar bakım |
+| 2026 baseline | v1.30.x (k3s1) | 1.30 | LTS-benzeri, Spring Boot 4.x ile uyumlu, 2027 sonuna kadar bakım |
 
 Versiyon güncelleme politikası: 6 ayda bir minor upgrade, security patch için içeride patch sprint.
 

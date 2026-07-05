@@ -185,7 +185,7 @@ Detay: [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-ove
 
 **Kural 2 — Shared library yok.** İki servisin aynı kod parçasına ihtiyacı olursa, **duplicate** edilir. Shared `common-lib` veya `lumix-core` paketi yok. Sebep: shared lib = gizli coupling. Detay: [Teknoloji Kararları — Mimari Paradigma](../00-overview/02-technology-stack-decisions.md).
 
-**Kural 3 — Tek dil, tek framework.** Hepsi Java 25 + Spring Boot 3.6. Polyglot serbestliğinden vazgeçtik. Sebep: operasyonel basitlik, CI/CD homojen, ekip eğitimi tek yığın.
+**Kural 3 — Tek dil, tek framework.** Hepsi Java 25 + Spring Boot 4.x. Polyglot serbestliğinden vazgeçtik. Sebep: operasyonel basitlik, CI/CD homojen, ekip eğitimi tek yığın.
 
 **Kural 4 — Sync iletişim sadece gerçekten gerekiyorsa.** Çağrı zinciri (servis A → B → C → D) **sync olarak yapılmaz** — performans + cascading failure riski. Mümkünse event-driven.
 

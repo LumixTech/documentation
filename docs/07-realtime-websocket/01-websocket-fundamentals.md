@@ -172,7 +172,7 @@ WebSocket trafiği Kong Gateway'den geçer:
 
 ### 4.4. Versiyon
 
-- **Spring 6.x WebSocket** (Spring Boot 3.6 ile gelir)
+- **Spring 7.x WebSocket** (Spring Boot 4.x ile gelir)
 - **STOMP v1.2** (`Sec-WebSocket-Protocol: v12.stomp`)
 - **SockJS fallback:** Lumix kullanmaz (modern browser'lar native WS destekli, fallback gerekirse polling overhead getirir)
 
