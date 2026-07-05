@@ -1,0 +1,31 @@
+# Docusaurus statik sitesini derleyip GitLab Pages'e yayınlar.
+# Bu dosyanın varlığı Auto DevOps'u (buildpack + docker-in-docker) devre dışı bırakır;
+# statik site için Docker'a/dind'e gerek yok.
+
+image: node:20
+
+stages:
+  - deploy
+
+# npm cache'i proje içinde tut ki GitLab CI cache'leyebilsin
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+
+# GitLab Pages job'ı "pages" adında olmalı ve çıktı "public/" klasöründe artifact olmalı.
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build -- --out-dir public   # Docusaurus varsayılan olarak build/'e yazar; public/'e yönlendiriyoruz
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
