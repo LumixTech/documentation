@@ -1,6 +1,6 @@
 # Lumix Mono-repo — Geliştirme Talimatları
 
-Bu klasör (`proje/`) Lumix **mono-repo**'sudur: **backend + frontend + infra**
+Bu klasör (`campus/`) Lumix **mono-repo**'sudur: **backend + frontend + infra**
 birlikte yaşar (trunk-based). `documentation/` ayrı bir projedir, burada değildir.
 ClickUp senkron politikası için üst dizindeki [../CLAUDE.md](../CLAUDE.md) geçerlidir.
 

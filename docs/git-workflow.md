@@ -8,14 +8,14 @@ enforcement git hook'larıyla **otomatik** ve **her iki işletim sisteminde** ç
 
 ## 0. Tek seferlik kurulum
 
-> **Mono-repo kökü: `proje/`** (`c:\Lumix\proje`). Bu klasör backend + frontend +
+> **Mono-repo kökü: `campus/`** (`c:\Lumix\campus`). Bu klasör backend + frontend +
 > infra'yı birlikte barındırır ve git deposu burada açılır. `documentation/` ise
 > ayrı bir projedir (`c:\Lumix\documentation`, kendi repo'su) — bu mono-repo'ya
-> dahil değildir. Tüm komutlar `proje/` içinden çalıştırılır.
+> dahil değildir. Tüm komutlar `campus/` içinden çalıştırılır.
 
 ```bash
-# 0) proje/ klasorune girin
-cd proje
+# 0) campus/ klasorune girin
+cd campus
 
 # 1) Depoyu başlat (bir kişi yapar, sonra remote'a push eder)
 git init -b main
@@ -41,7 +41,7 @@ Depoyu **klonlayan ikinci kişi** sadece kurulum scriptini çalıştırır:
 bash scripts/setup-git.sh      # veya: pwsh scripts/setup-git.ps1
 ```
 
-> ✅ **Yapı kuruldu:** `backend/` artık `proje/` mono-repo'sunun bir alt klasörüdür
+> ✅ **Yapı kuruldu:** `backend/` artık `campus/` mono-repo'sunun bir alt klasörüdür
 > (eski bozuk `.git`'i kaldırıldı, commit/geçmiş kaybı yok). `frontend/` ve `infra/`
 > da buraya, `backend/` ile aynı repo içinde eklenecek (mono-repo mantığı). Böylece
 > kök `.githooks`, `.gitignore` (sır kuralları) ve `.gitattributes` **tüm koda**
@@ -160,7 +160,12 @@ git push --force-with-lease           # rebase sonrası (güvenli zorlama)
 
 ---
 
-## 5. Pull Request
+## 5. Pull Request / Merge Request
+
+> **Asıl remote GitLab'dır** (`gitlab.hsoylu.dev/lumix/campus`) — orada terim "Merge
+> Request (MR)"dir ve sunucu doğrulamasını [.gitlab-ci.yml](../.gitlab-ci.yml) yapar
+> (`backend:build`, `commit-lint`, `schema:validate`). Aşağıdaki GitHub adımları
+> GitHub mirror kullanılırsa geçerlidir; kurallar birebir aynıdır.
 
 - `.github/pull_request_template.md` otomatik açılır; kalite listesini doldurun.
 - **1 onay zorunlu** — PR sahibi kendi PR'ını onaylayamadığından bu onay zorunlu olarak
@@ -172,9 +177,13 @@ git push --force-with-lease           # rebase sonrası (güvenli zorlama)
 
 ---
 
-## 6. GitHub branch protection (bir kez ayarlayın)
+## 6. Branch protection (bir kez ayarlayın)
 
-`main` için (Settings → Branches → Add rule):
+**GitLab (asıl remote):** Settings → Repository → *Protected branches*: `main` için
+"Allowed to push = No one", "Allowed to merge = Developers+"; Settings → Merge requests:
+"Pipelines must succeed" + approval sayısı **1**. Squash önerilir ("Encourage").
+
+**GitHub mirror kullanılıyorsa** `main` için (Settings → Branches → Add rule):
 - [x] Require a pull request before merging
 - [x] Require approvals: **1**  ⚠️ İki kişilik takımda **2 yapmayın**: GitHub'da PR
       sahibi kendi PR'ını onaylayamaz, dolayısıyla 2 onaya asla ulaşılamaz ve tüm PR'lar
@@ -210,7 +219,7 @@ Geliştirici makineleri ve CI aynı sürümleri kullansın diye sürümler dosya
 
 | Dosya | Araç | İçerik |
 |-------|------|--------|
-| [.nvmrc](../.nvmrc) | nvm (Node) | `22` |
+| [.nvmrc](../.nvmrc) | nvm (Node) | `24` |
 | [.sdkmanrc](../.sdkmanrc) | SDKMAN (Java) | `25.0.1-tem` (Java 25 LTS, ADR-002) |
 | [.tool-versions](../.tool-versions) | asdf / **mise** | Java + Node birlikte |
 
@@ -243,5 +252,5 @@ Geliştirici makineleri ve CI aynı sürümleri kullansın diye sürümler dosya
 | commit | merge işareti, büyük dosya, sır | `.githooks/pre-commit` |
 | push | **build zorunlu** | `.githooks/pre-push` |
 | PR | build + test + commit formatı | `.github/workflows/ci.yml` |
-| PR | 2 onay + CODEOWNERS | branch protection |
+| PR | 1 onay (diğer kişi) + CODEOWNERS | branch protection |
 | inceleme | task uyumu / yorum / SOLID-DRY-KISS | `docs/REVIEW_CHECKLIST.md` |

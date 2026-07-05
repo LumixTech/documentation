@@ -1,7 +1,7 @@
 # service-template — Lumix microservice iskeleti
 
 Tüm Lumix backend servisleri bu iskeletten türer. **Hexagonal architecture**
-(domain → application → adapter), Java 25, Spring Boot 3.6, Gradle (Kotlin DSL).
+(domain → application → adapter), Java 25, Spring Boot 4.1, Gradle (Kotlin DSL).
 
 - Mimari referans: `documentation/docs/02-architecture-patterns/03-hexagonal-architecture.md`
 - Spring/Java temeli: `documentation/docs/03-backend/01-spring-boot-foundation.md`,
