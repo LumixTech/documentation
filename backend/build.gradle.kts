@@ -101,6 +101,10 @@ subprojects {
     }
 }
 
+// --- Şema kayıt görevleri (Apicurio REST v3): schemaRegister / schemaValidate / schemaSmokeTest ---
+// Ayrı dosyada; codegen (protobuf-gradle-plugin) ile karışmasın. Bkz. gradle/schema-registry.gradle.kts
+apply(from = "gradle/schema-registry.gradle.kts")
+
 // --- OWASP dependency-check: `./gradlew dependencyCheckAggregate` (NVD verisi indirir, ağ ister) ---
 dependencyCheck {
     failBuildOnCVSS = 7.0f

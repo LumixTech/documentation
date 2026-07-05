@@ -1,0 +1,87 @@
+# =====================================================================
+# Lumix — Apicurio Registry (Protobuf schema registry) + PostgreSQL.
+# gRPC + Kafka için tek schema kaynağı. Compatibility mode: BACKWARD.
+#
+# Sürümler .env'den gelir (bkz. .env.example). Tüm APICURIO_* / POSTGRES_*
+# değerleri .env dosyasında; bu dosya sırları içermez.
+#
+# Ayağa kaldırma:   docker compose --env-file .env up -d
+# Durum:            docker compose ps
+# Loglar:           docker compose logs -f apicurio-registry
+# Kapatma:          docker compose down          (veriyi korur, volume kalır)
+# Sıfırlama:        docker compose down -v        (Postgres volume'ünü de siler)
+#
+# BACKWARD kuralı ilk açılıştan sonra README'deki tek komutla global olarak set edilir.
+# =====================================================================
+
+volumes:
+  apicurio_pg_data:
+    driver: local
+
+services:
+  # --- Şema deposu: PostgreSQL (kalıcı) ---
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-17}
+    container_name: lumix-apicurio-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-apicurio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD .env icinde tanimli olmali}
+      POSTGRES_DB: ${POSTGRES_DB:-apicurio}
+    volumes:
+      - apicurio_pg_data:/var/lib/postgresql/data
+    # Port sadece localhost'a bağlanır — dışarıya açılmaz (registry aynı compose ağında erişir).
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-apicurio} -d ${POSTGRES_DB:-apicurio}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Apicurio Registry API (REST v3 + Confluent-uyumlu API) ---
+  apicurio-registry:
+    image: apicurio/apicurio-registry:${APICURIO_VERSION:-3.3.0}
+    container_name: lumix-apicurio-registry
+    restart: unless-stopped
+    environment:
+      # PostgreSQL storage (sql / postgresql)
+      APICURIO_STORAGE_KIND: "sql"
+      APICURIO_STORAGE_SQL_KIND: "postgresql"
+      APICURIO_DATASOURCE_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB:-apicurio}"
+      APICURIO_DATASOURCE_USERNAME: ${POSTGRES_USER:-apicurio}
+      APICURIO_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD .env icinde tanimli olmali}
+      # CI/otomasyonun bozuk/eski şemayı temizleyebilmesi için silme uçları açık.
+      apicurio.rest.deletion.group.enabled: "true"
+      apicurio.rest.deletion.artifact.enabled: "true"
+      apicurio.rest.deletion.artifact-version.enabled: "true"
+      # UI ayrı origin'den (8888) API'ye çağrı yapar → CORS gerekli.
+      # ÜRETİM: "*" yerine UI'nin gerçek origin'ini yazın (bkz. .env APICURIO_CORS_ORIGINS).
+      QUARKUS_HTTP_CORS_ORIGINS: ${APICURIO_CORS_ORIGINS:-*}
+    ports:
+      - "${APICURIO_API_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      # Quarkus health endpoint — hazır olunca 200 döner.
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/health/ready || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+
+  # --- Web konsolu (ayrı container; API'yi tarayıcıdan yönetir) ---
+  apicurio-registry-ui:
+    image: apicurio/apicurio-registry-ui:${APICURIO_VERSION:-3.3.0}
+    container_name: lumix-apicurio-ui
+    restart: unless-stopped
+    environment:
+      # UI, tarayıcıdan bu URL'e istek atar → sunucunun DIŞ erişilebilir API adresi olmalı.
+      # Lokal:    http://localhost:8080/apis/registry/v3
+      # Sunucu:   https://schema.lumix.example/apis/registry/v3
+      REGISTRY_API_URL: ${APICURIO_UI_API_URL:-http://localhost:8080/apis/registry/v3}
+    ports:
+      - "${APICURIO_UI_PORT:-8888}:8080"
+    depends_on:
+      - apicurio-registry

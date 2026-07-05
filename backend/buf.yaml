@@ -1,0 +1,31 @@
+# =====================================================================
+# buf — Protobuf lint + breaking-change denetimi (CI'da: schema:validate).
+# Codegen'i buf YAPMAZ (o protobuf-gradle-plugin'de kalır); buf yalnızca
+# şema kalitesini (lint) ve geriye uyumluluğu (breaking) doğrular.
+#
+# Apicurio Registry BACKWARD kuralı = ÇALIŞMA ZAMANI bekçisi (register anında reddeder).
+# buf breaking = CI/derleme ZAMANI bekçisi (MR merge olmadan yakalar). İki katman.
+#
+# Lokal kullanım:
+#   buf lint backend
+#   buf breaking backend --against ".git#subdir=backend"     # main'e göre
+# =====================================================================
+version: v2
+
+# Her .proto kök dizini burada listelenir. Yeni servis eklerken kendi
+# src/main/proto yolunu ekleyin (ör. services/identity/adapter-kafka/src/main/proto).
+modules:
+  - path: service-template/adapter-grpc/src/main/proto
+
+lint:
+  use:
+    - STANDARD
+  except:
+    # Düz proto kökü (paket = dizin zorunluluğu yok). Öneri yine de dizin=paket;
+    # ama sample.proto gibi kökteki dosyalar CI'ı kırmasın diye muaf.
+    - PACKAGE_DIRECTORY_MATCH
+
+breaking:
+  use:
+    # Wire-format uyumluluğu — Protobuf BACKWARD'ın karşılığı (alan tag'leri korunur).
+    - WIRE

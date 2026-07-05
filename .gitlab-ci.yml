@@ -119,6 +119,38 @@ commit-lint:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
+# ---- Protobuf sema dogrulama: lint + breaking-change (buf) — sadece MR ----
+# buf = derleme-zamani bekcisi (MR merge olmadan yakalar). Apicurio BACKWARD kurali
+# = calisma-zamani bekcisi (register aninda reddeder). Iki katman, bkz. backend/buf.yaml.
+schema:validate:
+  stage: build
+  image: alpine:3.20
+  needs: []
+  variables:
+    GIT_DEPTH: "0"          # buf breaking, hedef dalin gecmisine erismeli
+    BUF_VERSION: "1.71.0"
+  before_script:
+    - apk add --no-cache curl git
+    - curl -sSL "https://github.com/bufbuild/buf/releases/download/v${BUF_VERSION}/buf-$(uname -s)-$(uname -m)" -o /usr/local/bin/buf
+    - chmod +x /usr/local/bin/buf
+    - buf --version
+  script:
+    # 1) Lint — stil/konvansiyon (backend/buf.yaml kurallari)
+    - buf lint backend
+    # 2) Breaking-change — MR hedef dalina gore wire-format uyumlulugu
+    - |
+      if [ -n "$CI_MERGE_REQUEST_DIFF_BASE_SHA" ]; then
+        echo "Breaking-change kontrolu (base: $CI_MERGE_REQUEST_DIFF_BASE_SHA) ..."
+        buf breaking backend --against ".git#ref=${CI_MERGE_REQUEST_DIFF_BASE_SHA},subdir=backend"
+      else
+        echo "MR degil — breaking kontrolu atlandi."
+      fi
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - backend/**/*.proto
+        - backend/buf.yaml
+
 # ---- OWASP dependency-check — manuel (NVD verisi indirir, yavas) ----
 backend:dependency-check:
   extends: .gradle-backend
