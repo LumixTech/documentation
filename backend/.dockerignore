@@ -1,0 +1,15 @@
+# Docker build context'i küçük tut (backend/ kökünden build edilir).
+.git
+.gradle
+**/build
+**/.idea
+**/*.iml
+node_modules
+*.log
+# Sırlar asla image'a girmez
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.jks

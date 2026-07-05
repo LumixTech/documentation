@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package lumix.template.v1;
+
+option java_multiple_files = true;
+option java_package = "com.lumix.template.grpc.v1";
+option java_outer_classname = "SampleProto";
+
+// Şablon gRPC servisi. Gerçek serviste kendi RPC'lerinle değiştir.
+service SampleService {
+  rpc CreateSample (CreateSampleRequest) returns (CreateSampleResponse);
+}
+
+message CreateSampleRequest {
+  string name = 1;
+}
+
+message CreateSampleResponse {
+  string id = 1;
+}
