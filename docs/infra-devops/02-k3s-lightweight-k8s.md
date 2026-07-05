@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Bu sayfa ne anlatıyor?
 
-K3s, Rancher (artık SUSE) tarafından geliştirilen **tek binary, üretime hazır** bir Kubernetes dağıtımıdır. Lumix'te **müşteri başına cluster** kararı, hafif ve operasyonel olarak basit bir K8s dağıtımı gerektirir; K3s tam bu boşluğu doldurur. Bu sayfa K3s'i sıfırdan anlatır, "vanilla" K8s'ten neyi farklı yaptığını gösterir, Lumix VPS senaryosunda neden K3s seçildiğini detaylandırır, single-node + multi-node kurulum, agent (worker) join ve upgrade akışlarını gerçek komutlarla anlatır. Hedef kitle: K8s temellerini bilen ([Kubernetes Temelleri](./kubernetes-fundamentals)) ama K3s'i ilk kez kuran biri.
+K3s, Rancher (artık SUSE) tarafından geliştirilen **tek binary, üretime hazır** bir Kubernetes dağıtımıdır. Lumix'te **müşteri başına cluster** kararı, hafif ve operasyonel olarak basit bir K8s dağıtımı gerektirir; K3s tam bu boşluğu doldurur. Bu sayfa K3s'i sıfırdan anlatır, "vanilla" K8s'ten neyi farklı yaptığını gösterir, Lumix VPS senaryosunda neden K3s seçildiğini detaylandırır, single-node + multi-node kurulum, agent (worker) join ve upgrade akışlarını gerçek komutlarla anlatır. Hedef kitle: K8s temellerini bilen ([Kubernetes Temelleri](./01-kubernetes-fundamentals.md)) ama K3s'i ilk kez kuran biri.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -139,7 +139,7 @@ Agent join akışı:
 
 ### 3.5. Disabled component flag'leri
 
-Lumix kararı: K3s gömülü **traefik** ve **servicelb**'yi kapatır, çünkü kendi Traefik instance'ımızı yönetiriz (bkz. [Traefik Ingress](./traefik-ingress)).
+Lumix kararı: K3s gömülü **traefik** ve **servicelb**'yi kapatır, çünkü kendi Traefik instance'ımızı yönetiriz (bkz. [Traefik Ingress](./05-traefik-ingress.md)).
 
 ```bash
 INSTALL_K3S_EXEC="server \
@@ -152,7 +152,7 @@ INSTALL_K3S_EXEC="server \
   --service-cidr=10.43.0.0/16"
 ```
 
-(Calico kuracaksak `flannel-backend=none` ve `disable-network-policy` ile flannel/embedded NetworkPolicy'yi devre dışı bırakırız; detay [NetworkPolicy + mTLS](./networkpolicy-mtls).)
+(Calico kuracaksak `flannel-backend=none` ve `disable-network-policy` ile flannel/embedded NetworkPolicy'yi devre dışı bırakırız; detay [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md).)
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
@@ -248,7 +248,7 @@ INSTALL_K3S_EXEC="agent \
 - **etcd snapshot** (HA mode): `/var/lib/rancher/k3s/server/db/snapshots/`
 - K3s native: `k3s etcd-snapshot save` (her 6 saatte CronJob)
 - Off-cluster: snapshot RustFS'e (S3-compatible) push edilir
-- Velero ile K8s state + PV backup (bkz. [Velero](./velero-backup))
+- Velero ile K8s state + PV backup (bkz. [Velero](./09-velero-backup.md))
 
 ### 4.6. Upgrade akışı
 
@@ -264,7 +264,7 @@ systemctl status k3s
 kubectl get nodes -o wide   # versiyon güncel mi?
 ```
 
-Lumix'te bu süreç **Rancher System Upgrade Controller** ile otomatize edilir (`Plan` CRD; bkz. [Rancher Multi-Cluster](./rancher-multi-cluster)).
+Lumix'te bu süreç **Rancher System Upgrade Controller** ile otomatize edilir (`Plan` CRD; bkz. [Rancher Multi-Cluster](./04-rancher-multi-cluster.md)).
 
 ## 5. Neden bu seçildi? (Alternatifler ve trade-off)
 
@@ -497,14 +497,14 @@ INSTALL_K3S_SKIP_DOWNLOAD=true sh /opt/k3s-airgap/install.sh
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — Pod / Deployment / Service kavramları
-- [Helm Charts](./helm-charts) — uygulamaları K3s'e deploy etmek
-- [Rancher Multi-Cluster](./rancher-multi-cluster) — birden fazla K3s cluster'ını merkezden yönetmek
-- [Velero Backup](./velero-backup) — K3s state + PV backup
-- [Ubuntu Hardening](./ubuntu-server-hardening) — K3s'in altındaki OS sertleştirmesi
-- [NetworkPolicy + mTLS](./networkpolicy-mtls) — Calico ile flannel değişimi
-- [Terraform Basics](../20-iac-provisioning/terraform-basics) — VPS provisioning
-- [Ansible Basics](../20-iac-provisioning/ansible-basics) — K3s install role
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — Pod / Deployment / Service kavramları
+- [Helm Charts](./03-helm-charts.md) — uygulamaları K3s'e deploy etmek
+- [Rancher Multi-Cluster](./04-rancher-multi-cluster.md) — birden fazla K3s cluster'ını merkezden yönetmek
+- [Velero Backup](./09-velero-backup.md) — K3s state + PV backup
+- [Ubuntu Hardening](./10-ubuntu-server-hardening.md) — K3s'in altındaki OS sertleştirmesi
+- [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md) — Calico ile flannel değişimi
+- [Terraform Basics](../20-iac-provisioning/01-terraform-basics.md) — VPS provisioning
+- [Ansible Basics](../20-iac-provisioning/02-ansible-basics.md) — K3s install role
 
 ## 9. Daha derine inmek için
 

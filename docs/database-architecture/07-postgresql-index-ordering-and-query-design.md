@@ -85,7 +85,7 @@ for each critical_query_pattern:
 
 - Our filtering strategy starts with `tenant_id`; index design should reflect this.
 - The default composite pattern for tenant-scoped entities should begin with `tenant_id` when query patterns support it.
-- This direction aligns with tenant isolation controls described in [Tenant-based Row-Level Security (RLS)](./tenant-based-rls-policy-design).
+- This direction aligns with tenant isolation controls described in [Tenant-based Row-Level Security (RLS)](./09-tenant-based-rls-policy-design.md).
 
 ## Glossary
 

@@ -389,11 +389,11 @@ Bundan sonra `t('xyz')` TS hatası vermez/verir — typo yakalanır.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Form Handling](./form-handling) — schema mesajları i18n key
-- [Redux Toolkit](./redux-toolkit) — `uiSlice` locale tutuyor
-- [Token Storage](./frontend-token-storage) — login formu i18n
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — tenant timezone kavramı
-- [Mobile Shared Logic](../10-frontend-mobile/02-shared-business-logic) — i18n paketleri paylaşımı
+- [Form Handling](./07-form-handling.md) — schema mesajları i18n key
+- [Redux Toolkit](./02-redux-toolkit.md) — `uiSlice` locale tutuyor
+- [Token Storage](./06-frontend-token-storage.md) — login formu i18n
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — tenant timezone kavramı
+- [Mobile Shared Logic](../10-frontend-mobile/02-shared-business-logic.md) — i18n paketleri paylaşımı
 
 ## 9. Daha derine
 

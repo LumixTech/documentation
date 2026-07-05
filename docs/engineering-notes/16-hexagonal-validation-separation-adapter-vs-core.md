@@ -6,7 +6,7 @@ draft: true
 ---
 
 :::warning Bu sayfa arşivlendi
-Güncel sayfa: **[02 · Mimari Patterns → Hexagonal Architecture](../02-architecture-patterns/hexagonal-architecture)**
+Güncel sayfa: **[02 · Mimari Patterns → Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture.md)**
 
 Bu eski sürüm referans olarak repository'de kalıyor; yeni kararlar (Türkçe + 10 başlıklı şablon + Lumix-spesifik kod örnekleri) burada yansımıyor.
 :::

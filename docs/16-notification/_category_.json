@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Notification (Email + SMS + Push)",
-    "description": "Notification adapter pattern, email/SMS/push provider'ları, MJML email template rendering, i18n template, delivery tracking."
+    "description": "Notification adapter pattern, email/SMS/push provider'ları, MJML email template rendering, i18n template, delivery tracking.",
+    "slug": "/notification"
   }
 }

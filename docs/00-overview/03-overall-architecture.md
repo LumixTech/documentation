@@ -16,7 +16,7 @@ Lumix sistemini **uçaktan görüyor olsak** ne görürdük? Bu sayfa müşteri 
 | **Tenant** | Bir installation içindeki bağımsız operasyonel birim | "Ömer Okulları → Kadıköy Şubesi", "Ömer Okulları → Beşiktaş Şubesi" |
 | **Scope** | Bir kullanıcının tenant içinde gördüğü kapsam | "Hüseyin öğretmen → 11-A ve 12-B sınıfları" |
 
-Bu üçü **çakışmaz, üst üste oturur**. Detay: [Installation/Tenant/Scope Modeli](../tenancy-and-domain-model/installation-tenant-scope).
+Bu üçü **çakışmaz, üst üste oturur**. Detay: [Installation/Tenant/Scope Modeli](../01-tenancy-and-domain-model/01-installation-tenant-scope.md).
 
 ## 2. Yüksek seviye haritası
 
@@ -240,8 +240,8 @@ Bu konular **tek bir servise ait değil**, sistemin her yerinde:
 
 ## 9. Diğer konularla ilişkisi
 
-- [Vizyon ve Hedefler](./vision-and-goals) — projenin amacı
-- [Teknoloji Kararları](./technology-stack-decisions) — burada gördüğün her teknolojinin neden seçildiği
-- [Öğrenme Yolu](./learning-path) — bu mimariyi parça parça nasıl öğrenmeli
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — multi-tenancy detayı
-- [Domain Servisleri](../tenancy-and-domain-model/domain-services-overview) — 10 servis listesi
+- [Vizyon ve Hedefler](./01-vision-and-goals.md) — projenin amacı
+- [Teknoloji Kararları](./02-technology-stack-decisions.md) — burada gördüğün her teknolojinin neden seçildiği
+- [Öğrenme Yolu](./04-learning-path.md) — bu mimariyi parça parça nasıl öğrenmeli
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — multi-tenancy detayı
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — 10 servis listesi

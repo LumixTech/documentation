@@ -251,10 +251,10 @@ Hangi workflow hangi task queue'da yaşıyor → workflow start zamanı task que
 
 | Kullanım | Detay sayfası |
 |---|---|
-| Multi-service Saga | [Saga with Temporal](./saga-with-temporal) |
-| DSAR (Data Subject Access Request) workflow | [DSAR Workflow](./dsar-workflow-implementation) |
-| Scheduled retention (compliance-service) | [Background Jobs](./background-jobs) |
-| Customer onboarding seed orchestration | [Customer Onboarding](../20-iac-provisioning/customer-onboarding-pipeline) |
+| Multi-service Saga | [Saga with Temporal](./02-saga-with-temporal.md) |
+| DSAR (Data Subject Access Request) workflow | [DSAR Workflow](./03-dsar-workflow-implementation.md) |
+| Scheduled retention (compliance-service) | [Background Jobs](./04-background-jobs.md) |
+| Customer onboarding seed orchestration | [Customer Onboarding](../20-iac-provisioning/03-customer-onboarding-pipeline.md) |
 | Payment saga | finance-service kullanımı |
 | Notification batch | scheduled |
 
@@ -551,11 +551,11 @@ Eski workflow history audit-step görmemiş → `Workflow.DEFAULT_VERSION` path;
 
 ## 8. Diğer konularla ilişkisi
 
-- [Saga with Temporal](./saga-with-temporal) — multi-service saga implementation
-- [DSAR Workflow Implementation](./dsar-workflow-implementation) — KVKK/GDPR uyumu
-- [Background Jobs](./background-jobs) — scheduled workflow
+- [Saga with Temporal](./02-saga-with-temporal.md) — multi-service saga implementation
+- [DSAR Workflow Implementation](./03-dsar-workflow-implementation.md) — KVKK/GDPR uyumu
+- [Background Jobs](./04-background-jobs.md) — scheduled workflow
 - [Event-Driven Architecture](../event-driven-architecture) — Kafka outbox + Temporal birlikte
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — orchestrator olarak Temporal kullanılabilir
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — orchestrator olarak Temporal kullanılabilir
 - [Database Architecture](../database-architecture) — Temporal PostgreSQL backend
 
 ## 9. Daha derine inmek için

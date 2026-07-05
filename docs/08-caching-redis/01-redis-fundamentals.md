@@ -362,13 +362,13 @@ maxmemory 8gb
 
 ## 8. Diğer konularla ilişkisi
 
-- [Redis Sentinel Topology](./redis-sentinel-topology) — Lumix'in iki cluster tasarımı
-- [Cache-Aside Pattern](./cache-aside-pattern) — `@Cacheable` ile basit cache
-- [Cache Invalidation](./cache-invalidation) — entity/view cache silme
-- [TTL Strategy](./ttl-strategy) — TTL kararı
-- [Distributed Lock — Redisson](./distributed-lock-redisson) — RedLock
-- [Fully Stateful Token Modeli](../04-authentication-authorization/stateful-token-model) — auth-redis kullanımı
-- [Redis Pub/Sub Backplane](../07-realtime-websocket/redis-pubsub-backplane) — cache-redis pub/sub
+- [Redis Sentinel Topology](./02-redis-sentinel-topology.md) — Lumix'in iki cluster tasarımı
+- [Cache-Aside Pattern](./03-cache-aside-pattern.md) — `@Cacheable` ile basit cache
+- [Cache Invalidation](./04-cache-invalidation.md) — entity/view cache silme
+- [TTL Strategy](./05-ttl-strategy.md) — TTL kararı
+- [Distributed Lock — Redisson](./06-distributed-lock-redisson.md) — RedLock
+- [Fully Stateful Token Modeli](../04-authentication-authorization/01-stateful-token-model.md) — auth-redis kullanımı
+- [Redis Pub/Sub Backplane](../07-realtime-websocket/03-redis-pubsub-backplane.md) — cache-redis pub/sub
 
 ## 9. Daha derine inmek için
 

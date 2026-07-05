@@ -297,10 +297,10 @@ Her teknoloji için ayrı detay sayfasında **şu soruların cevabı** olmalı:
 6. **Pratik örnek** — Gerçek kod/config
 7. **Dikkat edilecek tuzaklar** — Anti-pattern listesi
 
-Bu standart [_TEMPLATE.md](../_TEMPLATE) dosyasında detaylı.
+Bu standart `_TEMPLATE.md` dosyasında detaylı.
 
 ## Diğer konularla ilişkisi
 
-- [Vizyon ve Hedefler](./vision-and-goals) — neden bu kararları aldık
-- [Genel Mimari](./overall-architecture) — bu teknolojiler nasıl bir araya geliyor
-- [Öğrenme Yolu](./learning-path) — hangi sırada öğrenmeli
+- [Vizyon ve Hedefler](./01-vision-and-goals.md) — neden bu kararları aldık
+- [Genel Mimari](./03-overall-architecture.md) — bu teknolojiler nasıl bir araya geliyor
+- [Öğrenme Yolu](./04-learning-path.md) — hangi sırada öğrenmeli

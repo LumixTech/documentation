@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix'te K8s cluster'larına yapılan **her değişiklik Git'ten** geçer; doğrudan `kubectl apply` yasak. Bu disipline **GitOps** denir; otomasyonunu **ArgoCD** sağlar. Bu sayfa GitOps prensiplerini sıfırdan anlatır, ArgoCD'nin **Application + ApplicationSet** CRD'lerini gösterir, Lumix'in **müşteri başına cluster + tek Git repo + ApplicationSet generator** modelini detaylandırır, **sync policy (auto/manual)**, **selfHeal**, **prune**, **sync waves**, **rollback** akışlarını açıklar. Hedef kitle: K8s ve Helm temellerini bilen ([Kubernetes Temelleri](../infra-devops/kubernetes-fundamentals), [Helm Charts](../infra-devops/helm-charts)) DevOps; CI/CD'ye yeni giren mühendis.
+Lumix'te K8s cluster'larına yapılan **her değişiklik Git'ten** geçer; doğrudan `kubectl apply` yasak. Bu disipline **GitOps** denir; otomasyonunu **ArgoCD** sağlar. Bu sayfa GitOps prensiplerini sıfırdan anlatır, ArgoCD'nin **Application + ApplicationSet** CRD'lerini gösterir, Lumix'in **müşteri başına cluster + tek Git repo + ApplicationSet generator** modelini detaylandırır, **sync policy (auto/manual)**, **selfHeal**, **prune**, **sync waves**, **rollback** akışlarını açıklar. Hedef kitle: K8s ve Helm temellerini bilen ([Kubernetes Temelleri](../infra-devops/01-kubernetes-fundamentals.md), [Helm Charts](../infra-devops/03-helm-charts.md)) DevOps; CI/CD'ye yeni giren mühendis.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -607,13 +607,13 @@ App'e tıkla: resource tree (Deployment → ReplicaSet → Pods), her resource'a
 
 ## 8. Diğer konularla ilişkisi
 
-- [Helm Charts](../infra-devops/helm-charts) — ArgoCD'nin uyguladığı paket
-- [Helm Versioning](./helm-versioning) — `targetRevision` ne anlama gelir
-- [GitLab CE Self-Hosted](./gitlab-ce-self-hosted) — Git source
-- [GitLab CI Pipelines](./gitlab-ci-pipelines) — pipeline'dan ArgoCD trigger
-- [Rancher Multi-Cluster](../infra-devops/rancher-multi-cluster) — cluster register + Fleet'le farkı
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — ArgoCD app create adımı
-- [cert-manager](../infra-devops/cert-manager-tls) — sync wave ile önce CRD
+- [Helm Charts](../infra-devops/03-helm-charts.md) — ArgoCD'nin uyguladığı paket
+- [Helm Versioning](./05-helm-versioning.md) — `targetRevision` ne anlama gelir
+- [GitLab CE Self-Hosted](./01-gitlab-ce-self-hosted.md) — Git source
+- [GitLab CI Pipelines](./02-gitlab-ci-pipelines.md) — pipeline'dan ArgoCD trigger
+- [Rancher Multi-Cluster](../infra-devops/04-rancher-multi-cluster.md) — cluster register + Fleet'le farkı
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — ArgoCD app create adımı
+- [cert-manager](../infra-devops/08-cert-manager-tls.md) — sync wave ile önce CRD
 
 ## 9. Daha derine inmek için
 

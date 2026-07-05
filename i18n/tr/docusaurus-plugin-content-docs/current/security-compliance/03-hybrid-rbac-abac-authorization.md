@@ -1,4 +1,4 @@
-﻿---
+---
 title: Hibrit Yetkilendirme Modeli - RBAC + ABAC
 description: role_permission, user_permission, common_permission ve allow/deny öncelik kuralı ile yetkilendirme modeli.
 sidebar_position: 3

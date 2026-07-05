@@ -6,7 +6,7 @@ draft: true
 ---
 
 :::warning Bu sayfa arşivlendi
-Güncel sayfa: **[04 · Authentication & Authorization → Stateful Token Model](../04-authentication-authorization/stateful-token-model)**
+Güncel sayfa: **[04 · Authentication & Authorization → Stateful Token Model](../04-authentication-authorization/01-stateful-token-model.md)**
 
 Bu eski sürüm referans olarak repository'de kalıyor; yeni sayfa Türkçe, 10 başlıklı şablon ve Lumix kararlarıyla (fully stateful, httpOnly cookie, SHA-512) güncel.
 :::
@@ -21,7 +21,7 @@ This design uses a stateful token/session model with Redis:
 - `refresh token`: stateful, revocable, and rotation-managed in Redis
 - `session` and `device session`: stateful lifecycle records in Redis
 
-For the companion lifecycle document, see [Session, Device, and Refresh Token Lifecycle](./session-device-refresh-lifecycle).
+For the companion lifecycle document, see [Session, Device, and Refresh Token Lifecycle](./02-session-device-refresh-lifecycle.md).
 
 ## Why It Matters
 
@@ -154,7 +154,7 @@ on LOGOUT_ALL(user_id):
 - We use a fully stateful auth model for runtime control: `access token`, `refresh token`, and `session` are tracked in Redis.
 - `logout-all` is a first-class business requirement, not an optional admin tool.
 - Revocation must be explainable through explicit token/session state transitions.
-- Security behavior should remain consistent with [Hybrid Authorization Model: RBAC + ABAC](./hybrid-rbac-abac-authorization).
+- Security behavior should remain consistent with [Hybrid Authorization Model: RBAC + ABAC](./03-hybrid-rbac-abac-authorization.md).
 
 ## Glossary
 

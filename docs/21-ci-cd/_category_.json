@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "CI/CD (GitLab CE + Trivy + ArgoCD)",
-    "description": "GitLab CE self-hosted (repo + CI + container registry), GitLab CI pipeline, Trivy image scanning, ArgoCD GitOps, Helm versioning, rollback stratejisi."
+    "description": "GitLab CE self-hosted (repo + CI + container registry), GitLab CI pipeline, Trivy image scanning, ArgoCD GitOps, Helm versioning, rollback stratejisi.",
+    "slug": "/ci-cd"
   }
 }

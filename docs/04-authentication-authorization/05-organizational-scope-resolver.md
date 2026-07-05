@@ -155,7 +155,7 @@ ScopeResolver.resolveScope(userId, tenantIds=[t1, t2, t3]):
   ve sadece o tenant'ın scope'u apply edilir.
 ```
 
-DB session'da `app.tenant_ids` array set edilir, RLS policy union ile filter eder. Detay: [Installation/Tenant/Scope](../01-tenancy-and-domain-model/installation-tenant-scope).
+DB session'da `app.tenant_ids` array set edilir, RLS policy union ile filter eder. Detay: [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md).
 
 ### 3.4. ScopedFilter interceptor (JPA entegrasyonu)
 
@@ -459,10 +459,10 @@ public class StudentController {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/installation-tenant-scope) — scope modelinin tanımı
-- [Hibrit RBAC + ABAC](./rbac-abac-hybrid) — scope ABAC tarafının bir parçası
-- [Permission Change & Revoke Flow](./permission-change-revoke-flow) — scope değişiminde cache invalidation
-- [Fully Stateful Token Modeli](./stateful-token-model) — scope JWT'de değil, request başında resolve edilir
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — scope modelinin tanımı
+- [Hibrit RBAC + ABAC](./04-rbac-abac-hybrid.md) — scope ABAC tarafının bir parçası
+- [Permission Change & Revoke Flow](./06-permission-change-revoke-flow.md) — scope değişiminde cache invalidation
+- [Fully Stateful Token Modeli](./01-stateful-token-model.md) — scope JWT'de değil, request başında resolve edilir
 - [Tenant-based RLS](../database-architecture/tenant-based-rls-policy-design) — RLS detayı
 
 ## 9. Daha derine inmek için

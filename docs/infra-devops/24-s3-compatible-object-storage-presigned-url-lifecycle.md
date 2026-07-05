@@ -6,11 +6,11 @@ draft: true
 ---
 
 > **NOT:** Bu sayfa arşivlenmiştir. Object storage, RustFS, pre-signed URL, lifecycle ve ClamAV konuları artık şu sayfalarda işlenmektedir:
-> - [Object Storage Temelleri](../12-storage-and-files/object-storage-fundamentals)
-> - [RustFS Self-Hosted](../12-storage-and-files/rustfs-self-hosted)
-> - [Pre-Signed URL Akışı](../12-storage-and-files/presigned-urls)
-> - [Lifecycle Policy](../12-storage-and-files/lifecycle-policies)
-> - [ClamAV Virus Scanning](../12-storage-and-files/clamav-virus-scanning)
+> - [Object Storage Temelleri](../12-storage-and-files/01-object-storage-fundamentals.md)
+> - [RustFS Self-Hosted](../12-storage-and-files/02-rustfs-self-hosted.md)
+> - [Pre-Signed URL Akışı](../12-storage-and-files/03-presigned-urls.md)
+> - [Lifecycle Policy](../12-storage-and-files/04-lifecycle-policies.md)
+> - [ClamAV Virus Scanning](../12-storage-and-files/05-clamav-virus-scanning.md)
 
 ## Introduction
 

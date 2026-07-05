@@ -6,7 +6,7 @@ sidebar_position: 11
 
 ## Bu sayfa ne anlatıyor?
 
-K8s'te default olarak **tüm pod'lar birbirine konuşabilir**. Bu, "side car compromise" senaryosunda **lateral movement**'ı kolaylaştırır. Lumix bu açığı **NetworkPolicy** (Calico CNI ile) ile kapatır; daha ileri savunma (kimlik-bazlı **mTLS**) ihtiyacı doğduğunda **Istio veya Linkerd** ekleme alanını saklar. Bu sayfa NetworkPolicy'yi sıfırdan anlatır, Calico'nun rolünü gösterir, Lumix'in **namespace + label tabanlı policy seti**'ni detaylandırır, ve **mTLS** kararının neden ertelendiğini açıklar. Hedef kitle: K8s temellerini bilen ([Kubernetes Temelleri](./kubernetes-fundamentals)), CNI ve service mesh kavramlarına aşina mühendis.
+K8s'te default olarak **tüm pod'lar birbirine konuşabilir**. Bu, "side car compromise" senaryosunda **lateral movement**'ı kolaylaştırır. Lumix bu açığı **NetworkPolicy** (Calico CNI ile) ile kapatır; daha ileri savunma (kimlik-bazlı **mTLS**) ihtiyacı doğduğunda **Istio veya Linkerd** ekleme alanını saklar. Bu sayfa NetworkPolicy'yi sıfırdan anlatır, Calico'nun rolünü gösterir, Lumix'in **namespace + label tabanlı policy seti**'ni detaylandırır, ve **mTLS** kararının neden ertelendiğini açıklar. Hedef kitle: K8s temellerini bilen ([Kubernetes Temelleri](./01-kubernetes-fundamentals.md)), CNI ve service mesh kavramlarına aşina mühendis.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -490,12 +490,12 @@ ingress:
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — Pod/Service/Network kavramları
-- [K3s](./k3s-lightweight-k8s) — flannel kapatma + Calico kurma
-- [Ubuntu Hardening](./ubuntu-server-hardening) — node-level firewall (UFW) NP ile katmanlı
-- [cert-manager TLS](./cert-manager-tls) — mTLS sertifikaları (Vault/Kafka için bugün)
-- [Helm Charts](./helm-charts) — NetworkPolicy chart'lara nasıl gömülür
-- [Authentication](../04-authentication-authorization) — kimlik kontrolü uygulama-level
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — Pod/Service/Network kavramları
+- [K3s](./02-k3s-lightweight-k8s.md) — flannel kapatma + Calico kurma
+- [Ubuntu Hardening](./10-ubuntu-server-hardening.md) — node-level firewall (UFW) NP ile katmanlı
+- [cert-manager TLS](./08-cert-manager-tls.md) — mTLS sertifikaları (Vault/Kafka için bugün)
+- [Helm Charts](./03-helm-charts.md) — NetworkPolicy chart'lara nasıl gömülür
+- [Authentication](../authentication-authorization) — kimlik kontrolü uygulama-level
 - [Observability](../observability-qa) — NP hit metric, Calico flow log
 
 ## 9. Daha derine inmek için

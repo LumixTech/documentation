@@ -397,12 +397,12 @@ pnpm lint               # eslint
 ## 8. Diğer konularla ilişkisi
 
 - [Frontend FSD ve Feature Boundary'leri](./frontend-fsd-feature-boundaries) — bu temelin üstüne kurulan mimari
-- [Redux Toolkit](./redux-toolkit) — client state yönetimi
-- [RTK Query](./rtk-query) — server state yönetimi
-- [Token Storage](./frontend-token-storage) — auth flow
-- [Form Handling](./form-handling) — React Hook Form + Zod
-- [i18n Stratejisi](./i18n-strategy) — react-i18next
-- [Genel Mimari](../00-overview/03-overall-architecture) — frontend'in sistem içindeki yeri
+- [Redux Toolkit](./02-redux-toolkit.md) — client state yönetimi
+- [RTK Query](./33-rtk-query.md) — server state yönetimi
+- [Token Storage](./06-frontend-token-storage.md) — auth flow
+- [Form Handling](./07-form-handling.md) — React Hook Form + Zod
+- [i18n Stratejisi](./08-i18n-strategy.md) — react-i18next
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — frontend'in sistem içindeki yeri
 
 ## 9. Daha derine
 

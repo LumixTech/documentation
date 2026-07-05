@@ -232,7 +232,7 @@ Hexagonal Architecture'da **validation iki katmanda** yapılır:
 - Mekanizma: Aggregate root metodlarında `throw new BusinessException(...)`
 - Hata: HTTP 409 / 422 / 403, gRPC FAILED_PRECONDITION
 
-Detay: [Validation Strategy](../03-backend/04-validation-strategy).
+Detay: [Validation Strategy](../03-backend/04-validation-strategy.md).
 
 ### 3.5. Use case service — port implementation'ı
 
@@ -468,7 +468,7 @@ Niye elendi:
 ### 6.1. Tam bir feature — yoklama alma akışı
 
 **Domain (Attendance aggregate):**
-Bkz. [Domain-Driven Design — Pratik Örnek](./domain-driven-design#6-pratik-örnek).
+Bkz. [Domain-Driven Design — Pratik Örnek](./02-domain-driven-design.md#6-pratik-örnek).
 
 **Inbound port:**
 
@@ -774,12 +774,12 @@ Use case'i test ederken outbound port'ları her seferinde Mockito ile mock'lars�
 
 ## 8. Diğer konularla ilişkisi
 
-- [Microservices Architecture](./microservices-architecture) — her microservice hexagonal yapıdadır
-- [Domain-Driven Design](./domain-driven-design) — DDD ile hexagonal birlikte güç kazanır
-- [Validation Strategy](../03-backend/04-validation-strategy) — adapter vs core validation
-- [Error Handling RFC 7807](../03-backend/05-error-handling-rfc7807) — exception'lar adapter'da nasıl HTTP'ye dönüşür
-- [gRPC Service Communication](../03-backend/03-grpc-service-communication) — gRPC bir adapter tipi
-- [Outbox Pattern](./outbox-pattern) — `OutboxEventPublisher` outbound port örneği
+- [Microservices Architecture](./01-microservices-architecture.md) — her microservice hexagonal yapıdadır
+- [Domain-Driven Design](./02-domain-driven-design.md) — DDD ile hexagonal birlikte güç kazanır
+- [Validation Strategy](../03-backend/04-validation-strategy.md) — adapter vs core validation
+- [Error Handling RFC 7807](../03-backend/05-error-handling-rfc7807.md) — exception'lar adapter'da nasıl HTTP'ye dönüşür
+- [gRPC Service Communication](../03-backend/03-grpc-service-communication.md) — gRPC bir adapter tipi
+- [Outbox Pattern](./06-outbox-pattern.md) — `OutboxEventPublisher` outbound port örneği
 
 ## 9. Daha derine inmek için
 

@@ -45,7 +45,7 @@ Daha doğru yaklaşım:
 - API shape için contract test,
 - kritik user journey ve role-visible davranış için Playwright.
 
-Bu yaklaşım [Test Piramidi: Unit, Integration, Contract ve E2E Stratejisi](../observability-qa/test-pyramid-unit-integration-contract-e2e) ile uyumludur.
+Bu yaklaşım [Test Piramidi: Unit, Integration, Contract ve E2E Stratejisi](../observability-qa/29-test-pyramid-unit-integration-contract-e2e.md) ile uyumludur.
 
 ## Yaklaşım / Tasarım
 

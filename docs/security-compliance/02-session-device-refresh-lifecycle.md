@@ -6,7 +6,7 @@ draft: true
 ---
 
 :::warning Bu sayfa arşivlendi
-Güncel sayfa: **[04 · Authentication & Authorization → Session, Device Lifecycle](../04-authentication-authorization/session-device-lifecycle)**
+Güncel sayfa: **[04 · Authentication & Authorization → Session, Device Lifecycle](../04-authentication-authorization/02-session-device-lifecycle.md)**
 
 Bu eski sürüm referans olarak repository'de kalıyor.
 :::
@@ -142,7 +142,7 @@ on LOGOUT_ALL(user_id):
 - Redis-backed `USER_SESSIONS`, `ACCESS_TOKENS`, and `REFRESH_TOKENS` are mandatory; stateless-only auth modeling is explicitly rejected.
 - Device-awareness is required for user safety and support visibility.
 - We prefer explicit status transitions over implicit deletion for forensic traceability.
-- This lifecycle design is intentionally aligned with [Spring Security Authentication Flow with JWT and Refresh Token](./auth-jwt-refresh-flow).
+- This lifecycle design is intentionally aligned with [Spring Security Authentication Flow with JWT and Refresh Token](./01-auth-jwt-refresh-flow.md).
 
 ## Glossary
 

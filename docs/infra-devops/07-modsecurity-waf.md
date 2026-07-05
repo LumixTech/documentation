@@ -6,7 +6,7 @@ sidebar_position: 7
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix'in gateway katmanında **L7 saldırılarına karşı koruma** ModSecurity tarafından yapılır. Bu sayfa **WAF (Web Application Firewall)** kavramını sıfırdan açıklar, **ModSecurity**'i ve onun gücünü besleyen **OWASP Core Rule Set (CRS)**'i anlatır, ModSecurity'yi **Kong plugin** olarak nasıl entegre ettiğimizi gösterir, false-positive yönetimini detaylandırır ve Lumix'in **karşılaştığı/karşılaşacağı saldırı pattern'leri** listesini sunar. Hedef kitle: güvenlik temellerini bilen, Kong'a ([Kong API Gateway](./kong-api-gateway)) aşina mühendis.
+Lumix'in gateway katmanında **L7 saldırılarına karşı koruma** ModSecurity tarafından yapılır. Bu sayfa **WAF (Web Application Firewall)** kavramını sıfırdan açıklar, **ModSecurity**'i ve onun gücünü besleyen **OWASP Core Rule Set (CRS)**'i anlatır, ModSecurity'yi **Kong plugin** olarak nasıl entegre ettiğimizi gösterir, false-positive yönetimini detaylandırır ve Lumix'in **karşılaştığı/karşılaşacağı saldırı pattern'leri** listesini sunar. Hedef kitle: güvenlik temellerini bilen, Kong'a ([Kong API Gateway](./06-kong-api-gateway.md)) aşina mühendis.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -404,9 +404,9 @@ SecAuditLogFormat JSON
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kong API Gateway](./kong-api-gateway) — ModSecurity'nin çalıştığı yer
-- [Traefik Ingress](./traefik-ingress) — WAF'tan önceki edge
-- [Authentication](../04-authentication-authorization) — WAF auth yerine geçmez; tamamlayıcı
+- [Kong API Gateway](./06-kong-api-gateway.md) — ModSecurity'nin çalıştığı yer
+- [Traefik Ingress](./05-traefik-ingress.md) — WAF'tan önceki edge
+- [Authentication](../authentication-authorization) — WAF auth yerine geçmez; tamamlayıcı
 - [Audit Log](../security-compliance) — WAF event'lerinin audit'i
 - [Observability](../observability-qa) — WAF metric ve log
 

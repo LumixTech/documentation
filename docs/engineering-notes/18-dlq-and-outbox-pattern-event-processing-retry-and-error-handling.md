@@ -6,7 +6,7 @@ draft: true
 ---
 
 :::warning Bu sayfa arşivlendi
-Güncel sayfa: **[02 · Mimari Patterns → Outbox Pattern](../02-architecture-patterns/outbox-pattern)**
+Güncel sayfa: **[02 · Mimari Patterns → Outbox Pattern](../02-architecture-patterns/06-outbox-pattern.md)**
 
 Bu eski sürüm referans olarak repository'de kalıyor; yeni kararlar (Türkçe + 10 başlıklı şablon + Lumix-spesifik kod örnekleri) burada yansımıyor.
 :::

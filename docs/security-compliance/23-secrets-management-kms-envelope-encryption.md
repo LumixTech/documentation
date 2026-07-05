@@ -166,7 +166,7 @@ encrypt_sensitive_field(tenant_id, field_value):
 - Application secrets, database passwords, and field encryption key flows need separate handling.
 - Rotation and access control are part of the design, not later operational tasks.
 - Field encryption should use envelope encryption so the database does not become the only security boundary.
-- Secret access should be connected to [Audit Log Design](./audit-log-design) for critical reads, rotations, and emergency access.
+- Secret access should be connected to [Audit Log Design](./05-audit-log-design.md) for critical reads, rotations, and emergency access.
 
 ## External References
 

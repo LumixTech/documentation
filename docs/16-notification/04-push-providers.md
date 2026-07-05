@@ -485,13 +485,13 @@ public class PushTopicService {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Notification Adapter Pattern](./notification-adapter-pattern)
-- [Email Providers](./email-providers)
-- [SMS Providers](./sms-providers)
-- [MJML Template Rendering](./mjml-template-rendering) — push template
-- [Frontend Mobile](../10-frontend-mobile) — token register
-- [WebSocket](../07-realtime-websocket) — real-time alternatif
-- [Domain Servisleri](../01-tenancy-and-domain-model/domain-services-overview) — notification-service
+- [Notification Adapter Pattern](./01-notification-adapter-pattern.md)
+- [Email Providers](./02-email-providers.md)
+- [SMS Providers](./03-sms-providers.md)
+- [MJML Template Rendering](./05-mjml-template-rendering.md) — push template
+- [Frontend Mobile](../frontend-mobile) — token register
+- [WebSocket](../realtime-websocket) — real-time alternatif
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — notification-service
 
 ## 9. Daha derine inmek için
 

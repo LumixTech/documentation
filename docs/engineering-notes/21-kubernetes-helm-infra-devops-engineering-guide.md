@@ -7,10 +7,10 @@ draft: true
 
 :::warning Bu sayfa arşivlendi
 Güncel sayfalar **20 · Infra ve Kubernetes** kategorisinde:
-- [Kubernetes Fundamentals](../infra-devops/kubernetes-fundamentals)
-- [K3s Lightweight K8s](../infra-devops/k3s-lightweight-k8s)
-- [Helm Charts](../infra-devops/helm-charts)
-- [Rancher Multi-Cluster](../infra-devops/rancher-multi-cluster)
+- [Kubernetes Fundamentals](../infra-devops/01-kubernetes-fundamentals.md)
+- [K3s Lightweight K8s](../infra-devops/02-k3s-lightweight-k8s.md)
+- [Helm Charts](../infra-devops/03-helm-charts.md)
+- [Rancher Multi-Cluster](../infra-devops/04-rancher-multi-cluster.md)
 - ve diğer infra doc'ları
 
 Bu eski sürüm referans olarak repository'de kalıyor.

@@ -568,12 +568,12 @@ sudo ss -tulnp
 
 ## 8. Diğer konularla ilişkisi
 
-- [K3s](./k3s-lightweight-k8s) — Hardened OS üzerine K3s install
-- [NetworkPolicy + mTLS](./networkpolicy-mtls) — cluster içi savunma; OS-level firewall ondan önce
-- [Ansible Basics](../20-iac-provisioning/ansible-basics) — hardening role nasıl yazılır
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — node bootstrap adımı
+- [K3s](./02-k3s-lightweight-k8s.md) — Hardened OS üzerine K3s install
+- [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md) — cluster içi savunma; OS-level firewall ondan önce
+- [Ansible Basics](../20-iac-provisioning/02-ansible-basics.md) — hardening role nasıl yazılır
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — node bootstrap adımı
 - [Observability](../observability-qa) — log forwarding (Loki) ve audit metric
-- [Velero Backup](./velero-backup) — node state backup'a etkisi
+- [Velero Backup](./09-velero-backup.md) — node state backup'a etkisi
 
 ## 9. Daha derine inmek için
 

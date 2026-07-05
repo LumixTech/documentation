@@ -117,7 +117,7 @@ Bu **kritik** bir kavram. WebSocket bağlantısı **TCP'dir**, TCP iki ucu aras�
                                                               (boşta)
 ```
 
-Sonuç: **A pod'una bağlı olan client'a Pod-2 doğrudan mesaj gönderemez**. Bu Lumix'in en büyük design kararını doğuruyor: **Redis Pub/Sub backplane**. Detay: [Redis Pub/Sub Backplane](./redis-pubsub-backplane) ve [User-Pod Mapping](./user-pod-mapping-and-reconnect).
+Sonuç: **A pod'una bağlı olan client'a Pod-2 doğrudan mesaj gönderemez**. Bu Lumix'in en büyük design kararını doğuruyor: **Redis Pub/Sub backplane**. Detay: [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md) ve [User-Pod Mapping](./04-user-pod-mapping-and-reconnect.md).
 
 ### 3.3. Ping/Pong (heartbeat)
 
@@ -210,7 +210,7 @@ WebSocket trafiği Kong Gateway'den geçer:
 
 ### Trade-off'lar
 
-- **Persistent connections = pod sahipliği.** Bu zorluğu Redis Pub/Sub backplane ile çözüyoruz. Detay [Redis Pub/Sub Backplane](./redis-pubsub-backplane).
+- **Persistent connections = pod sahipliği.** Bu zorluğu Redis Pub/Sub backplane ile çözüyoruz. Detay [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md).
 - **TCP idle timeout:** NAT/proxy timeout ile sessiz kopma. Ping/pong + reconnect mantığı şart.
 - **Sticky sessions opsiyonel.** Lumix sticky session **kullanmıyor**, çünkü Redis backplane ile her pod aynı view'ı görür.
 
@@ -368,10 +368,10 @@ lumix:
 
 ## 8. Diğer konularla ilişkisi
 
-- [STOMP Protokolü](./stomp-protocol) — bu WebSocket üzerine binen abonelik katmanı
-- [Redis Pub/Sub Backplane](./redis-pubsub-backplane) — cross-pod mesaj fan-out
-- [User-Pod Mapping & Reconnect](./user-pod-mapping-and-reconnect) — bağlantı kopması ve missed events
-- [Fully Stateful Token Modeli](../04-authentication-authorization/stateful-token-model) — WebSocket handshake auth
+- [STOMP Protokolü](./02-stomp-protocol.md) — bu WebSocket üzerine binen abonelik katmanı
+- [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md) — cross-pod mesaj fan-out
+- [User-Pod Mapping & Reconnect](./04-user-pod-mapping-and-reconnect.md) — bağlantı kopması ve missed events
+- [Fully Stateful Token Modeli](../04-authentication-authorization/01-stateful-token-model.md) — WebSocket handshake auth
 
 ## 9. Daha derine inmek için
 

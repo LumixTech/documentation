@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Admin Paneller",
-    "description": "Customer Admin Panel (müşteri yöneticisi), Internal Admin Panel (Lumix ekibi), Rancher Manager (DevOps multi-cluster yönetimi)."
+    "description": "Customer Admin Panel (müşteri yöneticisi), Internal Admin Panel (Lumix ekibi), Rancher Manager (DevOps multi-cluster yönetimi).",
+    "slug": "/admin-panels"
   }
 }

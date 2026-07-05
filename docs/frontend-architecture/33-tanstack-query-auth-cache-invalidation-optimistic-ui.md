@@ -5,7 +5,7 @@ sidebar_position: 999
 draft: true
 ---
 
-> **NOT:** Bu doc Lumix'in eski yön çalışmasıdır. Lumix server state için **RTK Query** kullanır. Güncel bilgi: [RTK Query](./rtk-query). Bu sayfa Docusaurus'ta `draft: true` ile gizlenmiştir; tarihi referans olarak repository'de bırakılmıştır.
+> **NOT:** Bu doc Lumix'in eski yön çalışmasıdır. Lumix server state için **RTK Query** kullanır. Güncel bilgi: [RTK Query](./33-rtk-query.md). Bu sayfa Docusaurus'ta `draft: true` ile gizlenmiştir; tarihi referans olarak repository'de bırakılmıştır.
 
 
 ## Introduction

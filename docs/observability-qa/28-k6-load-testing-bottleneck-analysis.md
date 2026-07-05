@@ -173,7 +173,7 @@ run_load_test(scenario):
 - The 08:30 attendance peak is a high-priority load scenario.
 - k6 scenarios should model real user flows, including reads and writes.
 - Thresholds should be explicit so the test can pass or fail objectively.
-- Bottleneck analysis should use the observability rules from [Observability: Logs, Metrics, Traces, and Correlation IDs](./observability-logs-metrics-traces-correlation-id).
+- Bottleneck analysis should use the observability rules from [Observability: Logs, Metrics, Traces, and Correlation IDs](./26-observability-logs-metrics-traces-correlation-id.md).
 
 ## External References
 

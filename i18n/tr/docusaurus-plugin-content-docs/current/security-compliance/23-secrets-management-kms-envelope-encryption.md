@@ -162,7 +162,7 @@ encrypt_sensitive_field(tenant_id, field_value):
 - Uygulama secret'ları, database şifreleri ve field encryption key akışları ayrı ele alınmalıdır.
 - Rotasyon ve erişim kontrolü tasarımın parçasıdır; sonradan eklenecek operasyon işi değildir.
 - Field encryption için envelope encryption tercih edilmelidir.
-- Kritik secret erişimleri, rotasyon ve emergency access süreçleri [Audit Log Tasarımı](./audit-log-design) ile ilişkilendirilmelidir.
+- Kritik secret erişimleri, rotasyon ve emergency access süreçleri [Audit Log Tasarımı](./05-audit-log-design.md) ile ilişkilendirilmelidir.
 
 ## Harici Referanslar
 

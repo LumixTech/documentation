@@ -137,7 +137,7 @@ threat_model(use_case):
 - Login, chat ve payment ilk zorunlu mini threat model'lerdir.
 - Security riskleri yalnızca code review'da değil design seviyesinde bulunmalıdır.
 - Regression checklist item'ları mümkün olduğunca test veya review gate'e dönüşmelidir.
-- Payment, permission ve hassas chat aksiyonları [Audit Log Tasarımı](./audit-log-design) ile bağlanmalıdır.
+- Payment, permission ve hassas chat aksiyonları [Audit Log Tasarımı](./05-audit-log-design.md) ile bağlanmalıdır.
 
 ## Harici Referanslar
 

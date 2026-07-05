@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Mesajlaşma ve Event'ler (Kafka + Protobuf + Apicurio)",
-    "description": "Kafka temelleri, Protobuf schema tasarımı, Apicurio Schema Registry, domain vs integration event ayrımı, outbox + DLQ + idempotent consumer patterns."
+    "description": "Kafka temelleri, Protobuf schema tasarımı, Apicurio Schema Registry, domain vs integration event ayrımı, outbox + DLQ + idempotent consumer patterns.",
+    "slug": "/event-driven-architecture"
   }
 }

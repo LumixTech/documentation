@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Real-time İletişim (WebSocket + STOMP + Redis Pub/Sub)",
-    "description": "WebSocket temelleri, STOMP protokolü, Spring real-time API, Redis Pub/Sub backplane ile multi-pod fan-out, user-pod mapping, reconnect ve missed events stratejisi."
+    "description": "WebSocket temelleri, STOMP protokolü, Spring real-time API, Redis Pub/Sub backplane ile multi-pod fan-out, user-pod mapping, reconnect ve missed events stratejisi.",
+    "slug": "/realtime-websocket"
   }
 }

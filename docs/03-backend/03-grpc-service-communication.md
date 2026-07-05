@@ -880,12 +880,12 @@ Logging interceptor'ı request'i otomatik log'lar → email, phone leak.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture) — gRPC sync iletişim kanalı
-- [Event-Driven Architecture](../02-architecture-patterns/04-event-driven-architecture) — Kafka async kanal (gRPC tamamlayıcısı)
-- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture) — gRPC adapter (in ve out)
-- [Spring Boot Foundation](./01-spring-boot-foundation) — gRPC Boot starter
-- [Error Handling RFC 7807](./05-error-handling-rfc7807) — gRPC status code mapping
-- [Validation Strategy](./04-validation-strategy) — gRPC input validation
+- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture.md) — gRPC sync iletişim kanalı
+- [Event-Driven Architecture](../02-architecture-patterns/04-event-driven-architecture.md) — Kafka async kanal (gRPC tamamlayıcısı)
+- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture.md) — gRPC adapter (in ve out)
+- [Spring Boot Foundation](./01-spring-boot-foundation.md) — gRPC Boot starter
+- [Error Handling RFC 7807](./05-error-handling-rfc7807.md) — gRPC status code mapping
+- [Validation Strategy](./04-validation-strategy.md) — gRPC input validation
 
 ## 9. Daha derine inmek için
 

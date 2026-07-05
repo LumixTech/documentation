@@ -566,12 +566,12 @@ void student_count_matches_baseline() {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Tilt Multi-Service Dev](./tilt-multi-service-dev) — seed Tilt resource
+- [Tilt Multi-Service Dev](./01-tilt-multi-service-dev.md) — seed Tilt resource
 - [Database Architecture](../database-architecture) — Flyway migration sırası
 - [Anonymization / DSAR](../security-compliance) — synthetic data, anonymized prod copy'nin neden olmadığı
 - [Privacy / KVKK](../security-compliance) — yasal arka plan
-- [GitLab CI Pipelines](../21-ci-cd/gitlab-ci-pipelines) — CI'da Testcontainers seed
-- [Background Jobs](../22-workflow-temporal/background-jobs) — scheduled staging refresh
+- [GitLab CI Pipelines](../21-ci-cd/02-gitlab-ci-pipelines.md) — CI'da Testcontainers seed
+- [Background Jobs](../22-workflow-temporal/04-background-jobs.md) — scheduled staging refresh
 
 ## 9. Daha derine inmek için
 

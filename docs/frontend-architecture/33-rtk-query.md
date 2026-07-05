@@ -16,7 +16,7 @@ Lumix'in **server state** (backend'den gelen data: attendance, mesajlar, kullan�
 - Optimistic UI nasıl kurulur
 - Cache lifecycle (`keepUnusedDataFor`, `refetchOnFocus`, `refetchOnReconnect`)
 
-Bu sayfa **[TanStack Query doc'unun yerini alır](./tanstack-query-auth-cache-invalidation-optimistic-ui)** — Lumix'in resmi server state aracı RTK Query'dir.
+Bu sayfa **TanStack Query doc'unun yerini alır** — Lumix'in resmi server state aracı RTK Query'dir.
 
 ## 1. RTK Query nedir? (Sıfırdan)
 
@@ -484,12 +484,12 @@ export function AttendanceForm({ classroomId, date }: { classroomId: string; dat
 
 ## 8. Diğer konularla ilişkisi
 
-- [Redux Toolkit](./redux-toolkit) — RTK Query Redux store içinde yaşar
-- [Token Storage](./frontend-token-storage) — refresh interceptor detayı
-- [Permission Cache](./frontend-permission-cache) — `/me/permissions` RTK Query ile
-- [Form Handling](./form-handling) — mutation tetikleyen form'lar
+- [Redux Toolkit](./02-redux-toolkit.md) — RTK Query Redux store içinde yaşar
+- [Token Storage](./06-frontend-token-storage.md) — refresh interceptor detayı
+- [Permission Cache](./09-frontend-permission-cache.md) — `/me/permissions` RTK Query ile
+- [Form Handling](./07-form-handling.md) — mutation tetikleyen form'lar
 - [FSD ve Feature Boundary](./frontend-fsd-feature-boundaries) — endpoint'ler hangi katmana
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — `X-Tenant-Id` header'ın anlamı
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — `X-Tenant-Id` header'ın anlamı
 
 ## 9. Daha derine
 

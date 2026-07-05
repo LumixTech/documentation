@@ -1,4 +1,4 @@
-﻿---
+---
 title: Domain-Driven Design Taktiksel ve Stratejik Tasarım İlkeleri
 description: Entity/value object ayrımı, aggregate invariant yönetimi, bounded context sınırları ve domain event yaklaşımı için pratik DDD rehberi.
 sidebar_position: 2

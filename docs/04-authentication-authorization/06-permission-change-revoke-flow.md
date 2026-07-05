@@ -439,11 +439,11 @@ ws.subscribe('/user/queue/auth.revoked', (msg) => {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Fully Stateful Token Modeli](./stateful-token-model) — token revoke mekanizması
-- [Session & Device Lifecycle](./session-device-lifecycle) — `user:tokens`, `user:sessions` set'leri
-- [Hibrit RBAC + ABAC](./rbac-abac-hybrid) — permission resolution mantığı
-- [Organizational Scope Resolver](./organizational-scope-resolver) — scope cache invalidation
-- [Cache Invalidation](../08-caching-redis/cache-invalidation) — event-driven invalidation pattern'ı
+- [Fully Stateful Token Modeli](./01-stateful-token-model.md) — token revoke mekanizması
+- [Session & Device Lifecycle](./02-session-device-lifecycle.md) — `user:tokens`, `user:sessions` set'leri
+- [Hibrit RBAC + ABAC](./04-rbac-abac-hybrid.md) — permission resolution mantığı
+- [Organizational Scope Resolver](./05-organizational-scope-resolver.md) — scope cache invalidation
+- [Cache Invalidation](../08-caching-redis/04-cache-invalidation.md) — event-driven invalidation pattern'ı
 - [Outbox Pattern (Event-Driven Architecture)](../event-driven-architecture) — DB write + Kafka publish atomicity
 
 ## 9. Daha derine inmek için

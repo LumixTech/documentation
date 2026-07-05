@@ -475,10 +475,10 @@ public class PaymentCallbackUseCase {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Payment Adapter Pattern](./payment-adapter-pattern) — port + adapter mantığı
-- [Payment State Machine](./payment-state-machine) — Pending → Authorized → Captured
-- [Refund Handling](./refund-handling) — iade akışı
-- [Hexagonal Architecture](../02-architecture-patterns)
+- [Payment Adapter Pattern](./01-payment-adapter-pattern.md) — port + adapter mantığı
+- [Payment State Machine](./03-payment-state-machine.md) — Pending → Authorized → Captured
+- [Refund Handling](./04-refund-handling.md) — iade akışı
+- [Hexagonal Architecture](../architecture-patterns)
 - [Vault](../security-compliance) — credential resolution
 - [Audit Log](../security-compliance/audit-log-design) — payment audit zorunlu
 

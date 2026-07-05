@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix'in periyodik işleri (retention enforcement, expired token cleanup, daily summary maili, weekly report, audit log archive, license expiry warning) **Spring `@Scheduled` veya Quartz yerine Temporal Scheduled Workflows** ile yönetilir. Bu sayfa Temporal Schedule API'sını sıfırdan anlatır, **cron syntax**, **paused / triggered run / catch-up policy**, **scheduled vs cronWorkflow** ayrımını gösterir, Lumix'in **retention enforcement** (compliance-service'in en kritik scheduled işi) örneğini detaylandırır, hangi durumda Temporal yerine alternatif (cron Job) seçileceğini söyler. Hedef kitle: Temporal temellerini bilen ([Temporal Fundamentals](./temporal-fundamentals)), backend scheduled iş yazan geliştirici.
+Lumix'in periyodik işleri (retention enforcement, expired token cleanup, daily summary maili, weekly report, audit log archive, license expiry warning) **Spring `@Scheduled` veya Quartz yerine Temporal Scheduled Workflows** ile yönetilir. Bu sayfa Temporal Schedule API'sını sıfırdan anlatır, **cron syntax**, **paused / triggered run / catch-up policy**, **scheduled vs cronWorkflow** ayrımını gösterir, Lumix'in **retention enforcement** (compliance-service'in en kritik scheduled işi) örneğini detaylandırır, hangi durumda Temporal yerine alternatif (cron Job) seçileceğini söyler. Hedef kitle: Temporal temellerini bilen ([Temporal Fundamentals](./01-temporal-fundamentals.md)), backend scheduled iş yazan geliştirici.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -485,13 +485,13 @@ Bu jar ScheduleClient kullanarak idempotent kayıt yapar.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Temporal Fundamentals](./temporal-fundamentals) — workflow temelleri
-- [Saga with Temporal](./saga-with-temporal) — multi-service iş
-- [DSAR Workflow Implementation](./dsar-workflow-implementation) — özelleşmiş workflow
+- [Temporal Fundamentals](./01-temporal-fundamentals.md) — workflow temelleri
+- [Saga with Temporal](./02-saga-with-temporal.md) — multi-service iş
+- [DSAR Workflow Implementation](./03-dsar-workflow-implementation.md) — özelleşmiş workflow
 - [Compliance Service](../security-compliance) — retention policy ve enforcement
 - [Audit Log](../security-compliance) — scheduled run kayıtları
 - [Observability](../observability-qa) — schedule monitoring
-- [Storage Lifecycle](../12-storage-and-files) — RustFS lifecycle + Lumix scheduled archive
+- [Storage Lifecycle](../storage-and-files) — RustFS lifecycle + Lumix scheduled archive
 
 ## 9. Daha derine inmek için
 

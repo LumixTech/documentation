@@ -649,12 +649,12 @@ unit-test:
 
 ## 8. Diğer konularla ilişkisi
 
-- [GitLab CE Self-Hosted](./gitlab-ce-self-hosted) — pipeline'ın altyapısı
-- [Trivy Image Scanning](./trivy-image-scanning) — `trivy-image-scan` job detayı
-- [ArgoCD GitOps](./argocd-gitops) — deploy job'un targetı
-- [Helm Versioning](./helm-versioning) — chart/app version stratejisi
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — özelleşmiş pipeline
-- [Tilt Local Dev](../23-local-development/tilt-multi-service-dev) — geliştirici makinesinde aynı build'i tetikleme
+- [GitLab CE Self-Hosted](./01-gitlab-ce-self-hosted.md) — pipeline'ın altyapısı
+- [Trivy Image Scanning](./03-trivy-image-scanning.md) — `trivy-image-scan` job detayı
+- [ArgoCD GitOps](./04-argocd-gitops.md) — deploy job'un targetı
+- [Helm Versioning](./05-helm-versioning.md) — chart/app version stratejisi
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — özelleşmiş pipeline
+- [Tilt Local Dev](../23-local-development/01-tilt-multi-service-dev.md) — geliştirici makinesinde aynı build'i tetikleme
 
 ## 9. Daha derine inmek için
 

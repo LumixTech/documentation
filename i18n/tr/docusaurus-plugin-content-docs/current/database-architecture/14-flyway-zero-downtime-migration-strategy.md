@@ -1,4 +1,4 @@
-﻿---
+---
 title: Flyway Migration ve Zero-Downtime Veritabanı Değişiklikleri
 description: Flyway, backward-compatible schema tasarımı ve expand/contract rollout modeli ile production-safe veritabanı değişiklik stratejisi.
 sidebar_position: 5

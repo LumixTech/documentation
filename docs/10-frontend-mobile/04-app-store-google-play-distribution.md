@@ -354,11 +354,11 @@ Lumix gibi B2B SaaS app'lerin review'da takıldığı yerler:
 
 ## 8. Diğer konularla ilişkisi
 
-- [React Native Foundation](./react-native-foundation) — build artifact üretimi
-- [Push Notifications](./push-notifications) — APNs sertifikası dağıtım pipeline'ında
-- [Shared Business Logic](./shared-business-logic) — versiyon her uygulamada
-- [CI/CD (Backend)](../00-overview/02-technology-stack-decisions) — GitLab CI orchestration
-- [Compliance & Privacy](../00-overview/02-technology-stack-decisions) — KVKK/GDPR app store form
+- [React Native Foundation](./01-react-native-foundation.md) — build artifact üretimi
+- [Push Notifications](./03-push-notifications.md) — APNs sertifikası dağıtım pipeline'ında
+- [Shared Business Logic](./02-shared-business-logic.md) — versiyon her uygulamada
+- [CI/CD (Backend)](../00-overview/02-technology-stack-decisions.md) — GitLab CI orchestration
+- [Compliance & Privacy](../00-overview/02-technology-stack-decisions.md) — KVKK/GDPR app store form
 
 ## 9. Daha derine
 

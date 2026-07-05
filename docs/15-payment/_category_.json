@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Ödeme Sistemi (Banka Sanal POS + Adapter)",
-    "description": "Payment adapter pattern, tenant başına farklı provider routing, state machine, idempotency, banka sanal POS entegrasyonları."
+    "description": "Payment adapter pattern, tenant başına farklı provider routing, state machine, idempotency, banka sanal POS entegrasyonları.",
+    "slug": "/payment"
   }
 }

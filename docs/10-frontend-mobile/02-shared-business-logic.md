@@ -535,12 +535,12 @@ import '@/shared/api/mobileAdapter'; // side-effect: adapter set
 
 ## 8. Diğer konularla ilişkisi
 
-- [React Native Foundation](./react-native-foundation) — mobile temel
-- [Push Notifications](./push-notifications) — platform-spesifik native modüller
-- [Redux Toolkit](../frontend-architecture/redux-toolkit) — slice tanımları
-- [RTK Query](../frontend-architecture/rtk-query) — endpoint tanımları
-- [Token Storage](../frontend-architecture/frontend-token-storage) — adapter farkı
-- [Form Handling](../frontend-architecture/form-handling) — Zod schema paylaşımı
+- [React Native Foundation](./01-react-native-foundation.md) — mobile temel
+- [Push Notifications](./03-push-notifications.md) — platform-spesifik native modüller
+- [Redux Toolkit](../frontend-architecture/02-redux-toolkit.md) — slice tanımları
+- [RTK Query](../frontend-architecture/33-rtk-query.md) — endpoint tanımları
+- [Token Storage](../frontend-architecture/06-frontend-token-storage.md) — adapter farkı
+- [Form Handling](../frontend-architecture/07-form-handling.md) — Zod schema paylaşımı
 
 ## 9. Daha derine
 

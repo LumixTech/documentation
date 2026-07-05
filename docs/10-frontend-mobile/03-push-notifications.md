@@ -16,7 +16,7 @@ Lumix mobile uygulamasının **push notification** mimarisi. Bu sayfada şunlar 
 - Deep link ile notification → ekran açma
 - Privacy ve KVKK boyutu
 
-Bu sayfa, [backend notification-service](../00-overview/02-technology-stack-decisions) doc'unun mobile ayağıdır.
+Bu sayfa, [backend notification-service](../00-overview/02-technology-stack-decisions.md) doc'unun mobile ayağıdır.
 
 ## 1. Push notification nedir? (Sıfırdan)
 
@@ -468,12 +468,12 @@ fun consume(event: NotificationEvent) {
 
 ## 8. Diğer konularla ilişkisi
 
-- [React Native Foundation](./react-native-foundation) — temel kurulum
-- [Shared Business Logic](./shared-business-logic) — RTK Query device endpoint
-- [App Store + Google Play Distribution](./app-store-google-play-distribution) — APNs sertifikası dağıtım pipeline'ında
-- [Notification Provider Adapter (backend)](../00-overview/02-technology-stack-decisions) — backend tarafı
-- [Permission Cache](../frontend-architecture/frontend-permission-cache) — push ile permission değişimi tetiklenebilir
-- [Token Storage](../frontend-architecture/frontend-token-storage) — Keychain mobile
+- [React Native Foundation](./01-react-native-foundation.md) — temel kurulum
+- [Shared Business Logic](./02-shared-business-logic.md) — RTK Query device endpoint
+- [App Store + Google Play Distribution](./04-app-store-google-play-distribution.md) — APNs sertifikası dağıtım pipeline'ında
+- [Notification Provider Adapter (backend)](../00-overview/02-technology-stack-decisions.md) — backend tarafı
+- [Permission Cache](../frontend-architecture/09-frontend-permission-cache.md) — push ile permission değişimi tetiklenebilir
+- [Token Storage](../frontend-architecture/06-frontend-token-storage.md) — Keychain mobile
 
 ## 9. Daha derine
 

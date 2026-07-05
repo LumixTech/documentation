@@ -114,7 +114,7 @@ src/
 - Keep generic reusable pieces in `shared`.
 - Avoid importing across sibling features.
 - Use public APIs (`index.ts`) for slices to reduce deep imports.
-- Keep server state strategy aligned with [TanStack Query: Auth, Cache, Invalidation, and Optimistic UI](./tanstack-query-auth-cache-invalidation-optimistic-ui).
+- Keep server state strategy aligned with [RTK Query](./33-rtk-query.md).
 
 ## Pseudocode / Decision Flow / Lifecycle / Policy Example
 

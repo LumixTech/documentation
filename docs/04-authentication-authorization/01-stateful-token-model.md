@@ -242,7 +242,7 @@ Yani **Kong** ilk hızlı imza filter'i, **microservice** ise Redis-tabanlı rev
 | `user:sessions:{uid}` | Set | yok (manual) | Kullanıcının aktif tüm session id'leri |
 | `refresh:family:{family_id}` | Set | 30gün | Replay detection için |
 
-Detay: bkz. [Session & Device Lifecycle](./session-device-lifecycle).
+Detay: bkz. [Session & Device Lifecycle](./02-session-device-lifecycle.md).
 
 ### 4.4. Hangi Redis cluster?
 
@@ -251,7 +251,7 @@ Lumix **iki ayrı Redis Sentinel cluster'ı** çalıştırır:
 - **auth-redis** → AOF persistence, `noeviction` policy. Token kaybolmaz.
 - **cache-redis** → persistence kapalı, `allkeys-lfu`. Soyulabilir veri.
 
-Token + session **auth-redis**'tedir. Detay: [Redis Sentinel Topology](../08-caching-redis/redis-sentinel-topology).
+Token + session **auth-redis**'tedir. Detay: [Redis Sentinel Topology](../08-caching-redis/02-redis-sentinel-topology.md).
 
 ### 4.5. Spring Security konfigürasyonu
 
@@ -292,7 +292,7 @@ JWT imza Spring `JwtAuthenticationConverter` ile lokal doğrulanır; Redis kontr
 ### Trade-off'lar (kabul ettiğimiz)
 
 - **Latency:** Her istek 0.3-0.6 ms ekstra Redis round-trip. Kabul.
-- **Redis = SPOF:** Auth-redis düşerse hiçbir istek geçemez. Bu yüzden Sentinel + AOF + monitoring. Detay: [Redis Sentinel](../08-caching-redis/redis-sentinel-topology).
+- **Redis = SPOF:** Auth-redis düşerse hiçbir istek geçemez. Bu yüzden Sentinel + AOF + monitoring. Detay: [Redis Sentinel](../08-caching-redis/02-redis-sentinel-topology.md).
 - **Storage cost:** Her aktif session ~500 byte Redis. 100k aktif kullanıcı için ~50 MB. Önemsiz.
 
 ### Kararı tekrar değerlendirme zamanı
@@ -501,13 +501,13 @@ lumix:
 
 ## 8. Diğer konularla ilişkisi
 
-- [Session & Device Lifecycle](./session-device-lifecycle) — Redis key tasarımı ve session TTL detayı
-- [Keycloak Entegrasyonu](./keycloak-integration) — opsiyonel IdP — Custom flow'un yanına nasıl oturuyor
-- [Hibrit RBAC + ABAC](./rbac-abac-hybrid) — permission resolution
-- [Permission Change & Revoke Flow](./permission-change-revoke-flow) — permission değişince ne olur
-- [httpOnly Cookie Storage](./httponly-cookie-storage) — refresh token saklama detayı
-- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/installation-tenant-scope) — tenant claim nereden geliyor
-- [Redis Sentinel Topology](../08-caching-redis/redis-sentinel-topology) — auth-redis cluster'ı
+- [Session & Device Lifecycle](./02-session-device-lifecycle.md) — Redis key tasarımı ve session TTL detayı
+- [Keycloak Entegrasyonu](./03-keycloak-integration.md) — opsiyonel IdP — Custom flow'un yanına nasıl oturuyor
+- [Hibrit RBAC + ABAC](./04-rbac-abac-hybrid.md) — permission resolution
+- [Permission Change & Revoke Flow](./06-permission-change-revoke-flow.md) — permission değişince ne olur
+- [httpOnly Cookie Storage](./07-httponly-cookie-storage.md) — refresh token saklama detayı
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — tenant claim nereden geliyor
+- [Redis Sentinel Topology](../08-caching-redis/02-redis-sentinel-topology.md) — auth-redis cluster'ı
 
 ## 9. Daha derine inmek için
 

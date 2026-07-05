@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Bu sayfa ne anlatıyor?
 
-Bir kullanıcının login olmasından "tüm cihazlardan çıkış" anına kadar **Redis'te neler yaşanır?** Hangi key hangi TTL ile, hangi pattern'le tutulur? Idle timeout ile absolute timeout farkı nedir? Refresh token nasıl rotate edilir ve replay olduğunda ne olur? Device fingerprinting ne kadar ileri gider? Bu sayfa [Fully Stateful Token Modeli](./stateful-token-model) sayfasının devamı niteliğinde, **implementation detayına iner**.
+Bir kullanıcının login olmasından "tüm cihazlardan çıkış" anına kadar **Redis'te neler yaşanır?** Hangi key hangi TTL ile, hangi pattern'le tutulur? Idle timeout ile absolute timeout farkı nedir? Refresh token nasıl rotate edilir ve replay olduğunda ne olur? Device fingerprinting ne kadar ileri gider? Bu sayfa [Fully Stateful Token Modeli](./01-stateful-token-model.md) sayfasının devamı niteliğinde, **implementation detayına iner**.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -438,11 +438,11 @@ lumix:
 
 ## 8. Diğer konularla ilişkisi
 
-- [Fully Stateful Token Modeli](./stateful-token-model) — bu sayfanın üst seviye karşılığı
-- [Permission Change & Revoke Flow](./permission-change-revoke-flow) — `user:tokens:{uid}` set'i nasıl kullanılır
-- [httpOnly Cookie Storage](./httponly-cookie-storage) — refresh token nereye saklanır
-- [Redis Sentinel Topology](../08-caching-redis/redis-sentinel-topology) — auth-redis cluster (AOF + noeviction)
-- [Distributed Lock — Redisson](../08-caching-redis/distributed-lock-redisson) — concurrent session limit için lock pattern
+- [Fully Stateful Token Modeli](./01-stateful-token-model.md) — bu sayfanın üst seviye karşılığı
+- [Permission Change & Revoke Flow](./06-permission-change-revoke-flow.md) — `user:tokens:{uid}` set'i nasıl kullanılır
+- [httpOnly Cookie Storage](./07-httponly-cookie-storage.md) — refresh token nereye saklanır
+- [Redis Sentinel Topology](../08-caching-redis/02-redis-sentinel-topology.md) — auth-redis cluster (AOF + noeviction)
+- [Distributed Lock — Redisson](../08-caching-redis/06-distributed-lock-redisson.md) — concurrent session limit için lock pattern
 
 ## 9. Daha derine inmek için
 

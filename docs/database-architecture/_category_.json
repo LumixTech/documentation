@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Veritabanı (PostgreSQL)",
-    "description": "PostgreSQL temelleri, index tasarımı, RLS ile tenant izolasyonu, Flyway zero-downtime migration, replica stratejisi, backup/PITR, connection pooling."
+    "description": "PostgreSQL temelleri, index tasarımı, RLS ile tenant izolasyonu, Flyway zero-downtime migration, replica stratejisi, backup/PITR, connection pooling.",
+    "slug": "/database-architecture"
   }
 }

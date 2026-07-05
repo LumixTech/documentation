@@ -455,13 +455,13 @@ public class FinanceActivitiesImpl implements FinanceActivities {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Payment Adapter Pattern](./payment-adapter-pattern)
-- [Bank Virtual POS](./bank-virtual-pos-routing)
-- [Payment State Machine](./payment-state-machine) — refund transitions
-- [Workflow Temporal](../22-workflow-temporal) — saga compensation
+- [Payment Adapter Pattern](./01-payment-adapter-pattern.md)
+- [Bank Virtual POS](./02-bank-virtual-pos-routing.md)
+- [Payment State Machine](./03-payment-state-machine.md) — refund transitions
+- [Workflow Temporal](../workflow-temporal) — saga compensation
 - [Audit Log](../security-compliance/audit-log-design)
-- [RBAC + Permission](../04-authentication-authorization)
-- [Notification](../16-notification) — refund email/SMS
+- [RBAC + Permission](../authentication-authorization)
+- [Notification](../notification) — refund email/SMS
 
 ## 9. Daha derine inmek için
 

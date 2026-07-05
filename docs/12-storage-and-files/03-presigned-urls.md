@@ -456,12 +456,12 @@ async function uploadFile(file: File, domain: string) {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Object Storage Temelleri](./object-storage-fundamentals) — temel kavramlar
-- [RustFS Self-Hosted](./rustfs-self-hosted) — storage layer
-- [Lifecycle Policy](./lifecycle-policies) — incomplete multipart cleanup
-- [ClamAV Virus Scanning](./clamav-virus-scanning) — confirm sonrası scan akışı
+- [Object Storage Temelleri](./01-object-storage-fundamentals.md) — temel kavramlar
+- [RustFS Self-Hosted](./02-rustfs-self-hosted.md) — storage layer
+- [Lifecycle Policy](./04-lifecycle-policies.md) — incomplete multipart cleanup
+- [ClamAV Virus Scanning](./05-clamav-virus-scanning.md) — confirm sonrası scan akışı
 - [Audit Log Design](../security-compliance/audit-log-design) — file access audit
-- [Domain Servisleri](../01-tenancy-and-domain-model/domain-services-overview) — file-service detay
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — file-service detay
 
 ## 9. Daha derine inmek için
 

@@ -748,11 +748,11 @@ Forward sırasıyla compensation aynı sıra ile yapılır — yanlış. Ters s�
 
 ## 8. Diğer konularla ilişkisi
 
-- [Microservices Architecture](./microservices-architecture) — distributed transaction problemi
-- [Event-Driven Architecture](./event-driven-architecture) — saga choreography style EDA üzerinden
-- [Outbox Pattern](./outbox-pattern) — saga'nın altyapısı (atomic write + publish)
-- [Domain-Driven Design](./domain-driven-design) — compensation domain dilinde tanımlanır
-- [gRPC Service Communication](../03-backend/03-grpc-service-communication) — activity'ler servisleri gRPC ile çağırır
+- [Microservices Architecture](./01-microservices-architecture.md) — distributed transaction problemi
+- [Event-Driven Architecture](./04-event-driven-architecture.md) — saga choreography style EDA üzerinden
+- [Outbox Pattern](./06-outbox-pattern.md) — saga'nın altyapısı (atomic write + publish)
+- [Domain-Driven Design](./02-domain-driven-design.md) — compensation domain dilinde tanımlanır
+- [gRPC Service Communication](../03-backend/03-grpc-service-communication.md) — activity'ler servisleri gRPC ile çağırır
 
 ## 9. Daha derine inmek için
 

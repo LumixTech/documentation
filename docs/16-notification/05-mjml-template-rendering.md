@@ -476,11 +476,11 @@ public ResponseEntity<Void> sendTest(
 
 ## 8. Diğer konularla ilişkisi
 
-- [Notification Adapter Pattern](./notification-adapter-pattern)
-- [Email Providers](./email-providers) — MJML→HTML email body
-- [SMS Providers](./sms-providers) — text-only template
-- [Push Providers](./push-providers) — title/body/data template
-- [Frontend Admin Panel](../11-admin-panels) — template editor UI
+- [Notification Adapter Pattern](./01-notification-adapter-pattern.md)
+- [Email Providers](./02-email-providers.md) — MJML→HTML email body
+- [SMS Providers](./03-sms-providers.md) — text-only template
+- [Push Providers](./04-push-providers.md) — title/body/data template
+- [Frontend Admin Panel](../admin-panels) — template editor UI
 - [i18n](../frontend-architecture) — locale yönetimi cross-system
 
 ## 9. Daha derine inmek için

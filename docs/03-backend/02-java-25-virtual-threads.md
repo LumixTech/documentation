@@ -614,11 +614,11 @@ Structured concurrency, scoped value, string templates — preview. Production'd
 
 ## 8. Diğer konularla ilişkisi
 
-- [Spring Boot Foundation](./01-spring-boot-foundation) — Java 25 + Spring Boot 3.6 birlikte
-- [gRPC Service Communication](./03-grpc-service-communication) — virtual thread'le gRPC
-- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture) — virtual thread per request
-- [Outbox Pattern](../02-architecture-patterns/06-outbox-pattern) — relay scheduler virtual thread'te
-- [Event-Driven Architecture](../02-architecture-patterns/04-event-driven-architecture) — Kafka consumer virtual thread
+- [Spring Boot Foundation](./01-spring-boot-foundation.md) — Java 25 + Spring Boot 3.6 birlikte
+- [gRPC Service Communication](./03-grpc-service-communication.md) — virtual thread'le gRPC
+- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture.md) — virtual thread per request
+- [Outbox Pattern](../02-architecture-patterns/06-outbox-pattern.md) — relay scheduler virtual thread'te
+- [Event-Driven Architecture](../02-architecture-patterns/04-event-driven-architecture.md) — Kafka consumer virtual thread
 
 ## 9. Daha derine inmek için
 

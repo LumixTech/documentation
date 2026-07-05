@@ -74,7 +74,7 @@ on SELECT_OR_MUTATION(table, query):
 
 - RLS policies will be written `tenant_id` based.
 - Tenant isolation is a database concern in addition to application authorization.
-- For permission semantics, RLS works with [Hybrid Authorization Model with RBAC and ABAC](../security-compliance/hybrid-rbac-abac-authorization) rather than replacing it.
+- For permission semantics, RLS works with [Hybrid Authorization Model with RBAC and ABAC](../04-authentication-authorization/04-rbac-abac-hybrid.md) rather than replacing it.
 
 ## Glossary
 

@@ -158,7 +158,7 @@ simpMessagingTemplate.convertAndSendToUser(userId, "/queue/notifications", paylo
 - `convertAndSend` — destination'a abone olanlara fan-out
 - `convertAndSendToUser` — özel olarak o user'a (login'de session bilgisinden çıkar)
 
-**Önemli (Lumix kararı):** `convertAndSendToUser` **lokal session lookup yapar**. Yani Pod-2'de oturan kullanıcıya Pod-1'den `convertAndSendToUser` çağırırsan mesaj kaybolur. Çözüm: Redis Pub/Sub backplane + user→pod mapping. Detay: [User-Pod Mapping](./user-pod-mapping-and-reconnect).
+**Önemli (Lumix kararı):** `convertAndSendToUser` **lokal session lookup yapar**. Yani Pod-2'de oturan kullanıcıya Pod-1'den `convertAndSendToUser` çağırırsan mesaj kaybolur. Çözüm: Redis Pub/Sub backplane + user→pod mapping. Detay: [User-Pod Mapping](./04-user-pod-mapping-and-reconnect.md).
 
 ### 3.4. SimpleBroker vs Full Broker Relay
 
@@ -169,7 +169,7 @@ Spring iki mod sunar:
 | **SimpleBroker** | In-memory broker; mesajlar Spring pod'unda lokal yaşar | ✓ (lokal pod fan-out için) |
 | **External broker relay** | Spring STOMP'u RabbitMQ/ActiveMQ'ya relay eder; çoklu pod broker üstünden konuşur | ✗ (Lumix RabbitMQ kullanmıyor) |
 
-Lumix'in seçimi: **SimpleBroker + custom Redis Pub/Sub backplane**. SimpleBroker pod-içi mesaj rotalar; Redis pod'lar arası dağıtır. Detay [Redis Pub/Sub Backplane](./redis-pubsub-backplane).
+Lumix'in seçimi: **SimpleBroker + custom Redis Pub/Sub backplane**. SimpleBroker pod-içi mesaj rotalar; Redis pod'lar arası dağıtır. Detay [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md).
 
 ### 3.5. User mapping (`/user/{X}/queue/...`)
 
@@ -240,7 +240,7 @@ Yani saldırgan `/topic/attendance.class.X` (başka sınıf) için SUBSCRIBE den
 
 ### 4.4. Ack semantiği
 
-Lumix'te `ack:auto` (default) kullanılır. "Missed events" durumunda client manuel fetch endpoint'ten kontrol eder; STOMP-level NACK üzerinden tekrar gönderim yok (gereksiz karmaşa). Detay [Reconnect & Missed Events](./user-pod-mapping-and-reconnect).
+Lumix'te `ack:auto` (default) kullanılır. "Missed events" durumunda client manuel fetch endpoint'ten kontrol eder; STOMP-level NACK üzerinden tekrar gönderim yok (gereksiz karmaşa). Detay [Reconnect & Missed Events](./04-user-pod-mapping-and-reconnect.md).
 
 ## 5. Neden bu seçildi? (Alternatifler ve trade-off)
 
@@ -253,7 +253,7 @@ Lumix'te `ack:auto` (default) kullanılır. "Missed events" durumunda client man
 
 ### Trade-off'lar
 
-- **STOMP `convertAndSendToUser` lokal sınırlama:** Lumix Redis Pub/Sub backplane ile bunu aşıyor. Detay [Redis Pub/Sub Backplane](./redis-pubsub-backplane).
+- **STOMP `convertAndSendToUser` lokal sınırlama:** Lumix Redis Pub/Sub backplane ile bunu aşıyor. Detay [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md).
 - **Spring SimpleBroker tek pod-içinde:** Çoklu pod için backplane şart.
 - **STOMP frame parsing maliyeti:** Text frame parse maliyeti var, ama mesaj boyutuna göre ihmal edilebilir.
 - **MQTT/AMQP kadar gelişmiş QoS yok:** Lumix'in `auto-ack` semantiği bu trade-off'u kabul ediyor; eventual consistency + missed events fetch ile telafi.
@@ -406,10 +406,10 @@ stomp.publish({
 
 ## 8. Diğer konularla ilişkisi
 
-- [WebSocket Temelleri](./websocket-fundamentals) — alttaki katman
-- [Redis Pub/Sub Backplane](./redis-pubsub-backplane) — `convertAndSend`'in cross-pod davranışını sağlayan adaptör
-- [User-Pod Mapping & Reconnect](./user-pod-mapping-and-reconnect) — `convertAndSendToUser` cross-pod çözümü
-- [Organizational Scope Resolver](../04-authentication-authorization/organizational-scope-resolver) — SUBSCRIBE yetkisi kontrolü
+- [WebSocket Temelleri](./01-websocket-fundamentals.md) — alttaki katman
+- [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md) — `convertAndSend`'in cross-pod davranışını sağlayan adaptör
+- [User-Pod Mapping & Reconnect](./04-user-pod-mapping-and-reconnect.md) — `convertAndSendToUser` cross-pod çözümü
+- [Organizational Scope Resolver](../04-authentication-authorization/05-organizational-scope-resolver.md) — SUBSCRIBE yetkisi kontrolü
 
 ## 9. Daha derine inmek için
 

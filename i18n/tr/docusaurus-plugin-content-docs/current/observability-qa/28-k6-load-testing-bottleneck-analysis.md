@@ -146,7 +146,7 @@ run_load_test(scenario):
 - 08:30 yoklama piki high-priority load scenario'dur.
 - k6 scenario gerçek kullanıcı akışını, read ve write adımlarını modellemelidir.
 - Threshold açık olmalıdır; test objektif olarak pass/fail üretmelidir.
-- Darboğaz analizi [Observability: Log, Metric, Trace ve Correlation ID](./observability-logs-metrics-traces-correlation-id) kurallarına bağlanmalıdır.
+- Darboğaz analizi [Observability: Log, Metric, Trace ve Correlation ID](./26-observability-logs-metrics-traces-correlation-id.md) kurallarına bağlanmalıdır.
 
 ## Harici Referanslar
 

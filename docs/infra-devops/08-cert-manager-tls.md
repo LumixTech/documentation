@@ -528,12 +528,12 @@ kubectl annotate certificate omer-okullari-tls -n lumix-system \
 
 ## 8. Diğer konularla ilişkisi
 
-- [Traefik Ingress](./traefik-ingress) — public cert Traefik secret'ında
-- [Kong API Gateway](./kong-api-gateway) — gerekirse mTLS'le upstream'e
-- [NetworkPolicy + mTLS](./networkpolicy-mtls) — mTLS implementasyonu
-- [Helm Charts](./helm-charts) — Certificate manifest'lerinin yeri
+- [Traefik Ingress](./05-traefik-ingress.md) — public cert Traefik secret'ında
+- [Kong API Gateway](./06-kong-api-gateway.md) — gerekirse mTLS'le upstream'e
+- [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md) — mTLS implementasyonu
+- [Helm Charts](./03-helm-charts.md) — Certificate manifest'lerinin yeri
 - [Vault](../security-compliance) — DNS provider token ve ileride PKI engine
-- [ArgoCD GitOps](../21-ci-cd/argocd-gitops) — sync-wave ile cert-manager bootstrap
+- [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md) — sync-wave ile cert-manager bootstrap
 
 ## 9. Daha derine inmek için
 

@@ -386,10 +386,10 @@ public class LoginRouter {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Fully Stateful Token Modeli](./stateful-token-model) — Keycloak login sonrası Lumix native token issue
-- [Session & Device Lifecycle](./session-device-lifecycle) — Keycloak flow'da da aynı session model
-- [Hibrit RBAC + ABAC](./rbac-abac-hybrid) — group → role mapping permission resolution
-- [httpOnly Cookie Storage](./httponly-cookie-storage) — refresh cookie hem custom hem keycloak akışı için ortak
+- [Fully Stateful Token Modeli](./01-stateful-token-model.md) — Keycloak login sonrası Lumix native token issue
+- [Session & Device Lifecycle](./02-session-device-lifecycle.md) — Keycloak flow'da da aynı session model
+- [Hibrit RBAC + ABAC](./04-rbac-abac-hybrid.md) — group → role mapping permission resolution
+- [httpOnly Cookie Storage](./07-httponly-cookie-storage.md) — refresh cookie hem custom hem keycloak akışı için ortak
 
 ## 9. Daha derine inmek için
 

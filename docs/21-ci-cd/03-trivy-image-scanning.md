@@ -456,10 +456,10 @@ helm-test:
 
 ## 8. Diğer konularla ilişkisi
 
-- [GitLab CI Pipelines](./gitlab-ci-pipelines) — scan job entegrasyonu
-- [ModSecurity WAF](../infra-devops/modsecurity-waf) — runtime saldırı; Trivy build-time
-- [Helm Charts](../infra-devops/helm-charts) — config scan hedefi
-- [Helm Versioning](./helm-versioning) — yamalı image yeni release
+- [GitLab CI Pipelines](./02-gitlab-ci-pipelines.md) — scan job entegrasyonu
+- [ModSecurity WAF](../infra-devops/07-modsecurity-waf.md) — runtime saldırı; Trivy build-time
+- [Helm Charts](../infra-devops/03-helm-charts.md) — config scan hedefi
+- [Helm Versioning](./05-helm-versioning.md) — yamalı image yeni release
 - [Audit Log](../security-compliance) — SBOM audit kanıt
 - [Compliance](../security-compliance) — KVKK security baseline
 

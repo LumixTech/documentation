@@ -415,12 +415,12 @@ Alarm:
 
 ## 8. Diğer konularla ilişkisi
 
-- [Object Storage Temelleri](./object-storage-fundamentals)
-- [RustFS Self-Hosted](./rustfs-self-hosted) — versioning + erasure coding ile lifecycle etkileşimi
-- [Pre-signed URL Akışı](./presigned-urls) — multipart abort lifecycle ile bağlantı
-- [ClamAV Virus Scanning](./clamav-virus-scanning) — infected dosyaların karantina + lifecycle
+- [Object Storage Temelleri](./01-object-storage-fundamentals.md)
+- [RustFS Self-Hosted](./02-rustfs-self-hosted.md) — versioning + erasure coding ile lifecycle etkileşimi
+- [Pre-signed URL Akışı](./03-presigned-urls.md) — multipart abort lifecycle ile bağlantı
+- [ClamAV Virus Scanning](./05-clamav-virus-scanning.md) — infected dosyaların karantina + lifecycle
 - [Compliance Service](../security-compliance/audit-log-design) — retention policy + DSAR
-- [Workflow Temporal](../22-workflow-temporal) — retention enforcement workflow
+- [Workflow Temporal](../workflow-temporal) — retention enforcement workflow
 
 ## 9. Daha derine inmek için
 

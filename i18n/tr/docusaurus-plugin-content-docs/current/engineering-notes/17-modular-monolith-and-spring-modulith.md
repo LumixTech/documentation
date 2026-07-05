@@ -1,4 +1,4 @@
-﻿---
+---
 title: Modüler Monolit Mimarisi ve Spring Modulith
 description: Spring Modulith, DDD sınırları ve hexagonal katmanlama ile modüler monolit tasarım rehberi.
 sidebar_position: 4

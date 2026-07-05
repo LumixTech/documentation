@@ -531,13 +531,13 @@ public class AttendanceMarkedNotifier {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Email Providers](./email-providers)
-- [SMS Providers](./sms-providers)
-- [Push Providers](./push-providers)
-- [MJML Template Rendering](./mjml-template-rendering)
-- [Payment Adapter Pattern](../15-payment/payment-adapter-pattern) — aynı pattern
-- [Domain Servisleri](../01-tenancy-and-domain-model/domain-services-overview) — notification-service
-- [Hexagonal Architecture](../02-architecture-patterns)
+- [Email Providers](./02-email-providers.md)
+- [SMS Providers](./03-sms-providers.md)
+- [Push Providers](./04-push-providers.md)
+- [MJML Template Rendering](./05-mjml-template-rendering.md)
+- [Payment Adapter Pattern](../15-payment/01-payment-adapter-pattern.md) — aynı pattern
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — notification-service
+- [Hexagonal Architecture](../architecture-patterns)
 
 ## 9. Daha derine inmek için
 

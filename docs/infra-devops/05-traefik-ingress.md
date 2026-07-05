@@ -273,7 +273,7 @@ Internet
 
 **Neden iki katman (Traefik + Kong)?**
 - Traefik: cluster-level **edge**: TLS termination, host routing, kaba rate-limit (IP/anon), redirect.
-- Kong: uygulama-level **gateway**: JWT validate, per-route rate-limit, plugin (request transform, mTLS to backend), WAF (ModSecurity). Detay: [Kong API Gateway](./kong-api-gateway).
+- Kong: uygulama-level **gateway**: JWT validate, per-route rate-limit, plugin (request transform, mTLS to backend), WAF (ModSecurity). Detay: [Kong API Gateway](./06-kong-api-gateway.md).
 
 ### 4.3. Standart middleware'ler
 
@@ -372,7 +372,7 @@ spec:
   renewBefore: 720h        # 30 gün önceden yenile
 ```
 
-Detay: [cert-manager TLS](./cert-manager-tls).
+Detay: [cert-manager TLS](./08-cert-manager-tls.md).
 
 ### 4.6. Dashboard erişimi
 
@@ -561,12 +561,12 @@ curl -k -H "Host: api.omer-okullari.lumix.io" https://localhost/api/v1/health
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — Ingress/Service kavramları
-- [K3s](./k3s-lightweight-k8s) — gömülü Traefik'i kapatma
-- [Kong API Gateway](./kong-api-gateway) — Traefik'ten sonraki katman
-- [ModSecurity WAF](./modsecurity-waf) — Kong içinde değil, Kong plugin
-- [cert-manager TLS](./cert-manager-tls) — Traefik'in TLS secret'ı buradan
-- [NetworkPolicy + mTLS](./networkpolicy-mtls) — Traefik pod'unun cluster-içi izolasyonu
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — Ingress/Service kavramları
+- [K3s](./02-k3s-lightweight-k8s.md) — gömülü Traefik'i kapatma
+- [Kong API Gateway](./06-kong-api-gateway.md) — Traefik'ten sonraki katman
+- [ModSecurity WAF](./07-modsecurity-waf.md) — Kong içinde değil, Kong plugin
+- [cert-manager TLS](./08-cert-manager-tls.md) — Traefik'in TLS secret'ı buradan
+- [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md) — Traefik pod'unun cluster-içi izolasyonu
 - [Observability (Loki, Prometheus)](../observability-qa) — Traefik metrik/log
 
 ## 9. Daha derine inmek için

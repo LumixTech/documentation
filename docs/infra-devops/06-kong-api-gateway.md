@@ -495,11 +495,11 @@ curl -i \
 
 ## 8. Diğer konularla ilişkisi
 
-- [Traefik Ingress](./traefik-ingress) — Kong'un önündeki edge
-- [ModSecurity WAF](./modsecurity-waf) — Kong plugin
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — Service, Pod yapısı
-- [Helm Charts](./helm-charts) — Kong deploy
-- [Authentication](../04-authentication-authorization) — JWT, Redis, stateful model
+- [Traefik Ingress](./05-traefik-ingress.md) — Kong'un önündeki edge
+- [ModSecurity WAF](./07-modsecurity-waf.md) — Kong plugin
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — Service, Pod yapısı
+- [Helm Charts](./03-helm-charts.md) — Kong deploy
+- [Authentication](../authentication-authorization) — JWT, Redis, stateful model
 - [Observability](../observability-qa) — Kong metrics, log
 
 ## 9. Daha derine inmek için

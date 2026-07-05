@@ -6,7 +6,7 @@ draft: true
 ---
 
 :::danger Bu sayfa GEÇERSİZ
-Lumix **modüler monolit yerine tam microservice mimarisini** seçti. Güncel sayfa: **[02 · Mimari Patterns → Microservices Architecture](../02-architecture-patterns/microservices-architecture)**
+Lumix **modüler monolit yerine tam microservice mimarisini** seçti. Güncel sayfa: **[02 · Mimari Patterns → Microservices Architecture](../02-architecture-patterns/01-microservices-architecture.md)**
 
 Bu eski sürüm karar tarihçesi için repository'de kalıyor; **uygulanan mimari bu DEĞİL**.
 :::

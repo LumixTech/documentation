@@ -425,12 +425,12 @@ mc admin policy attach "$RUSTFS_ALIAS" file-service-policy --user file-service-p
 
 ## 8. Diğer konularla ilişkisi
 
-- [Object Storage Temelleri](./object-storage-fundamentals) — bucket/object/key kavramları
-- [Pre-signed URL Akışı](./presigned-urls) — RustFS üzerinde direct upload
-- [Lifecycle Policy](./lifecycle-policies) — retention + cost control detayı
-- [ClamAV Virus Scanning](./clamav-virus-scanning) — RustFS'e yüklenen dosyanın taraması
-- [Teknoloji Kararları](../00-overview/technology-stack-decisions) — RustFS karar satırı
-- [Genel Mimari](../00-overview/overall-architecture) — installation içinde RustFS yeri
+- [Object Storage Temelleri](./01-object-storage-fundamentals.md) — bucket/object/key kavramları
+- [Pre-signed URL Akışı](./03-presigned-urls.md) — RustFS üzerinde direct upload
+- [Lifecycle Policy](./04-lifecycle-policies.md) — retention + cost control detayı
+- [ClamAV Virus Scanning](./05-clamav-virus-scanning.md) — RustFS'e yüklenen dosyanın taraması
+- [Teknoloji Kararları](../00-overview/02-technology-stack-decisions.md) — RustFS karar satırı
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — installation içinde RustFS yeri
 
 ## 9. Daha derine inmek için
 

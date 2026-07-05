@@ -251,10 +251,10 @@ ssh_args = -o ControlMaster=auto -o ControlPersist=60s
 ### 4.4. Hangi roller? (Lumix standart)
 
 #### `ubuntu-hardening`
-UFW, fail2ban, unattended-upgrades, SSH config, auditd, AppArmor, sysctl, chrony. Detay: [Ubuntu Hardening](../infra-devops/ubuntu-server-hardening).
+UFW, fail2ban, unattended-upgrades, SSH config, auditd, AppArmor, sysctl, chrony. Detay: [Ubuntu Hardening](../infra-devops/10-ubuntu-server-hardening.md).
 
 #### `k3s-server` / `k3s-agent`
-K3s binary install, systemd unit, Vault token lookup, cluster join. Detay: [K3s](../infra-devops/k3s-lightweight-k8s).
+K3s binary install, systemd unit, Vault token lookup, cluster join. Detay: [K3s](../infra-devops/02-k3s-lightweight-k8s.md).
 
 #### `customer-seed-keycloak`
 Müşteri için Keycloak realm oluştur (eğer Keycloak kullanılıyorsa); admin user, client, realm role'leri.
@@ -547,13 +547,13 @@ molecule test
 
 ## 8. Diğer konularla ilişkisi
 
-- [Terraform Basics](./terraform-basics) — Ansible öncesi infra
-- [Customer Onboarding Pipeline](./customer-onboarding-pipeline) — uçtan uca akış
-- [K3s](../infra-devops/k3s-lightweight-k8s) — K3s install role
-- [Ubuntu Hardening](../infra-devops/ubuntu-server-hardening) — hardening role
-- [Rancher Multi-Cluster](../infra-devops/rancher-multi-cluster) — Rancher import role
+- [Terraform Basics](./01-terraform-basics.md) — Ansible öncesi infra
+- [Customer Onboarding Pipeline](./03-customer-onboarding-pipeline.md) — uçtan uca akış
+- [K3s](../infra-devops/02-k3s-lightweight-k8s.md) — K3s install role
+- [Ubuntu Hardening](../infra-devops/10-ubuntu-server-hardening.md) — hardening role
+- [Rancher Multi-Cluster](../infra-devops/04-rancher-multi-cluster.md) — Rancher import role
 - [Vault](../security-compliance) — secret lookup
-- [GitLab CI Pipelines](../21-ci-cd/gitlab-ci-pipelines) — Ansible pipeline
+- [GitLab CI Pipelines](../21-ci-cd/02-gitlab-ci-pipelines.md) — Ansible pipeline
 
 ## 9. Daha derine inmek için
 

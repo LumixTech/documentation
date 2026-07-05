@@ -1,4 +1,4 @@
-﻿---
+---
 title: PostgreSQL Composite Index Sıralaması
 description: B-tree composite index kolon sırasının etkisi ve tenant_id-first sorgu tasarımı yaklaşımı.
 sidebar_position: 1
@@ -68,7 +68,7 @@ for each critical_query:
 
 - Filtreleme düşüncemiz `tenant_id` ile başlıyor.
 - Bu nedenle tenant-scope tablolarında composite index'in ilk kolonu çoğu durumda `tenant_id` olmalıdır.
-- Tenant sınır güvenliği [Tenant-based Row-Level Security (RLS)](./tenant-based-rls-policy-design) ile birlikte ele alınmalıdır.
+- Tenant sınır güvenliği [Tenant-based Row-Level Security (RLS)](./09-tenant-based-rls-policy-design.md) ile birlikte ele alınmalıdır.
 
 ## Sözlük
 

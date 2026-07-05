@@ -7,10 +7,10 @@ draft: true
 
 :::warning Bu sayfa arşivlendi
 Güncel sayfalar **21 · IaC ve Provisioning** kategorisinde:
-- [Terraform Basics](../20-iac-provisioning/terraform-basics)
-- [Ansible Basics](../20-iac-provisioning/ansible-basics)
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline)
-- [License Management](../20-iac-provisioning/license-management)
+- [Terraform Basics](../20-iac-provisioning/01-terraform-basics.md)
+- [Ansible Basics](../20-iac-provisioning/02-ansible-basics.md)
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md)
+- [License Management](../20-iac-provisioning/04-license-management.md)
 
 Bu eski sürüm referans olarak repository'de kalıyor.
 :::

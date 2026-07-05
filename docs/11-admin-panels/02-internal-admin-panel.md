@@ -370,13 +370,13 @@ export function InstallationHealthCard({ id, name }: Props) {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Customer Admin Panel](./customer-admin-panel) — müşteri tarafı
-- [Rancher Cluster Management](./rancher-cluster-management) — multi-cluster K8s
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — installation modeli
-- [Lisanslama (tech stack §24)](../00-overview/02-technology-stack-decisions) — `.lic` formatı
-- [Genel Mimari](../00-overview/03-overall-architecture) — Lumix sağlayıcı tarafı kutusu
-- [Compliance & Privacy](../00-overview/02-technology-stack-decisions) — break-glass erişim
-- [Shared Business Logic](../10-frontend-mobile/02-shared-business-logic) — `@lumix/core` paylaşımı
+- [Customer Admin Panel](./01-customer-admin-panel.md) — müşteri tarafı
+- [Rancher Cluster Management](./03-rancher-cluster-management.md) — multi-cluster K8s
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — installation modeli
+- [Lisanslama (tech stack §24)](../00-overview/02-technology-stack-decisions.md) — `.lic` formatı
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — Lumix sağlayıcı tarafı kutusu
+- [Compliance & Privacy](../00-overview/02-technology-stack-decisions.md) — break-glass erişim
+- [Shared Business Logic](../10-frontend-mobile/02-shared-business-logic.md) — `@lumix/core` paylaşımı
 
 ## 9. Daha derine
 

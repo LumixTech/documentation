@@ -97,7 +97,7 @@ on ANONYMIZATION_JOB(request_id):
 - Our expected flow is explicit: DSAR request -> approval -> anonymization -> audit.
 - `retention policy` decisions must be encoded in system logic, not only in policy documents.
 - We will preserve execution traceability through `audit log` events at each stage.
-- This design depends on strong audit practices defined in [Audit Log Design](./audit-log-design).
+- This design depends on strong audit practices defined in [Audit Log Design](./05-audit-log-design.md).
 
 ## Glossary
 

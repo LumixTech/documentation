@@ -1,4 +1,4 @@
-﻿---
+---
 title: PostgreSQL Extension Değerlendirmesi
 description: İhtiyaç odaklı PostgreSQL extension seçimi için operasyonel uyum ve risk değerlendirme yaklaşımı.
 sidebar_position: 2
@@ -78,7 +78,7 @@ evaluate_extension(ext):
 - PostgreSQL extension'ları gözden geçirilecek, yalnızca ihtiyaç olanlar eklenecek.
 - Karar kriteri: gerçek ihtiyaç + operasyonel uyum.
 - `pg_*` lifecycle araçları için kullanım senaryosu netleşmeden üretime alınmayacak.
-- Bu kararlar [Read / Write Replica Kuralları](./read-write-replica-strategy) ile çelişmeyecek.
+- Bu kararlar [Read / Write Replica Kuralları](./10-read-write-replica-strategy.md) ile çelişmeyecek.
 
 ## Sözlük
 

@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 1
 title: Dokümantasyon Portalı Ana Sayfa
 description: Güvenlik, uyumluluk, veritabanı tasarımı, frontend yönlendirme ve mühendislik kararlarını kapsayan mimari odaklı dokümantasyon.
@@ -26,11 +26,11 @@ Bilgi dağınık notlarda kaldığında bağlam kaybolur, ekip aynı hataları t
 
 Portal omurgası şu bölümlerden oluşur:
 
-- [Güvenlik ve Uyumluluk](./category/security--compliance)
-- [Veritabanı Mimarisi](./category/database-architecture)
-- [Frontend Mimarisi](./category/frontend-architecture)
-- [Mühendislik Notları](./category/engineering-notes)
-- [Sözlük](./category/glossary)
+- [Güvenlik ve Uyumluluk](./security-compliance)
+- [Veritabanı Mimarisi](./database-architecture)
+- [Frontend Mimarisi](./frontend-architecture)
+- [Mühendislik Notları](./engineering-notes)
+- [Sözlük](./glossary)
 
 ## Sektör Standardı / Best Practice
 
@@ -52,7 +52,7 @@ for each new_topic:
 
 - Düz dosya yığını yerine ölçeklenebilir bilgi mimarisi tercih ediyoruz.
 - Her sayfada karar, trade-off ve operasyon etkisi birlikte anlatılmalıdır.
-- Ortak terimler [Ortak Terminoloji Sözlüğü](./glossary/glossary) sayfasından yönetilir.
+- Ortak terimler [Ortak Terminoloji Sözlüğü](./glossary/00-glossary.md) sayfasından yönetilir.
 
 ## Sözlük
 

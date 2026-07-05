@@ -224,7 +224,7 @@ Dezavantaj:
 - "Yoklama alındı → notification + performance + audit + search" → choreography
 - "Ödeme saga: invoice → payment authorize → capture → enrollment confirm" → orchestration (Temporal)
 
-Detay: [Saga Pattern](./saga-pattern).
+Detay: [Saga Pattern](./05-saga-pattern.md).
 
 ### 3.4. At-least-once Delivery ve Idempotency
 
@@ -378,11 +378,11 @@ Bir event işlenemezse:
 2. Hala başarısızsa → **DLQ topic'e** gönder: `academic.attendance.marked.v1.DLQ`
 3. DLQ'da manuel inceleme + replay tool
 
-Detay: [DLQ ve Outbox](./outbox-pattern).
+Detay: [DLQ ve Outbox](./06-outbox-pattern.md).
 
 ### 4.7. Hangi servis hangi event'leri üretir/tüketir?
 
-Detaylı tablo: [Domain Servisleri — Cross-service iletişim](../01-tenancy-and-domain-model/02-domain-services-overview#4-cross-service-iletişim-haritası).
+Detaylı tablo: [Domain Servisleri — Cross-service iletişim](../01-tenancy-and-domain-model/02-domain-services-overview.md#4-cross-service-iletişim-haritası).
 
 Özet:
 
@@ -712,12 +712,12 @@ Event payload'unda `tenant_id` yok. Consumer cross-tenant veri sızdırır.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Microservices Architecture](./microservices-architecture) — EDA microservice iletişimin omurgası
-- [Domain-Driven Design](./domain-driven-design) — domain event vs integration event ayrımı
-- [Outbox Pattern](./outbox-pattern) — atomic write + event publish
-- [Saga Pattern](./saga-pattern) — distributed transaction = event orchestration
-- [Hexagonal Architecture](./hexagonal-architecture) — Kafka consumer = inbound adapter, publisher = outbound adapter
-- [gRPC Service Communication](../03-backend/03-grpc-service-communication) — sync iletişim, EDA'nın tamamlayıcısı
+- [Microservices Architecture](./01-microservices-architecture.md) — EDA microservice iletişimin omurgası
+- [Domain-Driven Design](./02-domain-driven-design.md) — domain event vs integration event ayrımı
+- [Outbox Pattern](./06-outbox-pattern.md) — atomic write + event publish
+- [Saga Pattern](./05-saga-pattern.md) — distributed transaction = event orchestration
+- [Hexagonal Architecture](./03-hexagonal-architecture.md) — Kafka consumer = inbound adapter, publisher = outbound adapter
+- [gRPC Service Communication](../03-backend/03-grpc-service-communication.md) — sync iletişim, EDA'nın tamamlayıcısı
 
 ## 9. Daha derine inmek için
 

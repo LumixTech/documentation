@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Bu sayfa ne anlatıyor?
 
-KVKK ve GDPR, veri sahibinin **erişim, taşınabilirlik, düzeltme, silme/anonimleştirme** (DSAR — Data Subject Access Request) haklarını sunma yükümlülüğü doğurur. Lumix'te DSAR çok-adımlı, çok-servisli bir akıştır; **Temporal saga** olarak modellenir. Bu sayfa DSAR'ı sıfırdan açıklar, yasal arka planı kısaca tanıtır, Lumix'in **intake → verification → eligibility → approval → execution (anonymization/export) → audit** akışını gösterir, her **microservice'in anonymization handler**'ını tanımlar, **idempotency** + **deadline (30 gün)** + **manual approval** detaylandırır. Hedef kitle: Temporal ve Saga temellerini bilen ([Temporal Fundamentals](./temporal-fundamentals), [Saga with Temporal](./saga-with-temporal)), KVKK/GDPR'a duyarlı backend mühendisi.
+KVKK ve GDPR, veri sahibinin **erişim, taşınabilirlik, düzeltme, silme/anonimleştirme** (DSAR — Data Subject Access Request) haklarını sunma yükümlülüğü doğurur. Lumix'te DSAR çok-adımlı, çok-servisli bir akıştır; **Temporal saga** olarak modellenir. Bu sayfa DSAR'ı sıfırdan açıklar, yasal arka planı kısaca tanıtır, Lumix'in **intake → verification → eligibility → approval → execution (anonymization/export) → audit** akışını gösterir, her **microservice'in anonymization handler**'ını tanımlar, **idempotency** + **deadline (30 gün)** + **manual approval** detaylandırır. Hedef kitle: Temporal ve Saga temellerini bilen ([Temporal Fundamentals](./01-temporal-fundamentals.md), [Saga with Temporal](./02-saga-with-temporal.md)), KVKK/GDPR'a duyarlı backend mühendisi.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -613,9 +613,9 @@ public void erasure_with_dpo_approval_anonymizes_all_services() {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Temporal Fundamentals](./temporal-fundamentals) — workflow temelleri
-- [Saga with Temporal](./saga-with-temporal) — saga pattern (DSAR bir saga)
-- [Background Jobs](./background-jobs) — retention enforcement (compliance otomasyonu)
+- [Temporal Fundamentals](./01-temporal-fundamentals.md) — workflow temelleri
+- [Saga with Temporal](./02-saga-with-temporal.md) — saga pattern (DSAR bir saga)
+- [Background Jobs](./04-background-jobs.md) — retention enforcement (compliance otomasyonu)
 - [Audit Log](../security-compliance) — DSAR event audit
 - [Privacy / KVKK](../security-compliance) — yasal arka plan
 - [Vault](../security-compliance) — DEK destroy mekanizması

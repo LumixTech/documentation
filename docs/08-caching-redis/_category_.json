@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Cache ve State (Redis Sentinel)",
-    "description": "Redis temelleri, Sentinel HA topology, cache-aside pattern, invalidation stratejisi, TTL trade-off'ları, distributed lock (Redisson), rate limiting."
+    "description": "Redis temelleri, Sentinel HA topology, cache-aside pattern, invalidation stratejisi, TTL trade-off'ları, distributed lock (Redisson), rate limiting.",
+    "slug": "/caching-redis"
   }
 }

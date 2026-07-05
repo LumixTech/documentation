@@ -1,4 +1,4 @@
-﻿---
+---
 title: Frontend URL Path Stratejisi - Görünür/Görünmez ID
 description: URL'de ID görünürlüğünü Redux root state üzerinden yöneten config-driven route yaklaşımı.
 sidebar_position: 1

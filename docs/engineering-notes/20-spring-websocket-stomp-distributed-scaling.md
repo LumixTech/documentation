@@ -9,10 +9,10 @@ draft: true
 Lumix Kafka tek broker kararı verince RabbitMQ broker relay yolu kapandı. Yeni karar: **Redis Pub/Sub backplane**.
 
 Güncel sayfalar:
-- [Real-time → WebSocket Fundamentals](../07-realtime-websocket/websocket-fundamentals)
-- [Real-time → STOMP Protocol](../07-realtime-websocket/stomp-protocol)
-- [Real-time → Redis Pub/Sub Backplane](../07-realtime-websocket/redis-pubsub-backplane) ← buradaki çözüm
-- [Real-time → User-Pod Mapping ve Reconnect](../07-realtime-websocket/user-pod-mapping-and-reconnect)
+- [Real-time → WebSocket Fundamentals](../07-realtime-websocket/01-websocket-fundamentals.md)
+- [Real-time → STOMP Protocol](../07-realtime-websocket/02-stomp-protocol.md)
+- [Real-time → Redis Pub/Sub Backplane](../07-realtime-websocket/03-redis-pubsub-backplane.md) ← buradaki çözüm
+- [Real-time → User-Pod Mapping ve Reconnect](../07-realtime-websocket/04-user-pod-mapping-and-reconnect.md)
 
 Bu eski sürüm karar tarihçesi için repository'de kalıyor.
 :::

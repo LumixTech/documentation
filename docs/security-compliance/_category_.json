@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Güvenlik ve Uyumluluk",
-    "description": "Authentication, authorization, KVKK/GDPR, audit log, secrets, threat modeling. Bu kategori auth dahil tüm güvenlik konularını barındırır; auth ayrıştırılırsa '04 · Auth' kategorisine taşınacak."
+    "description": "Authentication, authorization, KVKK/GDPR, audit log, secrets, threat modeling. Bu kategori auth dahil tüm güvenlik konularını barındırır; auth ayrıştırılırsa '04 · Auth' kategorisine taşınacak.",
+    "slug": "/security-compliance"
   }
 }

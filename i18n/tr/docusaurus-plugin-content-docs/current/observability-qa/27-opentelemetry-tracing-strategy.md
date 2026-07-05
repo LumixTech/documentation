@@ -178,7 +178,7 @@ trace_business_operation(use_case, context):
 - Trace'ler async workflow ve module-to-module flow'ları kapsamalıdır.
 - İlk üç span map: attendance peak, chat message flow ve payment flow.
 - Ürün anlamı auto-instrumentation ile görünmüyorsa manuel span eklenmelidir.
-- Trace context kuralları [Observability: Log, Metric, Trace ve Correlation ID](./observability-logs-metrics-traces-correlation-id) ile uyumlu olmalıdır.
+- Trace context kuralları [Observability: Log, Metric, Trace ve Correlation ID](./26-observability-logs-metrics-traces-correlation-id.md) ile uyumlu olmalıdır.
 
 ## Harici Referanslar
 

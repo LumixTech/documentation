@@ -146,7 +146,7 @@ publish_message(topic, payload):
 - Tüm tenant-scoped operasyonlar doğrulanmış `tenant-id` taşımalıdır.
 - Log, metric, trace ve audit entry field isimleri tutarlı olmalıdır.
 - Async workflow context'i kaybetmemeli, kopuk observability adaları üretmemelidir.
-- Bu doküman [OpenTelemetry ve Tracing Stratejisi](./opentelemetry-tracing-strategy) ile birlikte ele alınır.
+- Bu doküman [OpenTelemetry ve Tracing Stratejisi](./27-opentelemetry-tracing-strategy.md) ile birlikte ele alınır.
 
 ## Harici Referanslar
 

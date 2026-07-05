@@ -1,4 +1,4 @@
-﻿---
+---
 title: Retention, Anonymization ve DSAR Akışı
 description: DSAR request'ten onay, anonimleştirme ve audit kanıtına uzanan uçtan uca uyumluluk akışı.
 sidebar_position: 6
@@ -90,7 +90,7 @@ on ANONYMIZATION_JOB(request_id):
 - Hedef akış net: DSAR request -> approval -> anonymization -> audit.
 - `retention policy` kuralları kod seviyesinde modellenmelidir.
 - Her aşama `audit log` ile izlenebilir olmalıdır.
-- Audit detayları için [Audit Log Tasarımı](./audit-log-design) referans alınır.
+- Audit detayları için [Audit Log Tasarımı](./05-audit-log-design.md) referans alınır.
 
 ## Sözlük
 

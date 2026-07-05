@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix'te 10 microservice + 12 altyapı bileşeni × her müşteri = onlarca cluster, yüzlerce manifest. Bu manifestleri "kopyala-yapıştır" ile yönetmek 1. günde patlar. **Helm**, K8s manifest'lerini **paketlenmiş, parametreli, versiyonlu** şekilde yöneten standart aracıdır. Bu sayfa Helm'i sıfırdan anlatır, chart anatomisini gösterir, templating motorunu açıklar, release lifecycle'ını izah eder, Lumix'in **chart-per-service + umbrella chart** yaklaşımını detaylandırır ve **values overlay** stratejisini somut örneklerle gösterir. Hedef kitle: K8s temellerini bilen ([Kubernetes Temelleri](./kubernetes-fundamentals)), manifest yazımına yeni geçen geliştirici.
+Lumix'te 10 microservice + 12 altyapı bileşeni × her müşteri = onlarca cluster, yüzlerce manifest. Bu manifestleri "kopyala-yapıştır" ile yönetmek 1. günde patlar. **Helm**, K8s manifest'lerini **paketlenmiş, parametreli, versiyonlu** şekilde yöneten standart aracıdır. Bu sayfa Helm'i sıfırdan anlatır, chart anatomisini gösterir, templating motorunu açıklar, release lifecycle'ını izah eder, Lumix'in **chart-per-service + umbrella chart** yaklaşımını detaylandırır ve **values overlay** stratejisini somut örneklerle gösterir. Hedef kitle: K8s temellerini bilen ([Kubernetes Temelleri](./01-kubernetes-fundamentals.md)), manifest yazımına yeni geçen geliştirici.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -119,7 +119,7 @@ dependencies:
 - `version`: **chart** (paket) versiyonu. Chart'ta yapısal bir değişiklik olursa bump edilir.
 - `appVersion`: chart'ın içine paketlenen **uygulamanın** versiyonu (Docker image tag).
 
-Detay: [Helm Versioning](../21-ci-cd/helm-versioning).
+Detay: [Helm Versioning](../21-ci-cd/05-helm-versioning.md).
 
 ### 3.3. Templating motoru
 
@@ -320,7 +320,7 @@ spec:
       selfHeal: true
 ```
 
-Detay: [ArgoCD GitOps](../21-ci-cd/argocd-gitops).
+Detay: [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md).
 
 ### 4.5. CRD yönetimi
 
@@ -695,12 +695,12 @@ helm upgrade --install academic-service ./academic-service --dry-run --debug
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — chart hangi nesneleri üretiyor
-- [K3s](./k3s-lightweight-k8s) — Helm'in çalıştığı cluster
-- [Helm Versioning](../21-ci-cd/helm-versioning) — chart vs app version, promotion
-- [ArgoCD GitOps](../21-ci-cd/argocd-gitops) — Helm chart'ı GitOps ile uygulamak
-- [GitLab CI Pipelines](../21-ci-cd/gitlab-ci-pipelines) — chart paketleme job'u
-- [cert-manager TLS](./cert-manager-tls) — Certificate kaynaklarını chart içinde değil ayrı yönetmek
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — chart hangi nesneleri üretiyor
+- [K3s](./02-k3s-lightweight-k8s.md) — Helm'in çalıştığı cluster
+- [Helm Versioning](../21-ci-cd/05-helm-versioning.md) — chart vs app version, promotion
+- [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md) — Helm chart'ı GitOps ile uygulamak
+- [GitLab CI Pipelines](../21-ci-cd/02-gitlab-ci-pipelines.md) — chart paketleme job'u
+- [cert-manager TLS](./08-cert-manager-tls.md) — Certificate kaynaklarını chart içinde değil ayrı yönetmek
 - [External Secrets / Vault](../security-compliance) — secret'ı chart'a koymamak
 
 ## 9. Daha derine inmek için

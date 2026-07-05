@@ -24,9 +24,9 @@ Bu seviyeyi okuduktan sonra sistemde **ne olduğu**, **kimin için** olduğu, **
 | Sıra | Doküman | Neden burada |
 |---|---|---|
 | 1 | [Giriş ve Yol Haritası](../intro) | Bu portal nasıl çalışıyor |
-| 2 | [Vizyon ve Hedefler](./vision-and-goals) | Ne yapıyoruz, kim için |
-| 3 | [Teknoloji Kararları](./technology-stack-decisions) | Tek sayfada tüm yığın |
-| 4 | [Genel Mimari](./overall-architecture) | Sistemin kuş bakışı |
+| 2 | [Vizyon ve Hedefler](./01-vision-and-goals.md) | Ne yapıyoruz, kim için |
+| 3 | [Teknoloji Kararları](./02-technology-stack-decisions.md) | Tek sayfada tüm yığın |
+| 4 | [Genel Mimari](./03-overall-architecture.md) | Sistemin kuş bakışı |
 | 5 | [Sözlük](../glossary/glossary) | Sık geçen terimleri tanı |
 
 ## Seviye 1 — İlk hafta: Foundation
@@ -37,8 +37,8 @@ Lumix'in özü multi-tenancy. Bu olmadan auth, RLS, scope hiçbir şey anlaşıl
 
 | Sıra | Doküman | Çıktı |
 |---|---|---|
-| 6 | [Installation / Tenant / Scope Modeli](../tenancy-and-domain-model/installation-tenant-scope) | "Bölge müdürü neden multi-tenant scope'ta?" sorusunu cevaplayabilirsin |
-| 7 | [Domain Servisleri (10 microservice)](../tenancy-and-domain-model/domain-services-overview) | Hangi iş hangi servise ait, bilirsin |
+| 6 | [Installation / Tenant / Scope Modeli](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) | "Bölge müdürü neden multi-tenant scope'ta?" sorusunu cevaplayabilirsin |
+| 7 | [Domain Servisleri (10 microservice)](../01-tenancy-and-domain-model/02-domain-services-overview.md) | Hangi iş hangi servise ait, bilirsin |
 
 ### 1.2. Authentication & Authorization (Gün 3-4)
 
@@ -234,7 +234,7 @@ Bu seviye **doc okumakla değil**, **production'da hata çözmekle, code review 
 | Security review yapacaksın | Seviye 0 + Seviye 1.2 + Seviye 2.6 |
 | Yeni microservice yazacaksın | Seviye 0 + Seviye 1.4 + Seviye 2.3 + Seviye 2.1 + Seviye 2.7 |
 | Production incident debug | Seviye 2.7 + Seviye 2.8 + Sözlük |
-| Sadece "ne kullanıyoruz" merak ediyorum | [Teknoloji Kararları](./technology-stack-decisions) tek sayfa yeter |
+| Sadece "ne kullanıyoruz" merak ediyorum | [Teknoloji Kararları](./02-technology-stack-decisions.md) tek sayfa yeter |
 
 ## Doc okurken disiplin
 
@@ -245,6 +245,6 @@ Bu seviye **doc okumakla değil**, **production'da hata çözmekle, code review 
 
 ## Diğer konularla ilişkisi
 
-- [Vizyon ve Hedefler](./vision-and-goals) — neden böyle öğreniyoruz
-- [Teknoloji Kararları](./technology-stack-decisions) — yığın özeti
-- [Genel Mimari](./overall-architecture) — kuş bakışı
+- [Vizyon ve Hedefler](./01-vision-and-goals.md) — neden böyle öğreniyoruz
+- [Teknoloji Kararları](./02-technology-stack-decisions.md) — yığın özeti
+- [Genel Mimari](./03-overall-architecture.md) — kuş bakışı

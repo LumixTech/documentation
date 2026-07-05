@@ -377,11 +377,11 @@ Hit ratio düşükse:
 
 ## 8. Diğer konularla ilişkisi
 
-- [Cache-Aside Pattern](./cache-aside-pattern) — TTL bu pattern'in temel parçası
-- [Cache Invalidation](./cache-invalidation) — TTL + manuel invalidation
-- [Distributed Lock — Redisson](./distributed-lock-redisson) — lock TTL kritik (deadlock engeli)
-- [Session & Device Lifecycle](../04-authentication-authorization/session-device-lifecycle) — sliding TTL session'larda OK
-- [Redis Temelleri](./redis-fundamentals) — TTL komutları
+- [Cache-Aside Pattern](./03-cache-aside-pattern.md) — TTL bu pattern'in temel parçası
+- [Cache Invalidation](./04-cache-invalidation.md) — TTL + manuel invalidation
+- [Distributed Lock — Redisson](./06-distributed-lock-redisson.md) — lock TTL kritik (deadlock engeli)
+- [Session & Device Lifecycle](../04-authentication-authorization/02-session-device-lifecycle.md) — sliding TTL session'larda OK
+- [Redis Temelleri](./01-redis-fundamentals.md) — TTL komutları
 
 ## 9. Daha derine inmek için
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Ortak Terminoloji Sözlüğü
 description: Güvenlik, veritabanı, frontend ve uyumluluk dokümanlarında kullanılan standart terimler.
 sidebar_position: 1

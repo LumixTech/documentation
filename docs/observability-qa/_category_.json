@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Observability ve Test (LGTM stack + test pyramid)",
-    "description": "Logs/metrics/traces üçlüsü, Prometheus + Thanos, Loki + Promtail, OpenTelemetry + Tempo, Grafana dashboard, correlation-id propagation, test pyramid, Testcontainers, contract test, Playwright E2E, k6 load test."
+    "description": "Logs/metrics/traces üçlüsü, Prometheus + Thanos, Loki + Promtail, OpenTelemetry + Tempo, Grafana dashboard, correlation-id propagation, test pyramid, Testcontainers, contract test, Playwright E2E, k6 load test.",
+    "slug": "/observability-qa"
   }
 }

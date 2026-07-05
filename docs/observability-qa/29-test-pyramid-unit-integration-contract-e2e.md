@@ -121,7 +121,7 @@ choose_test_level(use_case, risk):
 - Project use cases should be distributed across test levels instead of pushed into E2E by default.
 - Critical flows need both happy path and sad path coverage.
 - Authorization and tenant isolation should be tested below UI level as much as possible.
-- E2E tests should cover admin, teacher, and parent workflows as described in [Playwright E2E, RBAC UI Tests, and Form Flows](../frontend-architecture/playwright-e2e-rbac-ui-form-flows).
+- E2E tests should cover admin, teacher, and parent workflows as described in [Playwright E2E, RBAC UI Tests, and Form Flows](../frontend-architecture/34-playwright-e2e-rbac-ui-form-flows.md).
 
 ## External References
 

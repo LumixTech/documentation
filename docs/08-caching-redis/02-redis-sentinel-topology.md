@@ -408,13 +408,13 @@ sentinel tls-ca-cert-file /tls/ca.crt
 
 ## 8. Diğer konularla ilişkisi
 
-- [Redis Temelleri](./redis-fundamentals) — Redis nedir
-- [Cache-Aside Pattern](./cache-aside-pattern) — cache-redis kullanımı
-- [Cache Invalidation](./cache-invalidation) — entity/view cache
-- [TTL Strategy](./ttl-strategy) — TTL kararı
-- [Distributed Lock — Redisson](./distributed-lock-redisson) — cache-redis lock
-- [Fully Stateful Token Modeli](../04-authentication-authorization/stateful-token-model) — auth-redis kullanımı
-- [Session & Device Lifecycle](../04-authentication-authorization/session-device-lifecycle) — auth-redis key matrix
+- [Redis Temelleri](./01-redis-fundamentals.md) — Redis nedir
+- [Cache-Aside Pattern](./03-cache-aside-pattern.md) — cache-redis kullanımı
+- [Cache Invalidation](./04-cache-invalidation.md) — entity/view cache
+- [TTL Strategy](./05-ttl-strategy.md) — TTL kararı
+- [Distributed Lock — Redisson](./06-distributed-lock-redisson.md) — cache-redis lock
+- [Fully Stateful Token Modeli](../04-authentication-authorization/01-stateful-token-model.md) — auth-redis kullanımı
+- [Session & Device Lifecycle](../04-authentication-authorization/02-session-device-lifecycle.md) — auth-redis key matrix
 
 ## 9. Daha derine inmek için
 

@@ -146,7 +146,7 @@ publish_message(topic, payload):
 - All tenant-scoped operations must carry validated `tenant-id`.
 - Logs, metrics, traces, and audit entries should use consistent field names.
 - Async workflows must preserve context, not create disconnected observability islands.
-- This document connects directly to [OpenTelemetry and Tracing Strategy](./opentelemetry-tracing-strategy).
+- This document connects directly to [OpenTelemetry and Tracing Strategy](./27-opentelemetry-tracing-strategy.md).
 
 ## External References
 

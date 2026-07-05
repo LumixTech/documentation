@@ -1,4 +1,4 @@
-﻿---
+---
 title: Audit Log Tasarımı
 description: Kim ne yaptı, ne zaman yaptı sorularını yanıtlayan AUDIT_LOGS tasarımı ve kritik aksiyon listesi.
 sidebar_position: 5
@@ -69,7 +69,7 @@ record_audit(event):
 
 - `AUDIT_LOGS` payment, sağlık, counseling/PDR ve yetki yönetimi için zorunludur.
 - Güvenlik açısından kritik `deny` kararları da kaydedilecektir.
-- Bu tasarım [Retention, Anonymization ve DSAR Akışı](./retention-anonymization-dsar) ile birlikte ele alınacaktır.
+- Bu tasarım [Retention, Anonymization ve DSAR Akışı](./06-retention-anonymization-dsar.md) ile birlikte ele alınacaktır.
 
 ## Sözlük
 

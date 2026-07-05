@@ -476,12 +476,12 @@ echo "INSTREAM" | nc -U /tmp/clamd.socket
 
 ## 8. Diğer konularla ilişkisi
 
-- [Pre-signed URL Akışı](./presigned-urls) — confirm sonrası scan event publish edilir
-- [Lifecycle Policy](./lifecycle-policies) — infected quarantine + retention
+- [Pre-signed URL Akışı](./03-presigned-urls.md) — confirm sonrası scan event publish edilir
+- [Lifecycle Policy](./04-lifecycle-policies.md) — infected quarantine + retention
 - [Kafka Topic Design](../event-driven-architecture) — file.scan.* topic'leri
-- [Notification](../16-notification) — infected alert push/email
+- [Notification](../notification) — infected alert push/email
 - [Audit Log Design](../security-compliance/audit-log-design) — file.scan event'leri audit
-- [Domain Servisleri](../01-tenancy-and-domain-model/domain-services-overview) — file-service detay
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — file-service detay
 
 ## 9. Daha derine inmek için
 

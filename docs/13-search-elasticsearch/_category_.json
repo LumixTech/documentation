@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Search (Elasticsearch)",
-    "description": "Elasticsearch temelleri, index ve shard tasarımı, event-driven indexing (Kafka consumer → ES), Spring Data Elasticsearch entegrasyonu."
+    "description": "Elasticsearch temelleri, index ve shard tasarımı, event-driven indexing (Kafka consumer → ES), Spring Data Elasticsearch entegrasyonu.",
+    "slug": "/search-elasticsearch"
   }
 }

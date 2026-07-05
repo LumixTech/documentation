@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Engineering Notes — ADR ve Karar Hikayeleri",
-    "description": "Mimari karar kayıtları (ADR), trade-off analizleri, problem-çözüm anlatıları. Geçmiş kararların 'neden böyle' cevaplarının yaşadığı yer."
+    "description": "Mimari karar kayıtları (ADR), trade-off analizleri, problem-çözüm anlatıları. Geçmiş kararların 'neden böyle' cevaplarının yaşadığı yer.",
+    "slug": "/engineering-notes"
   }
 }

@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix microservice mimarisinde **"4 servisi de etkileyen tek atomic işlem"** (örnek: bir öğrencinin kayıt + sınıf atama + ödeme + bildirim) klasik DB transaction'la mümkün değil. **Saga pattern** + **Temporal** ile her adım için **compensation** (telafi) tanımlanır; bir adım fail olursa önceki adımlar geri alınır. Bu sayfa Saga'yı sıfırdan anlatır, **orchestration vs choreography** ayrımını gösterir, Temporal'in saga'yı niçin doğal taşıdığını açıklar ve gerçek bir Lumix saga örneği (OrderSaga: academic + finance + notification) ile detaylandırır. Hedef kitle: Temporal temellerini bilen ([Temporal Fundamentals](./temporal-fundamentals)), microservice arası iş akışı tasarlayan geliştirici.
+Lumix microservice mimarisinde **"4 servisi de etkileyen tek atomic işlem"** (örnek: bir öğrencinin kayıt + sınıf atama + ödeme + bildirim) klasik DB transaction'la mümkün değil. **Saga pattern** + **Temporal** ile her adım için **compensation** (telafi) tanımlanır; bir adım fail olursa önceki adımlar geri alınır. Bu sayfa Saga'yı sıfırdan anlatır, **orchestration vs choreography** ayrımını gösterir, Temporal'in saga'yı niçin doğal taşıdığını açıklar ve gerçek bir Lumix saga örneği (OrderSaga: academic + finance + notification) ile detaylandırır. Hedef kitle: Temporal temellerini bilen ([Temporal Fundamentals](./01-temporal-fundamentals.md)), microservice arası iş akışı tasarlayan geliştirici.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -479,13 +479,13 @@ Compensation activity da fail edebilir (örn. refund API down). Lumix kuralı:
 
 ## 8. Diğer konularla ilişkisi
 
-- [Temporal Fundamentals](./temporal-fundamentals) — temel kavramlar
-- [DSAR Workflow Implementation](./dsar-workflow-implementation) — özelleşmiş bir saga
-- [Background Jobs](./background-jobs) — scheduled saga (örn. periyodik reconciliation)
+- [Temporal Fundamentals](./01-temporal-fundamentals.md) — temel kavramlar
+- [DSAR Workflow Implementation](./03-dsar-workflow-implementation.md) — özelleşmiş bir saga
+- [Background Jobs](./04-background-jobs.md) — scheduled saga (örn. periyodik reconciliation)
 - [Event-Driven Architecture](../event-driven-architecture) — Kafka + Saga karşılaştırma
-- [Payment](../15-payment) — ödeme saga'sı
+- [Payment](../payment) — ödeme saga'sı
 - [Audit Log](../security-compliance) — saga event'leri audit'e
-- [Idempotency](../03-backend) — activity idempotency garantisi
+- [Idempotency](../backend) — activity idempotency garantisi
 
 ## 9. Daha derine inmek için
 

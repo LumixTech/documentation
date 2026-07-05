@@ -442,11 +442,11 @@ curl -X POST "elasticsearch:9200/lumix_messages/_search" \
 
 ## 8. Diğer konularla ilişkisi
 
-- [Indexing Stratejisi](./indexing-strategy) — event-driven indexing, re-index
-- [Spring Data Elasticsearch](./spring-data-elasticsearch) — Java implementasyon
+- [Indexing Stratejisi](./02-indexing-strategy.md) — event-driven indexing, re-index
+- [Spring Data Elasticsearch](./03-spring-data-elasticsearch.md) — Java implementasyon
 - [PostgreSQL](../database-architecture) — source of truth karşılaştırma
 - [Kafka](../event-driven-architecture) — projection için event consumer
-- [Genel Mimari](../00-overview/overall-architecture) — ES sistem haritasında nerede
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — ES sistem haritasında nerede
 
 ## 9. Daha derine inmek için
 

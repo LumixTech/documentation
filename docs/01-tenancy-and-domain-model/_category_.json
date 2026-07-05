@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Tenancy ve Domain Modeli",
-    "description": "Installation/Tenant/Scope üç katmanlı multi-tenancy modeli ve Lumix'in 10 domain servisinin sorumlulukları."
+    "description": "Installation/Tenant/Scope üç katmanlı multi-tenancy modeli ve Lumix'in 10 domain servisinin sorumlulukları.",
+    "slug": "/tenancy-and-domain-model"
   }
 }

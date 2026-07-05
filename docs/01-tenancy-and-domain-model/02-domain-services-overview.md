@@ -508,11 +508,11 @@ Servis ne zaman birleştirilir?
 
 ## 7. Diğer konularla ilişkisi
 
-- [Installation/Tenant/Scope Modeli](./installation-tenant-scope) — bu servislerin altında yatan multi-tenancy
-- [Microservices vs Modular Monolith](../engineering-notes/microservices-and-service-boundaries) (yeniden yazılacak)
-- [gRPC Service Communication](../backend/grpc-service-communication) (yazılacak)
-- [Kafka Topic Design](../messaging-and-events/kafka-topic-design) (yazılacak)
-- [Outbox Pattern](../engineering-notes/dlq-and-outbox-pattern-event-processing-retry-and-error-handling) — her servisteki event publish
+- [Installation/Tenant/Scope Modeli](./01-installation-tenant-scope.md) — bu servislerin altında yatan multi-tenancy
+- Microservices vs Modular Monolith (yeniden yazılacak)
+- [gRPC Service Communication](../03-backend/03-grpc-service-communication.md) (yazılacak)
+- Kafka Topic Design (yazılacak)
+- [Outbox Pattern](../02-architecture-patterns/06-outbox-pattern.md) — her servisteki event publish
 
 ## 8. Sözlük
 

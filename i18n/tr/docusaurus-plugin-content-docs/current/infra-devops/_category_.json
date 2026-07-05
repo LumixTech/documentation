@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Infra ve DevOps",
-    "description": "Üretime hazır sistemler için altyapı, teslimat, object storage ve operasyonel tasarım notları."
+    "description": "Üretime hazır sistemler için altyapı, teslimat, object storage ve operasyonel tasarım notları.",
+    "slug": "/infra-devops"
   }
 }

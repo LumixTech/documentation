@@ -219,7 +219,7 @@ Drift kaynakları:
 
 ### 4.7. Hangi sınırlar?
 
-Terraform Lumix'te **sadece infra-level**: VM provisioning + DNS + network + firewall. **OS-level config Ansible'a bırakılır** (bkz. [Ansible Basics](./ansible-basics)). K8s manifest deploy Helm + ArgoCD'ye bırakılır.
+Terraform Lumix'te **sadece infra-level**: VM provisioning + DNS + network + firewall. **OS-level config Ansible'a bırakılır** (bkz. [Ansible Basics](./02-ansible-basics.md)). K8s manifest deploy Helm + ArgoCD'ye bırakılır.
 
 Bu ayrım önemli: Terraform'un içine OS provisioning (cloud-init script vb.) gömmek mümkün ama bakım zorlaşır.
 
@@ -587,13 +587,13 @@ terraform state show 'module.cluster.hcloud_server.control_plane[0]'
 
 ## 8. Diğer konularla ilişkisi
 
-- [Ansible Basics](./ansible-basics) — Terraform sonrası OS config
-- [Customer Onboarding Pipeline](./customer-onboarding-pipeline) — uçtan uca akış
-- [K3s](../infra-devops/k3s-lightweight-k8s) — Terraform VPS hazırlar, K3s Ansible kurar
-- [Ubuntu Hardening](../infra-devops/ubuntu-server-hardening) — Terraform cloud-init ile başlatır, Ansible tamamlar
-- [License Management](./license-management) — yeni cluster + license bağlama
+- [Ansible Basics](./02-ansible-basics.md) — Terraform sonrası OS config
+- [Customer Onboarding Pipeline](./03-customer-onboarding-pipeline.md) — uçtan uca akış
+- [K3s](../infra-devops/02-k3s-lightweight-k8s.md) — Terraform VPS hazırlar, K3s Ansible kurar
+- [Ubuntu Hardening](../infra-devops/10-ubuntu-server-hardening.md) — Terraform cloud-init ile başlatır, Ansible tamamlar
+- [License Management](./04-license-management.md) — yeni cluster + license bağlama
 - [Vault](../security-compliance) — provider token'ları, SSH key listesi
-- [GitLab CI Pipelines](../21-ci-cd/gitlab-ci-pipelines) — Terraform pipeline
+- [GitLab CI Pipelines](../21-ci-cd/02-gitlab-ci-pipelines.md) — Terraform pipeline
 
 ## 9. Daha derine inmek için
 

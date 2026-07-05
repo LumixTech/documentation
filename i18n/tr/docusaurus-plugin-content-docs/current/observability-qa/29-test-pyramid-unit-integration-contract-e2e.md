@@ -121,7 +121,7 @@ choose_test_level(use_case, risk):
 - Project use case'leri E2E'ye yığılmadan test seviyelerine dağıtılmalıdır.
 - Kritik flow'larda happy path ve sad path coverage gerekir.
 - Authorization ve tenant isolation mümkün olduğunca UI altında test edilmelidir.
-- E2E testler admin, öğretmen ve veli akışlarını [Playwright E2E, RBAC UI Testleri ve Form Akışları](../frontend-architecture/playwright-e2e-rbac-ui-form-flows) sayfasındaki gibi kapsamalıdır.
+- E2E testler admin, öğretmen ve veli akışlarını [Playwright E2E, RBAC UI Testleri ve Form Akışları](../frontend-architecture/34-playwright-e2e-rbac-ui-form-flows.md) sayfasındaki gibi kapsamalıdır.
 
 ## Harici Referanslar
 

@@ -228,7 +228,7 @@ public class MarkAttendanceService {
 | Embedded Tomcat | Default seçim, K8s native (sidecar gerek yok) |
 | Jakarta EE 10 | `javax.*` → `jakarta.*` geçişi tamamlandı |
 
-Detay: [Java 25 Virtual Threads](./02-java-25-virtual-threads), [Teknoloji Kararları](../00-overview/02-technology-stack-decisions).
+Detay: [Java 25 Virtual Threads](./02-java-25-virtual-threads.md), [Teknoloji Kararları](../00-overview/02-technology-stack-decisions.md).
 
 ### 4.2. Lumix standart `application.yml`
 
@@ -602,7 +602,7 @@ dependencies {
 }
 ```
 
-> gRPC/Protobuf codegen için `com.google.protobuf` protobuf-gradle-plugin ayrıca eklenir — bkz. [gRPC Service Communication §4.3](./03-grpc-service-communication). `spring-boot-maven-plugin`'in karşılığı `org.springframework.boot` Gradle plugin'idir (`bootJar` task'ı sağlar).
+> gRPC/Protobuf codegen için `com.google.protobuf` protobuf-gradle-plugin ayrıca eklenir — bkz. [gRPC Service Communication §4.3](./03-grpc-service-communication.md). `spring-boot-maven-plugin`'in karşılığı `org.springframework.boot` Gradle plugin'idir (`bootJar` task'ı sağlar).
 
 **Application class:**
 
@@ -815,12 +815,12 @@ Spring Kafka 3.0.x, Spring Boot 3.6.x ile uyumsuz olabilir. Manual version pin y
 
 ## 8. Diğer konularla ilişkisi
 
-- [Java 25 Virtual Threads](./02-java-25-virtual-threads) — Boot'la entegrasyon
-- [gRPC Service Communication](./03-grpc-service-communication) — gRPC Spring Boot starter
-- [Validation Strategy](./04-validation-strategy) — Spring `@Valid`
-- [Error Handling RFC 7807](./05-error-handling-rfc7807) — Spring `@ControllerAdvice`
-- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture) — her servis ayrı Boot uygulaması
-- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture) — Spring annotation'ları adapter katmanında
+- [Java 25 Virtual Threads](./02-java-25-virtual-threads.md) — Boot'la entegrasyon
+- [gRPC Service Communication](./03-grpc-service-communication.md) — gRPC Spring Boot starter
+- [Validation Strategy](./04-validation-strategy.md) — Spring `@Valid`
+- [Error Handling RFC 7807](./05-error-handling-rfc7807.md) — Spring `@ControllerAdvice`
+- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture.md) — her servis ayrı Boot uygulaması
+- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture.md) — Spring annotation'ları adapter katmanında
 
 ## 9. Daha derine inmek için
 

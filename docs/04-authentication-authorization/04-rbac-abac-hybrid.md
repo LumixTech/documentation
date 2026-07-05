@@ -35,7 +35,7 @@ Lumix RBAC'a ABAC bindirir.
 - **Role** = permission'ların paketi ("hangi şapka?") — TEACHER, ADMIN, PARENT
 - **Scope** = kaynak kapsamı ("hangi veri üzerinde?") — class_ids = [11-A, 12-B]
 
-Bu sayfa **permission + role**'a (RBAC) ve **ABAC attribute**'larına odaklanır. **Scope** ayrı bir konu: [Organizational Scope Resolver](./organizational-scope-resolver).
+Bu sayfa **permission + role**'a (RBAC) ve **ABAC attribute**'larına odaklanır. **Scope** ayrı bir konu: [Organizational Scope Resolver](./05-organizational-scope-resolver.md).
 
 ## 2. Hangi problemi çözüyor?
 
@@ -212,7 +212,7 @@ TTL: 10 dakika (cache-redis)
 Value: { allowed: [...], denied: [...], computed_at: ... }
 ```
 
-Permission değişince (`role_permission` update, `user_permission` insert vs.) ilgili event ile cache invalidate. Detay: [Permission Change & Revoke Flow](./permission-change-revoke-flow).
+Permission değişince (`role_permission` update, `user_permission` insert vs.) ilgili event ile cache invalidate. Detay: [Permission Change & Revoke Flow](./06-permission-change-revoke-flow.md).
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
@@ -437,7 +437,7 @@ eventPublisher.publish(new UserPermissionChangedEvent(userId, tenantId));
 - **Permission ID'lerini string olarak elden almak (typo).** `attendance:write` vs `attendence:write` kontrolsüz geçer. **Çözüm:** code-gen ile enum üret, `PermissionIds.ATTENDANCE_WRITE` gibi.
 - **`@PreAuthorize` içine business logic koymak.** SpEL içinde kompleks DB sorgusu = bakım kabusu. **Kural:** SpEL sadece `@authz.can(...)` veya `hasRole(...)` çağırsın.
 - **Scope check'i atlayan endpoint.** Permission var ama scope yok; kullanıcı başka tenant'ın verisini görüyor. **Kural:** `can(permission, resourceId, resourceType)` her zaman scope check'i tetikler.
-- **Permission cache invalidate'i unutmak.** UI hâlâ menü gösteriyor, backend deny dönüyor → "neden çalışmıyor?". **Çözüm:** event-driven invalidation. Detay [Permission Change Flow](./permission-change-revoke-flow).
+- **Permission cache invalidate'i unutmak.** UI hâlâ menü gösteriyor, backend deny dönüyor → "neden çalışmıyor?". **Çözüm:** event-driven invalidation. Detay [Permission Change Flow](./06-permission-change-revoke-flow.md).
 - **Multi-tenant kullanıcıda yanlış tenant context.** Bölge müdürü tek tenant'lı role check ile yanlış sonuç. **Kural:** tenant_id explicit, request başında set edilir.
 - **`common_permission` yetkisi yüksek riskli action içeriyor.** `payment:refund` common'da olamaz. **Kural:** common sadece `me:*` ve read-only baseline.
 - **Decision trace yok.** "Neden deny?" sorusuna cevap zor. **Çözüm:** debug mode'da decision reason audit log'a yazılır.
@@ -445,10 +445,10 @@ eventPublisher.publish(new UserPermissionChangedEvent(userId, tenantId));
 
 ## 8. Diğer konularla ilişkisi
 
-- [Organizational Scope Resolver](./organizational-scope-resolver) — bu sayfada ABAC scope kısmının detayı
-- [Permission Change & Revoke Flow](./permission-change-revoke-flow) — cache invalidation
-- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/installation-tenant-scope) — tenant_id ve scope nereden geliyor
-- [Fully Stateful Token Modeli](./stateful-token-model) — permission JWT'de yok, /me/permissions ile çekilir
+- [Organizational Scope Resolver](./05-organizational-scope-resolver.md) — bu sayfada ABAC scope kısmının detayı
+- [Permission Change & Revoke Flow](./06-permission-change-revoke-flow.md) — cache invalidation
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — tenant_id ve scope nereden geliyor
+- [Fully Stateful Token Modeli](./01-stateful-token-model.md) — permission JWT'de yok, /me/permissions ile çekilir
 
 ## 9. Daha derine inmek için
 

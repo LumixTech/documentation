@@ -438,11 +438,11 @@ export function AttendanceBatchForm({ initialRecords, classroomId }: Props) {
 
 ## 8. Diğer konularla ilişkisi
 
-- [RTK Query](./rtk-query) — formdan submit edilen mutation
-- [Permission Cache](./frontend-permission-cache) — form action visibility
-- [i18n Stratejisi](./i18n-strategy) — error mesajları
-- [Token Storage](./frontend-token-storage) — login formu
-- [Backend: RFC 7807 Problem Details](../00-overview/02-technology-stack-decisions) — error format kararı
+- [RTK Query](./33-rtk-query.md) — formdan submit edilen mutation
+- [Permission Cache](./09-frontend-permission-cache.md) — form action visibility
+- [i18n Stratejisi](./08-i18n-strategy.md) — error mesajları
+- [Token Storage](./06-frontend-token-storage.md) — login formu
+- [Backend: RFC 7807 Problem Details](../00-overview/02-technology-stack-decisions.md) — error format kararı
 
 ## 9. Daha derine
 

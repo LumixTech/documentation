@@ -534,11 +534,11 @@ echo -n "$(echo $LIC | cut -d. -f1).$(echo $LIC | cut -d. -f2)" | \
 
 ## 8. Diğer konularla ilişkisi
 
-- [Customer Onboarding Pipeline](./customer-onboarding-pipeline) — license seed adımı
-- [Authentication](../04-authentication-authorization) — JWT (RS256) aynı algoritma; lisans için **ayrı key**
+- [Customer Onboarding Pipeline](./03-customer-onboarding-pipeline.md) — license seed adımı
+- [Authentication](../authentication-authorization) — JWT (RS256) aynı algoritma; lisans için **ayrı key**
 - [Vault](../security-compliance) — private key ve license JWT storage
 - [External Secrets Operator](../security-compliance) — Vault'tan K8s Secret sync
-- [Internal Admin Panel](../11-admin-panels) — license üretim/renew UI
+- [Internal Admin Panel](../admin-panels) — license üretim/renew UI
 - [Audit Log](../security-compliance) — license üretim/revoke event'leri
 - [Compliance](../security-compliance) — KVKK + lisans şartları ortak
 

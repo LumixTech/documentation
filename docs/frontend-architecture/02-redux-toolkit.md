@@ -15,7 +15,7 @@ Lumix'in **client state** (UI state, auth context, tenant context) yönetimi iç
 - Typed hooks (`useAppSelector`, `useAppDispatch`) ile TypeScript güvenliği
 - Server state ile client state ayrımı (Redux vs RTK Query)
 
-Bu sayfa **frontend'in client-side veri katmanını** anlatır; server state için ayrı doc var: [RTK Query](./rtk-query).
+Bu sayfa **frontend'in client-side veri katmanını** anlatır; server state için ayrı doc var: [RTK Query](./33-rtk-query.md).
 
 ## 1. Redux nedir? (Sıfırdan)
 
@@ -549,17 +549,17 @@ export function PermissionGate({
 - **Action payload'da non-serializable obje**: `Date`, `Map`, function — serializability check uyarı verir; storage/devtools kırılır. ISO string kullan.
 - **`useDispatch` typed olmayan**: Plain `useDispatch` thunk'u type-check etmez. **`useAppDispatch`** kullan.
 - **Slice'lar arası direct import**: `authSlice`'tan `tenantSlice`'a action dispatch çağırma. **`extraReducers`** ile cross-slice listen yap.
-- **Persisting yanlış slice**: `redux-persist` ile `auth.accessToken`'ı localStorage'a yazma — XSS riski. Lumix'te access token Redux'ta in-memory, refresh httpOnly cookie'de. Detay: [Token Storage](./frontend-token-storage).
+- **Persisting yanlış slice**: `redux-persist` ile `auth.accessToken`'ı localStorage'a yazma — XSS riski. Lumix'te access token Redux'ta in-memory, refresh httpOnly cookie'de. Detay: [Token Storage](./06-frontend-token-storage.md).
 - **Slice ismi çakışma**: `name: 'auth'` iki yerde olmazsa action type collision. CI gate yaz.
 
 ## 8. Diğer konularla ilişkisi
 
-- [React CSR Temelleri](./react-csr-foundation) — bu mimari Redux'tan önce
-- [RTK Query](./rtk-query) — server state Redux ile aynı store'da
-- [Token Storage](./frontend-token-storage) — auth token nasıl saklanıyor
-- [Permission Cache](./frontend-permission-cache) — permission UI rendering
+- [React CSR Temelleri](./01-react-csr-foundation.md) — bu mimari Redux'tan önce
+- [RTK Query](./33-rtk-query.md) — server state Redux ile aynı store'da
+- [Token Storage](./06-frontend-token-storage.md) — auth token nasıl saklanıyor
+- [Permission Cache](./09-frontend-permission-cache.md) — permission UI rendering
 - [FSD ve Feature Boundary](./frontend-fsd-feature-boundaries) — slice'lar FSD katmanlarına nasıl oturuyor
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — tenant slice'ı doğuran multi-tenancy modeli
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — tenant slice'ı doğuran multi-tenancy modeli
 
 ## 9. Daha derine
 

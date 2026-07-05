@@ -459,10 +459,10 @@ public class SmsQuotaService {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Notification Adapter Pattern](./notification-adapter-pattern)
-- [Email Providers](./email-providers) — parallel
-- [Push Providers](./push-providers)
-- [MJML Template Rendering](./mjml-template-rendering) — template support
+- [Notification Adapter Pattern](./01-notification-adapter-pattern.md)
+- [Email Providers](./02-email-providers.md) — parallel
+- [Push Providers](./04-push-providers.md)
+- [MJML Template Rendering](./05-mjml-template-rendering.md) — template support
 - [Compliance](../security-compliance) — KVKK + İYS
 - [Audit Log](../security-compliance/audit-log-design)
 

@@ -141,7 +141,7 @@ if data_corruption_detected:
 - Hedef planlama 15 dakika RPO ve 2 saat RTO varsayımıyla yapılmalıdır.
 - Restore drill planlı ve dokümante operasyon gereksinimi olmalıdır.
 - Backup ve restore event'leri operasyonel audit evidence ile ilişkilendirilmelidir.
-- PITR planı [Flyway Migrations ve Zero-Downtime DB Changes](./flyway-zero-downtime-migration-strategy) ile birlikte düşünülmelidir.
+- PITR planı [Flyway Migrations ve Zero-Downtime DB Changes](./14-flyway-zero-downtime-migration-strategy.md) ile birlikte düşünülmelidir.
 
 ## Harici Referanslar
 

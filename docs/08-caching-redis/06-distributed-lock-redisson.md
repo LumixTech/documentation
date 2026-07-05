@@ -56,7 +56,7 @@ Kullanıcı submit butonuna iki kez bastı → iki request paralel → iki kez p
 Cronjob "her gece 02:00'da rapor üret" → 3 replica = 3× rapor. **Leader election** = lock.
 
 ### 2.4. Cache rebuild stampede
-"Hot cache miss" durumunda 100 pod aynı anda DB'ye sorgu atar. Lock ile sadece bir tane sorgu atar, diğerleri bekler veya stale döner. Detay: [Cache-Aside Pattern](./cache-aside-pattern).
+"Hot cache miss" durumunda 100 pod aynı anda DB'ye sorgu atar. Lock ile sadece bir tane sorgu atar, diğerleri bekler veya stale döner. Detay: [Cache-Aside Pattern](./03-cache-aside-pattern.md).
 
 ### 2.5. Distributed initialization
 Pod restart sonrası "bootstrap data import" gibi tek seferlik işler. Birden çok pod aynı anda yapmamalı.
@@ -430,11 +430,11 @@ try {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Redis Temelleri](./redis-fundamentals) — Redis lock komutları
-- [Redis Sentinel Topology](./redis-sentinel-topology) — cache-redis cluster
-- [Cache-Aside Pattern](./cache-aside-pattern) — stampede protection
-- [TTL Strategy](./ttl-strategy) — lock TTL kritik
-- [Session & Device Lifecycle](../04-authentication-authorization/session-device-lifecycle) — concurrent session limit lock
+- [Redis Temelleri](./01-redis-fundamentals.md) — Redis lock komutları
+- [Redis Sentinel Topology](./02-redis-sentinel-topology.md) — cache-redis cluster
+- [Cache-Aside Pattern](./03-cache-aside-pattern.md) — stampede protection
+- [TTL Strategy](./05-ttl-strategy.md) — lock TTL kritik
+- [Session & Device Lifecycle](../04-authentication-authorization/02-session-device-lifecycle.md) — concurrent session limit lock
 - [Outbox Pattern](../event-driven-architecture) — outbox relay leader election
 - Idempotency (Payment doc) — DB-level unique constraint
 

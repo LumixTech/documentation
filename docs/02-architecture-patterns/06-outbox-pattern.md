@@ -32,7 +32,7 @@ Burada **iki ayrı sistem**e yazıyorsun: PostgreSQL + Kafka. İkisinden biri ba
 | ✓ DB başarılı, ✗ Kafka başarısız | **Sessiz veri kaybı**: yoklama alındı ama veliye haber yok |
 | ✓ DB başarılı, ✓ Kafka başarılı ama transaction sonrası işlemci crash | DB commit, Kafka send arasında race condition |
 
-Bu **dual-write problem** çözülemez — çünkü iki ayrı sistem arasında **distributed transaction** yok ([Saga Pattern](./saga-pattern) sayfasında detayı var).
+Bu **dual-write problem** çözülemez — çünkü iki ayrı sistem arasında **distributed transaction** yok ([Saga Pattern](./05-saga-pattern.md) sayfasında detayı var).
 
 **Çözüm:** Tek bir sisteme yaz (DB), oradan Kafka'ya aktarımı **ayrı bir süreç** yapsın.
 
@@ -288,7 +288,7 @@ Dezavantajları:
 - Ölçek büyüdüğünde: **Debezium**'a geçilebilir
 - Hibrit kabul: kritik düşük-latency topic'ler için Debezium, geri kalan polling
 
-Karar referans: [Teknoloji Kararları](../00-overview/02-technology-stack-decisions#5-mesajlaşma--event) — "Outbox implementation: Transactional outbox tablo + Kafka Connect Debezium veya custom relay"
+Karar referans: [Teknoloji Kararları](../00-overview/02-technology-stack-decisions.md#5-mesajlaşma--event) — "Outbox implementation: Transactional outbox tablo + Kafka Connect Debezium veya custom relay"
 
 ### 3.4. Outbox akış diyagramı
 
@@ -441,7 +441,7 @@ if (processedEventRepo.existsByEventId(eventId)) {
 processedEventRepo.save(new ProcessedEvent(eventId, Instant.now()));
 ```
 
-Detay: [Event-Driven Architecture — Idempotency](./event-driven-architecture#34-at-least-once-delivery-ve-idempotency).
+Detay: [Event-Driven Architecture — Idempotency](./04-event-driven-architecture.md#34-at-least-once-delivery-ve-idempotency).
 
 ## 5. Neden bu seçildi? (Alternatifler ve trade-off)
 
@@ -827,11 +827,11 @@ Event schema değişti, payload format eskidi. Relay eski payload'ları publish 
 
 ## 8. Diğer konularla ilişkisi
 
-- [Event-Driven Architecture](./event-driven-architecture) — outbox'ın çözdüğü problem EDA'nın temel sorunu
-- [Microservices Architecture](./microservices-architecture) — DB-per-service ile outbox tek tablo per service
-- [Saga Pattern](./saga-pattern) — saga'nın event yayını outbox'tan geçer
-- [Hexagonal Architecture](./hexagonal-architecture) — `OutboxEventPublisher` outbound port örneği
-- [Domain-Driven Design](./domain-driven-design) — domain event'lerin outbox'a yazılması
+- [Event-Driven Architecture](./04-event-driven-architecture.md) — outbox'ın çözdüğü problem EDA'nın temel sorunu
+- [Microservices Architecture](./01-microservices-architecture.md) — DB-per-service ile outbox tek tablo per service
+- [Saga Pattern](./05-saga-pattern.md) — saga'nın event yayını outbox'tan geçer
+- [Hexagonal Architecture](./03-hexagonal-architecture.md) — `OutboxEventPublisher` outbound port örneği
+- [Domain-Driven Design](./02-domain-driven-design.md) — domain event'lerin outbox'a yazılması
 
 ## 9. Daha derine inmek için
 

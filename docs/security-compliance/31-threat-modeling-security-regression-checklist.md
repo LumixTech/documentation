@@ -137,7 +137,7 @@ threat_model(use_case):
 - Login, chat, and payment are initial required mini threat models.
 - Security risks should be found at design level, not only code review.
 - Regression checklist items should become tests or review gates where practical.
-- Payment, permission, and sensitive chat actions should connect to [Audit Log Design](./audit-log-design).
+- Payment, permission, and sensitive chat actions should connect to [Audit Log Design](./05-audit-log-design.md).
 
 ## External References
 

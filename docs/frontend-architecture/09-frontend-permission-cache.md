@@ -16,7 +16,7 @@ Lumix'te bir kullanıcının **ne yapabileceği** (permission) ve **ne kadarın�
 - Sidebar/menu rendering — gizli butonlar
 - Backend nihai otorite (frontend rendering güvenlik DEĞİL)
 
-Bu sayfa **[Hibrit Authorization Model](../security-compliance/hybrid-rbac-abac-authorization)** doc'unun frontend ayağıdır.
+Bu sayfa **[Hibrit Authorization Model](../04-authentication-authorization/04-rbac-abac-hybrid.md)** doc'unun frontend ayağıdır.
 
 ## 1. Permission ve scope (Sıfırdan)
 
@@ -27,7 +27,7 @@ Bu sayfa **[Hibrit Authorization Model](../security-compliance/hybrid-rbac-abac-
 
 İkisi birlikte: Hüseyin'in `attendance:write` permission'ı + scope'u `class_ids=[11-A,12-B]` = "Yoklama alabilir AMA sadece bu iki sınıfta."
 
-Detaylı backend modeli: [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope), [Hibrit Authorization](../security-compliance/hybrid-rbac-abac-authorization).
+Detaylı backend modeli: [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md), [Hibrit Authorization](../04-authentication-authorization/04-rbac-abac-hybrid.md).
 
 ### Günlük hayattan analoji
 
@@ -374,13 +374,13 @@ export function UpdateUserPermissionsForm({ userId }: { userId: string }) {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Hibrit Authorization (RBAC + ABAC)](../security-compliance/hybrid-rbac-abac-authorization) — backend model
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — scope hiyerarşisi
-- [Stateful Token Modeli](../security-compliance/auth-jwt-refresh-flow) — permission değişince token revoke
-- [Redux Toolkit](./redux-toolkit) — authSlice
-- [RTK Query](./rtk-query) — tag invalidation
-- [Token Storage](./frontend-token-storage) — `/me` çağrısı
-- [WebSocket Backplane](../00-overview/02-technology-stack-decisions) — Redis Pub/Sub multi-pod
+- [Hibrit Authorization (RBAC + ABAC)](../04-authentication-authorization/04-rbac-abac-hybrid.md) — backend model
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — scope hiyerarşisi
+- [Stateful Token Modeli](../04-authentication-authorization/01-stateful-token-model.md) — permission değişince token revoke
+- [Redux Toolkit](./02-redux-toolkit.md) — authSlice
+- [RTK Query](./33-rtk-query.md) — tag invalidation
+- [Token Storage](./06-frontend-token-storage.md) — `/me` çağrısı
+- [WebSocket Backplane](../00-overview/02-technology-stack-decisions.md) — Redis Pub/Sub multi-pod
 
 ## 9. Daha derine
 

@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix'in **müşteri başına izole K8s cluster** kararı operasyonel olarak şu soruyu doğurur: "Şimdi 30 cluster'ı **nasıl** yöneteceğim?" Cevap: **Rancher Manager**. Bu sayfa Rancher'ı sıfırdan anlatır, "downstream cluster" kavramını netleştirir, Lumix'in **müşteri = downstream cluster** modelini gösterir, cluster import vs provision ayrımını açıklar, Fleet GitOps + ArgoCD ilişkisini netleştirir, RBAC modelini ve System Upgrade Controller kullanımını detaylandırır. Hedef kitle: K8s ve Helm temellerini bilen ([Kubernetes Temelleri](./kubernetes-fundamentals), [Helm Charts](./helm-charts)) ekip lideri / DevOps.
+Lumix'in **müşteri başına izole K8s cluster** kararı operasyonel olarak şu soruyu doğurur: "Şimdi 30 cluster'ı **nasıl** yöneteceğim?" Cevap: **Rancher Manager**. Bu sayfa Rancher'ı sıfırdan anlatır, "downstream cluster" kavramını netleştirir, Lumix'in **müşteri = downstream cluster** modelini gösterir, cluster import vs provision ayrımını açıklar, Fleet GitOps + ArgoCD ilişkisini netleştirir, RBAC modelini ve System Upgrade Controller kullanımını detaylandırır. Hedef kitle: K8s ve Helm temellerini bilen ([Kubernetes Temelleri](./01-kubernetes-fundamentals.md), [Helm Charts](./03-helm-charts.md)) ekip lideri / DevOps.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -96,7 +96,7 @@ Agent'lar Rancher'a **outbound websocket tunnel** açar — Rancher müşteri cl
 **(b) Provision new cluster**:
 - Rancher provider integration (vSphere, EC2, DigitalOcean, custom).
 - Rancher SSH/cloud-init ile node hazırlar, K3s/RKE2 kurar.
-- Lumix bu yolu **kullanmaz** çünkü Lumix kendi Terraform+Ansible pipeline'ına sahiptir (bkz. [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline)).
+- Lumix bu yolu **kullanmaz** çünkü Lumix kendi Terraform+Ansible pipeline'ına sahiptir (bkz. [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md)).
 
 ### 3.3. Fleet (GitOps multi-cluster)
 
@@ -192,7 +192,7 @@ Lumix kendi cluster template'ini yayınlar: K3s versiyonu, addon listesi (Calico
 7. Hazır
 ```
 
-Detay: [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline).
+Detay: [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md).
 
 ### 4.3. Cluster naming convention
 
@@ -234,7 +234,7 @@ Rancher kendi audit log'unu üretir; ayrıca downstream K3s'in audit log'una (`/
 Rancher otomatik **internal CA rotation** sunar. Lumix politikası:
 - Internal CA: 5 yıl
 - Cluster cert: 1 yıl, 60 gün öncesinden auto-rotate
-- cert-manager ile mTLS sertifikaları ayrı yönetilir ([cert-manager](./cert-manager-tls)).
+- cert-manager ile mTLS sertifikaları ayrı yönetilir ([cert-manager](./08-cert-manager-tls.md)).
 
 ### 4.7. Backup
 
@@ -446,14 +446,14 @@ kubectl get backups.resources.cattle.io
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — cluster yapısı
-- [K3s](./k3s-lightweight-k8s) — downstream cluster dağıtımı
-- [Helm Charts](./helm-charts) — Rancher chart deploy
-- [ArgoCD GitOps](../21-ci-cd/argocd-gitops) — application GitOps (Fleet ile sınır)
-- [cert-manager TLS](./cert-manager-tls) — Rancher TLS sertifikası
-- [Velero Backup](./velero-backup) — downstream cluster backup
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — Rancher import adımı
-- [License Management](../20-iac-provisioning/license-management) — yeni cluster + lisans birleştirme
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — cluster yapısı
+- [K3s](./02-k3s-lightweight-k8s.md) — downstream cluster dağıtımı
+- [Helm Charts](./03-helm-charts.md) — Rancher chart deploy
+- [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md) — application GitOps (Fleet ile sınır)
+- [cert-manager TLS](./08-cert-manager-tls.md) — Rancher TLS sertifikası
+- [Velero Backup](./09-velero-backup.md) — downstream cluster backup
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — Rancher import adımı
+- [License Management](../20-iac-provisioning/04-license-management.md) — yeni cluster + lisans birleştirme
 
 ## 9. Daha derine inmek için
 

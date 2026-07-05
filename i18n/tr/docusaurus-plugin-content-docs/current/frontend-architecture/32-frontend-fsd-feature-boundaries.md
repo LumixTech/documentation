@@ -114,7 +114,7 @@ src/
 - Generic reusable parçalar `shared` içinde kalsın.
 - Sibling feature'lar birbirini import etmesin.
 - Slice'lar için public API (`index.ts`) kullan.
-- Server state stratejisini [TanStack Query: Auth, Cache, Invalidation ve Optimistic UI](./tanstack-query-auth-cache-invalidation-optimistic-ui) ile hizala.
+- Server state stratejisini [TanStack Query: Auth, Cache, Invalidation ve Optimistic UI](./33-tanstack-query-auth-cache-invalidation-optimistic-ui.md) ile hizala.
 
 ## Pseudocode / Karar Akışı / Yaşam Döngüsü / Politika Örneği
 

@@ -265,7 +265,7 @@ Repository save ederken bu event'ler:
 1. Aynı transaction'da **outbox** tablosuna yazılır
 2. Outbox Relay tarafından Kafka'ya yayılır (integration event olarak)
 
-Detay: [Event-Driven Architecture](./event-driven-architecture), [Outbox Pattern](./outbox-pattern).
+Detay: [Event-Driven Architecture](./04-event-driven-architecture.md), [Outbox Pattern](./06-outbox-pattern.md).
 
 ### 3.6. Repository ve Domain Service
 
@@ -304,7 +304,7 @@ Lumix DDD'yi **hem stratejik hem taktik seviyede** uyguluyor:
 - Her microservice = bir bounded context (10 ana servis + 2 cross-cutting)
 - Aynı kavram (User, Student, Class) farklı servislerde farklı model olabilir
 - Servisler arası iletişim sözleşmeli (gRPC + Kafka event Protobuf)
-- Context map [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview) sayfasında
+- Context map [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) sayfasında
 
 **Taktik:**
 - Her servis `domain/`, `application/`, `adapter/` katmanları kullanır (Hexagonal Architecture)
@@ -804,16 +804,16 @@ Aggregate Spring annotation'larıyla dolu, business kural Spring lifecycle'a ba�
 
 **Tuzak 10 — Ubiquitous language'i atlamak.**
 Geliştirici "isteğin durumu" der ama domain expert "talep durumu" der. Kodda `request.state`, dokümanda `talep durumu`. Kafa karışıklığı sürekli.
-**Önleme:** Sözlüğü ([Glossary](../glossary/00-glossary)) güncel tut, kod review'da terim tutarlılığı denetlensin.
+**Önleme:** Sözlüğü ([Glossary](../glossary/glossary)) güncel tut, kod review'da terim tutarlılığı denetlensin.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Microservices Architecture](./microservices-architecture) — bounded context ≈ microservice
-- [Hexagonal Architecture](./hexagonal-architecture) — domain/application/adapter katmanları
-- [Event-Driven Architecture](./event-driven-architecture) — domain event'ten integration event'e
-- [Outbox Pattern](./outbox-pattern) — domain event'lerin atomic publish'i
-- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview) — Lumix'in 10 bounded context'i
-- [Validation Strategy](../03-backend/04-validation-strategy) — invariant nerede kontrol edilir
+- [Microservices Architecture](./01-microservices-architecture.md) — bounded context ≈ microservice
+- [Hexagonal Architecture](./03-hexagonal-architecture.md) — domain/application/adapter katmanları
+- [Event-Driven Architecture](./04-event-driven-architecture.md) — domain event'ten integration event'e
+- [Outbox Pattern](./06-outbox-pattern.md) — domain event'lerin atomic publish'i
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — Lumix'in 10 bounded context'i
+- [Validation Strategy](../03-backend/04-validation-strategy.md) — invariant nerede kontrol edilir
 
 ## 9. Daha derine inmek için
 

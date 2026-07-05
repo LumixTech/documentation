@@ -370,12 +370,12 @@ public class S3ClientConfig {
 
 ## 8. Diğer konularla ilişkisi
 
-- [RustFS Self-Hosted Object Storage](./rustfs-self-hosted) — Lumix'in spesifik storage seçimi
-- [Pre-signed URL Akışı](./presigned-urls) — direct upload/download mekaniği
-- [Lifecycle Policy](./lifecycle-policies) — retention + cost control
-- [ClamAV Virus Scanning](./clamav-virus-scanning) — yüklenen dosyanın güvenlik kontrolü
-- [Domain Servisleri](../01-tenancy-and-domain-model/domain-services-overview) — `file-service`'in sorumluluğu
-- [Genel Mimari](../00-overview/overall-architecture) — RustFS sistem haritasında nerede
+- [RustFS Self-Hosted Object Storage](./02-rustfs-self-hosted.md) — Lumix'in spesifik storage seçimi
+- [Pre-signed URL Akışı](./03-presigned-urls.md) — direct upload/download mekaniği
+- [Lifecycle Policy](./04-lifecycle-policies.md) — retention + cost control
+- [ClamAV Virus Scanning](./05-clamav-virus-scanning.md) — yüklenen dosyanın güvenlik kontrolü
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — `file-service`'in sorumluluğu
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — RustFS sistem haritasında nerede
 
 ## 9. Daha derine inmek için
 

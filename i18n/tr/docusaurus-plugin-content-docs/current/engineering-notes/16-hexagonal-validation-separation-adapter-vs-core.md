@@ -1,4 +1,4 @@
-﻿---
+---
 title: Hexagonal Validation Ayrımı (Adapter vs Core)
 description: "Hexagonal Architecture'da validation sorumluluğu: adapter seviyesinde input validation, core seviyesinde business invariant kontrolü."
 sidebar_position: 3

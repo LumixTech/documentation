@@ -26,7 +26,7 @@ Yani cache **kendi kendine veri yüklemez**, uygulama yükler ("aside" = "yanın
 - **Write-through:** Yazma da cache üzerinden geçer.
 - **Write-behind:** Cache'e yaz, async DB'ye yaz.
 
-Lumix **cache-aside** + **explicit invalidation** kombinasyonu kullanır. Detay: [Cache Invalidation](./cache-invalidation).
+Lumix **cache-aside** + **explicit invalidation** kombinasyonu kullanır. Detay: [Cache Invalidation](./04-cache-invalidation.md).
 
 ### Günlük analoji
 
@@ -123,7 +123,7 @@ T=0+1ms  1000 paralel DB sorgusu → DB diz çöker
 - **Distributed lock** (ilk istek lock'lar, diğerleri bekler veya stale döner)
 - **Request coalescing** (in-memory dedup)
 
-Lumix yaklaşımı: hot key'ler için **distributed lock** (Redisson) + stampede protection. Detay [Distributed Lock](./distributed-lock-redisson).
+Lumix yaklaşımı: hot key'ler için **distributed lock** (Redisson) + stampede protection. Detay [Distributed Lock](./06-distributed-lock-redisson.md).
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
@@ -408,12 +408,12 @@ Hit ratio formülü: `hits / (hits + misses) = 52341 / 55628 ≈ 0.94`. Yüksek.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Redis Temelleri](./redis-fundamentals) — Redis temelleri
-- [Redis Sentinel Topology](./redis-sentinel-topology) — cache-redis cluster
-- [Cache Invalidation](./cache-invalidation) — event-driven invalidation
-- [TTL Strategy](./ttl-strategy) — TTL kararı
-- [Distributed Lock — Redisson](./distributed-lock-redisson) — stampede protection
-- [Permission Change & Revoke Flow](../04-authentication-authorization/permission-change-revoke-flow) — permission cache invalidation
+- [Redis Temelleri](./01-redis-fundamentals.md) — Redis temelleri
+- [Redis Sentinel Topology](./02-redis-sentinel-topology.md) — cache-redis cluster
+- [Cache Invalidation](./04-cache-invalidation.md) — event-driven invalidation
+- [TTL Strategy](./05-ttl-strategy.md) — TTL kararı
+- [Distributed Lock — Redisson](./06-distributed-lock-redisson.md) — stampede protection
+- [Permission Change & Revoke Flow](../04-authentication-authorization/06-permission-change-revoke-flow.md) — permission cache invalidation
 
 ## 9. Daha derine inmek için
 

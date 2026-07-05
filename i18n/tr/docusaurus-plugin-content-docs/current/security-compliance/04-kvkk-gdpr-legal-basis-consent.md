@@ -1,4 +1,4 @@
-﻿---
+---
 title: KVKK ve GDPR Temelleri - Legal Basis ve Consent
 description: Veri işleme amacı odaklı hukuki dayanak modellemesi ve explicit consent sınırları.
 sidebar_position: 4
@@ -69,7 +69,7 @@ can_process(operation):
 
 - Tek bir global consent flag kullanılmayacak.
 - İşleme-amacı ve hukuki-dayanak matrisi ürün akışına bağlanacak.
-- Uyum olayları [Audit Log Tasarımı](./audit-log-design) ve [Retention, Anonymization ve DSAR Akışı](./retention-anonymization-dsar) ile entegre olacak.
+- Uyum olayları [Audit Log Tasarımı](./05-audit-log-design.md) ve [Retention, Anonymization ve DSAR Akışı](./06-retention-anonymization-dsar.md) ile entegre olacak.
 
 ## Sözlük
 

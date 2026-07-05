@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Infra ve Kubernetes (K3s + Rancher + Traefik + Kong)",
-    "description": "Kubernetes temelleri, K3s self-host, Helm chart yönetimi, Rancher multi-cluster, Traefik ingress, Kong API gateway, ModSecurity WAF, cert-manager, Velero backup, Ubuntu hardening, NetworkPolicy + mTLS."
+    "description": "Kubernetes temelleri, K3s self-host, Helm chart yönetimi, Rancher multi-cluster, Traefik ingress, Kong API gateway, ModSecurity WAF, cert-manager, Velero backup, Ubuntu hardening, NetworkPolicy + mTLS.",
+    "slug": "/infra-devops"
   }
 }

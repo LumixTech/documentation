@@ -527,13 +527,13 @@ curl -fs https://gitlab-staging.lumix.io/-/health
 
 ## 8. Diğer konularla ilişkisi
 
-- [GitLab CI Pipelines](./gitlab-ci-pipelines) — `.gitlab-ci.yml` yazımı
-- [Trivy Image Scanning](./trivy-image-scanning) — CI içinde scan
-- [ArgoCD GitOps](./argocd-gitops) — Git repo source of truth
-- [Helm Versioning](./helm-versioning) — Helm chart registry GitLab'ta
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — GitLab CI ile orkestrasyon
-- [Authentication](../04-authentication-authorization) — Keycloak SSO
-- [Velero Backup](../infra-devops/velero-backup) — GitLab cluster backup
+- [GitLab CI Pipelines](./02-gitlab-ci-pipelines.md) — `.gitlab-ci.yml` yazımı
+- [Trivy Image Scanning](./03-trivy-image-scanning.md) — CI içinde scan
+- [ArgoCD GitOps](./04-argocd-gitops.md) — Git repo source of truth
+- [Helm Versioning](./05-helm-versioning.md) — Helm chart registry GitLab'ta
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — GitLab CI ile orkestrasyon
+- [Authentication](../authentication-authorization) — Keycloak SSO
+- [Velero Backup](../infra-devops/09-velero-backup.md) — GitLab cluster backup
 
 ## 9. Daha derine inmek için
 

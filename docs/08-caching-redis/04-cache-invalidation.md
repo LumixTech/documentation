@@ -54,7 +54,7 @@ academic-service öğrenci güncelledi; finance-service'in elindeki cache de bay
 Cache ve DB arasında uzun süreli tutarsızlık. TTL ile en kötü dakikalar içinde düzelse de explicit invalidation daha hızlı.
 
 ### 2.5. Permission/scope güvenlik kritik invalidation
-Permission değişimi cache'de 10dk daha eskiyi yansıtırsa **güvenlik açığı**. Anlık invalidation şart. Detay: [Permission Change & Revoke Flow](../04-authentication-authorization/permission-change-revoke-flow).
+Permission değişimi cache'de 10dk daha eskiyi yansıtırsa **güvenlik açığı**. Anlık invalidation şart. Detay: [Permission Change & Revoke Flow](../04-authentication-authorization/06-permission-change-revoke-flow.md).
 
 ## 3. Nasıl çözüyor? (Mekanizma + diyagram)
 
@@ -151,7 +151,7 @@ Permission değişti →
         - WebSocket force-logout
 ```
 
-Detay: [Permission Change & Revoke Flow](../04-authentication-authorization/permission-change-revoke-flow).
+Detay: [Permission Change & Revoke Flow](../04-authentication-authorization/06-permission-change-revoke-flow.md).
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
@@ -428,10 +428,10 @@ public class IdempotentInvalidator {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Cache-Aside Pattern](./cache-aside-pattern) — invalidation'ın diğer yarısı
-- [TTL Strategy](./ttl-strategy) — TTL safety net
-- [Distributed Lock — Redisson](./distributed-lock-redisson) — stampede protection
-- [Permission Change & Revoke Flow](../04-authentication-authorization/permission-change-revoke-flow) — kritik invalidation örneği
+- [Cache-Aside Pattern](./03-cache-aside-pattern.md) — invalidation'ın diğer yarısı
+- [TTL Strategy](./05-ttl-strategy.md) — TTL safety net
+- [Distributed Lock — Redisson](./06-distributed-lock-redisson.md) — stampede protection
+- [Permission Change & Revoke Flow](../04-authentication-authorization/06-permission-change-revoke-flow.md) — kritik invalidation örneği
 - [Outbox Pattern](../event-driven-architecture) — DB write + Kafka publish atomicity
 - [Schema Registry (Apicurio)](../event-driven-architecture) — event schema versioning
 

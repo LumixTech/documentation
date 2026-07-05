@@ -103,7 +103,7 @@ record_audit(event):
 - `AUDIT_LOGS` is required for sensitive domains including payment, health, counseling/PDR, and permission administration.
 - We will log both successful and denied actions where security decisions matter.
 - Permission change events must include previous and new values for `allow`/`deny` semantics where legally permissible.
-- Audit design must integrate with [Retention, Anonymization, and DSAR Flow](./retention-anonymization-dsar).
+- Audit design must integrate with [Retention, Anonymization, and DSAR Flow](./06-retention-anonymization-dsar.md).
 
 ## Glossary
 

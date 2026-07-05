@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Sözlük",
-    "description": "Lumix dökümantasyonunda kullanılan tüm teknik terimlerin standart tanımları."
+    "description": "Lumix dökümantasyonunda kullanılan tüm teknik terimlerin standart tanımları.",
+    "slug": "/glossary"
   }
 }

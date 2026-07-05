@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Bu sayfa ne anlatıyor?
 
-Yeni bir müşteri "Ömer Okulları" Lumix satın aldığında: VPS sipariş, OS kurulum, K3s cluster, Rancher import, application deploy, müşteri seed (Keycloak realm, Vault path, Kafka topic, ilk admin user), lisans aktivasyonu — hepsi tek pipeline. Bu sayfa **4 katmanlı orkestrasyon**'u (Terraform → Ansible OS → ArgoCD App → Ansible Seed) detaylandırır, GitLab CI pipeline yapısını gösterir, **idempotent** + **resumable** + **observable** olma şartlarını açıklar, hata senaryolarını ve **rollback** stratejisini tarif eder. Hedef kitle: Terraform ve Ansible temellerini bilen ([Terraform Basics](./terraform-basics), [Ansible Basics](./ansible-basics)) ekip lideri / DevOps. Bu sayfa tüm IaC + CI/CD bileşenlerinin uçtan uca buluştuğu sayfadır.
+Yeni bir müşteri "Ömer Okulları" Lumix satın aldığında: VPS sipariş, OS kurulum, K3s cluster, Rancher import, application deploy, müşteri seed (Keycloak realm, Vault path, Kafka topic, ilk admin user), lisans aktivasyonu — hepsi tek pipeline. Bu sayfa **4 katmanlı orkestrasyon**'u (Terraform → Ansible OS → ArgoCD App → Ansible Seed) detaylandırır, GitLab CI pipeline yapısını gösterir, **idempotent** + **resumable** + **observable** olma şartlarını açıklar, hata senaryolarını ve **rollback** stratejisini tarif eder. Hedef kitle: Terraform ve Ansible temellerini bilen ([Terraform Basics](./01-terraform-basics.md), [Ansible Basics](./02-ansible-basics.md)) ekip lideri / DevOps. Bu sayfa tüm IaC + CI/CD bileşenlerinin uçtan uca buluştuğu sayfadır.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -676,14 +676,14 @@ echo "Smoke test PASS for ${CUSTOMER_ID}"
 
 ## 8. Diğer konularla ilişkisi
 
-- [Terraform Basics](./terraform-basics) — Layer 1
-- [Ansible Basics](./ansible-basics) — Layer 2 ve Layer 4
-- [License Management](./license-management) — Layer 4 license seed
-- [K3s](../infra-devops/k3s-lightweight-k8s) — Layer 2 K3s install
-- [Rancher Multi-Cluster](../infra-devops/rancher-multi-cluster) — cluster import
-- [ArgoCD GitOps](../21-ci-cd/argocd-gitops) — Layer 3 application
-- [GitLab CI Pipelines](../21-ci-cd/gitlab-ci-pipelines) — CI orchestration
-- [Velero Backup](../infra-devops/velero-backup) — Layer 2 addon olarak Velero kurulur
+- [Terraform Basics](./01-terraform-basics.md) — Layer 1
+- [Ansible Basics](./02-ansible-basics.md) — Layer 2 ve Layer 4
+- [License Management](./04-license-management.md) — Layer 4 license seed
+- [K3s](../infra-devops/02-k3s-lightweight-k8s.md) — Layer 2 K3s install
+- [Rancher Multi-Cluster](../infra-devops/04-rancher-multi-cluster.md) — cluster import
+- [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md) — Layer 3 application
+- [GitLab CI Pipelines](../21-ci-cd/02-gitlab-ci-pipelines.md) — CI orchestration
+- [Velero Backup](../infra-devops/09-velero-backup.md) — Layer 2 addon olarak Velero kurulur
 
 ## 9. Daha derine inmek için
 

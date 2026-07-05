@@ -25,9 +25,7 @@ const config: Config = {
   organizationName: 'LumixTech', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.
 
-  // 'warn': kırık linkler build'i patlatmaz, sadece uyarır (site deploy olur, kırık link tıklanınca 404).
-  // Linkler düzeltilince tekrar 'throw'a çekilmeli.
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

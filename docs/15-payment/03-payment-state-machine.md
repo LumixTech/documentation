@@ -546,13 +546,13 @@ public class PaymentInitiationUseCase {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Payment Adapter Pattern](./payment-adapter-pattern) — kime soruyoruz
-- [Bank Virtual POS](./bank-virtual-pos-routing) — VPOS detayı
-- [Refund Handling](./refund-handling) — refund kuralları
-- [Workflow Temporal](../22-workflow-temporal) — saga orchestration
-- [Outbox Pattern](../engineering-notes/dlq-and-outbox-pattern-event-processing-retry-and-error-handling)
+- [Payment Adapter Pattern](./01-payment-adapter-pattern.md) — kime soruyoruz
+- [Bank Virtual POS](./02-bank-virtual-pos-routing.md) — VPOS detayı
+- [Refund Handling](./04-refund-handling.md) — refund kuralları
+- [Workflow Temporal](../workflow-temporal) — saga orchestration
+- [Outbox Pattern](../02-architecture-patterns/06-outbox-pattern.md)
 - [Audit Log](../security-compliance/audit-log-design)
-- [Domain Servisleri](../01-tenancy-and-domain-model/domain-services-overview) — finance-service detay
+- [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md) — finance-service detay
 
 ## 9. Daha derine inmek için
 

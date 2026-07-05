@@ -457,10 +457,10 @@ public ResponseEntity<Void> logout(@CookieValue(name = "refresh_token", required
 
 ## 8. Diğer konularla ilişkisi
 
-- [Fully Stateful Token Modeli](./stateful-token-model) — token formatları ve refresh akışı
-- [Session & Device Lifecycle](./session-device-lifecycle) — refresh token Redis tarafı
-- [Keycloak Entegrasyonu](./keycloak-integration) — Keycloak akışında da aynı cookie modeli
-- [Permission Change & Revoke Flow](./permission-change-revoke-flow) — force logout sırasında cookie clear
+- [Fully Stateful Token Modeli](./01-stateful-token-model.md) — token formatları ve refresh akışı
+- [Session & Device Lifecycle](./02-session-device-lifecycle.md) — refresh token Redis tarafı
+- [Keycloak Entegrasyonu](./03-keycloak-integration.md) — Keycloak akışında da aynı cookie modeli
+- [Permission Change & Revoke Flow](./06-permission-change-revoke-flow.md) — force logout sırasında cookie clear
 
 ## 9. Daha derine inmek için
 

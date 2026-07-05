@@ -4,6 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "Frontend Mobile (React Native)",
-    "description": "React Native temelleri, web ile kod paylaşımı (Redux Toolkit + RTK Query), push notification, App Store + Google Play dağıtım."
+    "description": "React Native temelleri, web ile kod paylaşımı (Redux Toolkit + RTK Query), push notification, App Store + Google Play dağıtım.",
+    "slug": "/frontend-mobile"
   }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Read / Write Replica Kuralları
 description: read replica ve write primary arasında kural tabanlı yönlendirme ve tutarlılık yönetimi.
 sidebar_position: 4

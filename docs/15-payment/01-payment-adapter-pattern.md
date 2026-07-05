@@ -512,11 +512,11 @@ public class PaymentInitiationUseCase {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Bank Virtual POS Routing](./bank-virtual-pos-routing) — Türkiye banka VPOS detayı
-- [Payment State Machine](./payment-state-machine) — Pending → Authorized → Captured akışı
-- [Refund Handling](./refund-handling) — İade kuralları
-- [Hexagonal Architecture](../02-architecture-patterns) — port + adapter prensibi
-- [Notification](../16-notification) — adapter pattern aynı mantık
+- [Bank Virtual POS Routing](./02-bank-virtual-pos-routing.md) — Türkiye banka VPOS detayı
+- [Payment State Machine](./03-payment-state-machine.md) — Pending → Authorized → Captured akışı
+- [Refund Handling](./04-refund-handling.md) — İade kuralları
+- [Hexagonal Architecture](../architecture-patterns) — port + adapter prensibi
+- [Notification](../notification) — adapter pattern aynı mantık
 - [Audit Log](../security-compliance/audit-log-design) — payment audit
 
 ## 9. Daha derine inmek için

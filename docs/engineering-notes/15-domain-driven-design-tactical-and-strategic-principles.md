@@ -6,7 +6,7 @@ draft: true
 ---
 
 :::warning Bu sayfa arşivlendi
-Güncel sayfa: **[02 · Mimari Patterns → Domain-Driven Design](../02-architecture-patterns/domain-driven-design)**
+Güncel sayfa: **[02 · Mimari Patterns → Domain-Driven Design](../02-architecture-patterns/02-domain-driven-design.md)**
 
 Bu eski sürüm referans olarak repository'de kalıyor; yeni kararlar (microservice mimarisi, Türkçe + 10 başlıklı şablon) burada yansımıyor.
 :::

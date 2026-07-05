@@ -231,7 +231,7 @@ Detay business kontrol DB değil domain'de.
 | Domain invariant | `IllegalStateException`/custom | **409 Conflict** veya **422** | `FAILED_PRECONDITION` |
 | DB constraint | `DataIntegrityViolationException` | **409 Conflict** | `ALREADY_EXISTS` / `FAILED_PRECONDITION` |
 
-Detay: [Error Handling RFC 7807](./05-error-handling-rfc7807).
+Detay: [Error Handling RFC 7807](./05-error-handling-rfc7807.md).
 
 ## 4. Biz projemizde nasıl kullanıyoruz?
 
@@ -757,11 +757,11 @@ REST'te `@Valid` ama gRPC'de manuel kontrol yok. gRPC çağrıları validate edi
 
 ## 8. Diğer konularla ilişkisi
 
-- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture) — validation katmanları hexagonal yapıya denk
-- [Domain-Driven Design](../02-architecture-patterns/02-domain-driven-design) — invariant aggregate'in temel kavramı
-- [Error Handling RFC 7807](./05-error-handling-rfc7807) — validation hatalarının HTTP'ye çevrilmesi
-- [gRPC Service Communication](./03-grpc-service-communication) — gRPC input validation
-- [Spring Boot Foundation](./01-spring-boot-foundation) — `@Valid` Spring entegrasyonu
+- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture.md) — validation katmanları hexagonal yapıya denk
+- [Domain-Driven Design](../02-architecture-patterns/02-domain-driven-design.md) — invariant aggregate'in temel kavramı
+- [Error Handling RFC 7807](./05-error-handling-rfc7807.md) — validation hatalarının HTTP'ye çevrilmesi
+- [gRPC Service Communication](./03-grpc-service-communication.md) — gRPC input validation
+- [Spring Boot Foundation](./01-spring-boot-foundation.md) — `@Valid` Spring entegrasyonu
 
 ## 9. Daha derine inmek için
 

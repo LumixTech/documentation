@@ -459,12 +459,12 @@ class MessageSearchIT {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Elasticsearch Temelleri](./elasticsearch-fundamentals)
-- [Indexing Stratejisi](./indexing-strategy) — projection sağlanması
-- [Hexagonal Architecture](../02-architecture-patterns) — port + adapter ayrımı
-- [Multi-tenancy](../01-tenancy-and-domain-model/installation-tenant-scope) — tenant scope enforcement
-- [Backend (gRPC)](../03-backend) — domain spesifik integration
-- [Authentication](../04-authentication-authorization) — `@PreAuthorize`
+- [Elasticsearch Temelleri](./01-elasticsearch-fundamentals.md)
+- [Indexing Stratejisi](./02-indexing-strategy.md) — projection sağlanması
+- [Hexagonal Architecture](../architecture-patterns) — port + adapter ayrımı
+- [Multi-tenancy](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — tenant scope enforcement
+- [Backend (gRPC)](../backend) — domain spesifik integration
+- [Authentication](../authentication-authorization) — `@PreAuthorize`
 
 ## 9. Daha derine inmek için
 

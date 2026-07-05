@@ -87,7 +87,7 @@ can_process(personal_data_operation):
 - We will not model compliance with a single generic consent flag.
 - We will maintain a processing-purpose and legal-basis matrix and connect it to product flows.
 - Consent logic will be purpose-scoped and auditable.
-- Compliance events should integrate with [Audit Log Design](./audit-log-design) and [Retention, Anonymization, and DSAR Flow](./retention-anonymization-dsar).
+- Compliance events should integrate with [Audit Log Design](./05-audit-log-design.md) and [Retention, Anonymization, and DSAR Flow](./06-retention-anonymization-dsar.md).
 
 ## Glossary
 

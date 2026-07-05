@@ -139,11 +139,11 @@ Lumix'te Helm chart'lar zaten var; Tilt onları local'de kullanır (production'l
 
 ### 4.1. Local cluster: `k3d` (kararımız)
 
-Lumix lokal K8s cluster'ı olarak **k3d** kullanır. k3d, prod'da koştuğumuz [K3s](../infra-devops/k3s-lightweight-k8s)'i Docker container'larında çalıştırır — yani **prod ile aynı dağıtım**. Alternatif olan `kind` ise *vanilla (upstream)* Kubernetes çalıştırır; prod'umuz K3s olduğu için kind parity sağlamaz (farklı ingress/storage/CNI defaultları). Bu yüzden varsayılan **k3d**'dir; `kind` yalnızca "manifest'ler upstream K8s'te de çalışıyor mu" doğrulaması için opsiyoneldir.
+Lumix lokal K8s cluster'ı olarak **k3d** kullanır. k3d, prod'da koştuğumuz [K3s](../infra-devops/02-k3s-lightweight-k8s.md)'i Docker container'larında çalıştırır — yani **prod ile aynı dağıtım**. Alternatif olan `kind` ise *vanilla (upstream)* Kubernetes çalıştırır; prod'umuz K3s olduğu için kind parity sağlamaz (farklı ingress/storage/CNI defaultları). Bu yüzden varsayılan **k3d**'dir; `kind` yalnızca "manifest'ler upstream K8s'te de çalışıyor mu" doğrulaması için opsiyoneldir.
 
 **Parity neyi kapsar**: aynı K3s dağıtımı, aynı bileşenler (Traefik, ServiceLB, local-path, CoreDNS), aynı `--disable` flag davranışı → manifest/Helm chart birebir. **Neyi kapsamaz**: altyapı 1:1 değildir — k3d, K3s'i container içinde (systemd yok, privileged process) çalıştırır; node resource limit'leri sahtedir (`/proc/meminfo` patch'lenir), storage container içinde ephemeral'dır, networking Docker bridge üzerindendir. Node/HA/storage/networking'e duyarlı testleri gerçek bir K3s VM'inde (staging) yap, k3d'de değil.
 
-> **Versiyon pinle**: k3d'nin default `latest` imajını kullanma; prod baseline ([K3s versiyonu](../infra-devops/k3s-lightweight-k8s)) ile aynı imajı sabitle. Docker tag'inde `+` → `-` olur (`v1.30.4+k3s1` → `v1.30.4-k3s1`). `--disable` flag'leri k3d'ye `--k3s-arg` ile geçer ve `@server:*` node-filter zorunludur (yoksa flag sessizce çalışmaz).
+> **Versiyon pinle**: k3d'nin default `latest` imajını kullanma; prod baseline ([K3s versiyonu](../infra-devops/02-k3s-lightweight-k8s.md)) ile aynı imajı sabitle. Docker tag'inde `+` → `-` olur (`v1.30.4+k3s1` → `v1.30.4-k3s1`). `--disable` flag'leri k3d'ye `--k3s-arg` ile geçer ve `@server:*` node-filter zorunludur (yoksa flag sessizce çalışmaz).
 
 ```bash
 # Cluster oluştur (prod K3s versiyonuna pinli)
@@ -542,11 +542,11 @@ tilt disable <resource>          # active → paused
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](../infra-devops/kubernetes-fundamentals) — pod, service, ingress kavramları
-- [K3s](../infra-devops/k3s-lightweight-k8s) — k3d ile parity
-- [Helm Charts](../infra-devops/helm-charts) — local Tilt aynı chart'ları kullanır
-- [Test Data Management](./test-data-management) — seed data stratejisi
-- [GitLab CI Pipelines](../21-ci-cd/gitlab-ci-pipelines) — Tilt CI mode
+- [Kubernetes Temelleri](../infra-devops/01-kubernetes-fundamentals.md) — pod, service, ingress kavramları
+- [K3s](../infra-devops/02-k3s-lightweight-k8s.md) — k3d ile parity
+- [Helm Charts](../infra-devops/03-helm-charts.md) — local Tilt aynı chart'ları kullanır
+- [Test Data Management](./02-test-data-management.md) — seed data stratejisi
+- [GitLab CI Pipelines](../21-ci-cd/02-gitlab-ci-pipelines.md) — Tilt CI mode
 
 ## 9. Daha derine inmek için
 

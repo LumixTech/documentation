@@ -16,7 +16,7 @@ sidebar_position: 1
 - Backend endpoint pattern (admin scope)
 - Güvenlik ve audit gereksinimleri
 
-Bu sayfa **Lumix dışındaki** ([Internal Admin Panel](./internal-admin-panel)) farklı bir paneldir; müşteri kurum içi yönetim için.
+Bu sayfa **Lumix dışındaki** ([Internal Admin Panel](./02-internal-admin-panel.md)) farklı bir paneldir; müşteri kurum içi yönetim için.
 
 ## 1. Customer Admin Panel nedir? (Sıfırdan)
 
@@ -136,7 +136,7 @@ UI'da üst köşede **Tenant Switcher**:
 └────────────────────────────────────────┘
 ```
 
-Switcher değişince `tenantSlice.activeTenantId` güncellenir → RTK Query cache reset (bkz: [RTK Query](../frontend-architecture/rtk-query)) → admin tabloları yeni tenant için yüklenir.
+Switcher değişince `tenantSlice.activeTenantId` güncellenir → RTK Query cache reset (bkz: [RTK Query](../frontend-architecture/33-rtk-query.md)) → admin tabloları yeni tenant için yüklenir.
 
 **"Tüm Şubeler" seçeneği** — multi-tenant kullanıcı için: query `?tenantIds=t1,t2,t3` ile birden fazla tenant filtreleyebilir.
 
@@ -477,13 +477,13 @@ export function AssignRolesForm({ userId, tenantId, initialRoles }: Props) {
 
 ## 8. Diğer konularla ilişkisi
 
-- [Internal Admin Panel](./internal-admin-panel) — Lumix ekibinin paneli (farklı kullanıcı, farklı app)
-- [Rancher Cluster Management](./rancher-cluster-management) — DevOps multi-cluster yönetimi
-- [Permission Cache](../frontend-architecture/frontend-permission-cache) — `customer-admin` permission
-- [RTK Query](../frontend-architecture/rtk-query) — admin endpoint pattern
-- [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope) — multi-tenant modeli
-- [Hibrit Authorization](../security-compliance/hybrid-rbac-abac-authorization) — rol/scope atama mantığı
-- [Form Handling](../frontend-architecture/form-handling) — admin form patternleri
+- [Internal Admin Panel](./02-internal-admin-panel.md) — Lumix ekibinin paneli (farklı kullanıcı, farklı app)
+- [Rancher Cluster Management](./03-rancher-cluster-management.md) — DevOps multi-cluster yönetimi
+- [Permission Cache](../frontend-architecture/09-frontend-permission-cache.md) — `customer-admin` permission
+- [RTK Query](../frontend-architecture/33-rtk-query.md) — admin endpoint pattern
+- [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — multi-tenant modeli
+- [Hibrit Authorization](../04-authentication-authorization/04-rbac-abac-hybrid.md) — rol/scope atama mantığı
+- [Form Handling](../frontend-architecture/07-form-handling.md) — admin form patternleri
 
 ## 9. Daha derine
 

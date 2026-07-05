@@ -89,8 +89,8 @@ for each significant product problem:
 - We want this section to remain reusable for future engineering blog posts.
 - Every note should tell a problem-solution story, not only API or schema details.
 - Decisions should reference supporting docs where relevant:
-  - [Spring Security Authentication Flow with JWT and Refresh Token](../security-compliance/auth-jwt-refresh-flow)
-  - [Hybrid Authorization Model with RBAC and ABAC](../security-compliance/hybrid-rbac-abac-authorization)
+  - [Spring Security Authentication Flow with JWT and Refresh Token](../04-authentication-authorization/01-stateful-token-model.md)
+  - [Hybrid Authorization Model with RBAC and ABAC](../04-authentication-authorization/04-rbac-abac-hybrid.md)
   - [Tenant-based Row-Level Security (RLS)](../database-architecture/tenant-based-rls-policy-design)
 
 ## Glossary

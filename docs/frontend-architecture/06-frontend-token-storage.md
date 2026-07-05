@@ -16,7 +16,7 @@ Lumix web ve mobile frontend'inde **token nasıl saklanır, nasıl yenilenir, na
 - Logout'ta tüm token + cache nasıl temizlenir
 - Mobile (React Native) tarafında farkı
 
-Bu sayfa, [Stateful Token Modeli](../security-compliance/auth-jwt-refresh-flow) backend doc'unun frontend ayağıdır.
+Bu sayfa, [Stateful Token Modeli](../04-authentication-authorization/01-stateful-token-model.md) backend doc'unun frontend ayağıdır.
 
 ## 1. Token nedir? (Sıfırdan)
 
@@ -281,7 +281,7 @@ Mobile'da `httpOnly cookie` mantığı çoğu zaman kullanılmaz çünkü native
 - **Access token** → Redux memory (web ile aynı)
 - Backend mobile için **JSON body refresh token** veya **`X-Refresh-Token` header** alternatifi sağlar
 
-Detay: [Mobile Shared Business Logic](../10-frontend-mobile/02-shared-business-logic).
+Detay: [Mobile Shared Business Logic](../10-frontend-mobile/02-shared-business-logic.md).
 
 ## 5. Neden bu seçildi? (Alternatifler)
 
@@ -419,11 +419,11 @@ export const { useLoginMutation, useLogoutMutation, useLogoutAllMutation } = aut
 
 ## 8. Diğer konularla ilişkisi
 
-- [Stateful Token Modeli (backend)](../security-compliance/auth-jwt-refresh-flow) — refresh, rotation, Redis status
-- [Redux Toolkit](./redux-toolkit) — auth slice, tokenRefreshed action
-- [RTK Query](./rtk-query) — baseQuery, mutex, retry mantığı
-- [Permission Cache](./frontend-permission-cache) — login sonrası permission yüklemesi
-- [Mobile Shared Logic](../10-frontend-mobile/02-shared-business-logic) — Keychain/Keystore farkı
+- [Stateful Token Modeli (backend)](../04-authentication-authorization/01-stateful-token-model.md) — refresh, rotation, Redis status
+- [Redux Toolkit](./02-redux-toolkit.md) — auth slice, tokenRefreshed action
+- [RTK Query](./33-rtk-query.md) — baseQuery, mutex, retry mantığı
+- [Permission Cache](./09-frontend-permission-cache.md) — login sonrası permission yüklemesi
+- [Mobile Shared Logic](../10-frontend-mobile/02-shared-business-logic.md) — Keychain/Keystore farkı
 
 ## 9. Daha derine
 

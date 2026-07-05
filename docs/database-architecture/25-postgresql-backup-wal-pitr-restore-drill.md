@@ -141,7 +141,7 @@ if data_corruption_detected:
 - Target planning should assume 15 minute RPO and 2 hour RTO.
 - Restore drills should be scheduled and documented as an operational requirement.
 - Backup and restore events should be connected to operational audit evidence.
-- PITR planning should be considered together with [Flyway Migrations and Zero-Downtime Database Changes](./flyway-zero-downtime-migration-strategy).
+- PITR planning should be considered together with [Flyway Migrations and Zero-Downtime Database Changes](./14-flyway-zero-downtime-migration-strategy.md).
 
 ## External References
 

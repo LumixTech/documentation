@@ -87,6 +87,6 @@ Lumix'in "başarılı" sayılması için:
 
 ## 7. Diğer konularla ilişkisi
 
-- [Teknoloji Kararları](./technology-stack-decisions) — bu prensipleri uygulayarak hangi teknolojileri seçtik
-- [Genel Mimari](./overall-architecture) — sistemin kuş bakışı görünümü
-- [Installation / Tenant / Scope](../tenancy-and-domain-model/installation-tenant-scope) — multi-tenancy modelinin detayı
+- [Teknoloji Kararları](./02-technology-stack-decisions.md) — bu prensipleri uygulayarak hangi teknolojileri seçtik
+- [Genel Mimari](./03-overall-architecture.md) — sistemin kuş bakışı görünümü
+- [Installation / Tenant / Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md) — multi-tenancy modelinin detayı

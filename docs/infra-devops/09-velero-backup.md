@@ -104,7 +104,7 @@ Bir Backup şunları içerir:
 - Metadata (ts, version, labels, annotations)
 
 İçermez:
-- etcd raw snapshot (bu K3s tarafında ayrı; bkz. [K3s sayfası](./k3s-lightweight-k8s))
+- etcd raw snapshot (bu K3s tarafında ayrı; bkz. [K3s sayfası](./02-k3s-lightweight-k8s.md))
 - Vault state (Vault kendi backup'ı)
 - Off-cluster servisler (DNS, LB config)
 
@@ -452,13 +452,13 @@ curl https://api.omer-okullari.lumix.io/api/v1/health
 
 ## 8. Diğer konularla ilişkisi
 
-- [Kubernetes Temelleri](./kubernetes-fundamentals) — yedeklediğimiz nesneler
-- [K3s](./k3s-lightweight-k8s) — etcd snapshot (Velero dışı)
-- [Rancher Multi-Cluster](./rancher-multi-cluster) — rancher-backup operator (Rancher kendi state'i için)
-- [RustFS](../12-storage-and-files) — Velero hedef bucket
+- [Kubernetes Temelleri](./01-kubernetes-fundamentals.md) — yedeklediğimiz nesneler
+- [K3s](./02-k3s-lightweight-k8s.md) — etcd snapshot (Velero dışı)
+- [Rancher Multi-Cluster](./04-rancher-multi-cluster.md) — rancher-backup operator (Rancher kendi state'i için)
+- [RustFS](../storage-and-files) — Velero hedef bucket
 - [PostgreSQL Backup](../database-architecture) — WAL archiving + pg_basebackup
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — yeni cluster setup adımı
-- [Ansible Basics](../20-iac-provisioning/ansible-basics) — Velero kurulum playbook
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — yeni cluster setup adımı
+- [Ansible Basics](../20-iac-provisioning/02-ansible-basics.md) — Velero kurulum playbook
 
 ## 9. Daha derine inmek için
 

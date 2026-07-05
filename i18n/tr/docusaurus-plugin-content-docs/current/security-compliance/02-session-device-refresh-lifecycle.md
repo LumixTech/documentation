@@ -1,4 +1,4 @@
-﻿---
+---
 title: Session, Device ve Refresh Token Yaşam Döngüsü
 description: Redis merkezli session, access token ve refresh token yaşam döngüsü tasarımı; revoke, rotation ve logout-all davranışlarını tanımlar.
 sidebar_position: 2
@@ -135,7 +135,7 @@ on LOGOUT_ALL(user_id):
 - Redis tabanlı `USER_SESSIONS`, `ACCESS_TOKENS` ve `REFRESH_TOKENS` zorunlu; stateless-only auth modelini kabul etmiyoruz.
 - Cihaz bazlı görünürlük kullanıcı güvenliği ve destek operasyonu için zorunludur.
 - Forensic izlenebilirlik için silme yerine açık durum geçişlerini tercih ediyoruz.
-- Bu tasarım [JWT ve Refresh Token ile Spring Security Authentication Flow](./auth-jwt-refresh-flow) ile birlikte düşünülmelidir.
+- Bu tasarım [JWT ve Refresh Token ile Spring Security Authentication Flow](./01-auth-jwt-refresh-flow.md) ile birlikte düşünülmelidir.
 
 ## Sözlük
 

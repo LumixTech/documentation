@@ -174,7 +174,7 @@ lumix/
 └── pnpm-workspace.yaml
 ```
 
-Paylaşım: [Shared Business Logic](./shared-business-logic) doc'unda detay.
+Paylaşım: [Shared Business Logic](./02-shared-business-logic.md) doc'unda detay.
 
 ### 4.4. Mobile proje iskeleti
 
@@ -433,11 +433,11 @@ cd apps/mobile/android && fastlane android build
 
 ## 8. Diğer konularla ilişkisi
 
-- [Shared Business Logic](./shared-business-logic) — web ile kod paylaşımı
-- [Push Notifications](./push-notifications) — FCM + APNs
-- [App Store + Google Play Distribution](./app-store-google-play-distribution) — yayın
-- [React CSR Temelleri (web)](../frontend-architecture/react-csr-foundation) — web mimari karşılaştırma
-- [Token Storage](../frontend-architecture/frontend-token-storage) — mobile Keychain farkı
+- [Shared Business Logic](./02-shared-business-logic.md) — web ile kod paylaşımı
+- [Push Notifications](./03-push-notifications.md) — FCM + APNs
+- [App Store + Google Play Distribution](./04-app-store-google-play-distribution.md) — yayın
+- [React CSR Temelleri (web)](../frontend-architecture/01-react-csr-foundation.md) — web mimari karşılaştırma
+- [Token Storage](../frontend-architecture/06-frontend-token-storage.md) — mobile Keychain farkı
 
 ## 9. Daha derine
 

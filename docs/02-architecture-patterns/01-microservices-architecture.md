@@ -72,7 +72,7 @@ Her servis, **Domain-Driven Design**'ın bounded context kavramına denk gelir. 
 - **Ubiquitous language** geçerlidir (kod ile iş dili aynı kelime)
 - Dış dünyaya açılan **public contract** vardır (gRPC API + Kafka topic)
 
-Lumix'te servis = bounded context kuralı katıdır. Detay için bakınız: [Domain-Driven Design](./domain-driven-design).
+Lumix'te servis = bounded context kuralı katıdır. Detay için bakınız: [Domain-Driven Design](./02-domain-driven-design.md).
 
 ### 3.2. DB-per-service
 
@@ -121,7 +121,7 @@ Lumix'te servisler iki kanal üzerinden konuşur:
 - At-least-once delivery → consumer idempotent olmalı
 - Schema değişimi için **BACKWARD compatibility** zorunlu
 
-Detaylar: [gRPC Service Communication](../03-backend/03-grpc-service-communication), [Event-Driven Architecture](./event-driven-architecture).
+Detaylar: [gRPC Service Communication](../03-backend/03-grpc-service-communication.md), [Event-Driven Architecture](./04-event-driven-architecture.md).
 
 ### 3.4. Bir feature talebinin yolculuğu
 
@@ -177,13 +177,13 @@ Bir servis deploy edildiğinde diğerleri etkilenmez **ama** breaking change yap
 | + | `compliance-service` | DSAR, retention, anonymization | Düşük (workflow tetikli) |
 | + | `notification-service` | Email/SMS/Push provider adapter | Event-tetikli, burst |
 
-Detay: [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview).
+Detay: [Domain Servisleri](../01-tenancy-and-domain-model/02-domain-services-overview.md).
 
 ### 4.2. Lumix'te microservice kuralları
 
 **Kural 1 — DB izolasyonu mutlak.** Bir servis başka servisin DB'sine **asla** bağlanmaz. Bağlanmak istiyorsa: gRPC çağrısı veya event subscription. CI'da bu kural otomatik kontrol edilir (linter, network policy).
 
-**Kural 2 — Shared library yok.** İki servisin aynı kod parçasına ihtiyacı olursa, **duplicate** edilir. Shared `common-lib` veya `lumix-core` paketi yok. Sebep: shared lib = gizli coupling. Detay: [Teknoloji Kararları — Mimari Paradigma](../00-overview/02-technology-stack-decisions).
+**Kural 2 — Shared library yok.** İki servisin aynı kod parçasına ihtiyacı olursa, **duplicate** edilir. Shared `common-lib` veya `lumix-core` paketi yok. Sebep: shared lib = gizli coupling. Detay: [Teknoloji Kararları — Mimari Paradigma](../00-overview/02-technology-stack-decisions.md).
 
 **Kural 3 — Tek dil, tek framework.** Hepsi Java 25 + Spring Boot 3.6. Polyglot serbestliğinden vazgeçtik. Sebep: operasyonel basitlik, CI/CD homojen, ekip eğitimi tek yığın.
 
@@ -236,7 +236,7 @@ identity-service/
 └── pom.xml
 ```
 
-Bu yapı **Hexagonal Architecture**'a denk düşer. Detay: [Hexagonal Architecture](./hexagonal-architecture).
+Bu yapı **Hexagonal Architecture**'a denk düşer. Detay: [Hexagonal Architecture](./03-hexagonal-architecture.md).
 
 ## 5. Neden bu seçildi? (Alternatifler ve trade-off)
 
@@ -472,7 +472,7 @@ Her şey gRPC ile çağrılır. Bir kullanıcı isteğinin arkasında 7 sync ça
 
 **Tuzak 5 — Transactionality Hatası.**
 "DB'ye yaz + Kafka'ya event publish et" iki ayrı işlemdir. Birincisi başarılı ikincisi başarısız olursa veri tutarsızlığı doğar.
-**Önleme:** Outbox pattern. Detay: [Outbox Pattern](./outbox-pattern).
+**Önleme:** Outbox pattern. Detay: [Outbox Pattern](./06-outbox-pattern.md).
 
 **Tuzak 6 — Test Stratejisini Yanlış Kurmak.**
 "Tüm 12 servisi ayağa kaldırıp end-to-end test yapalım" denir. Test 45 dakika sürer, flaky olur, CI'da çoğu zaman fail eder.
@@ -496,14 +496,14 @@ Aynı kavramı iki servis de "biz sahibiyiz" der. `user` hem identity'de hem org
 
 ## 8. Diğer konularla ilişkisi
 
-- [Domain-Driven Design](./domain-driven-design) — servis sınırlarını nasıl çiziyoruz?
-- [Hexagonal Architecture](./hexagonal-architecture) — her servisin iç yapısı
-- [Event-Driven Architecture](./event-driven-architecture) — async iletişim modeli
-- [Saga Pattern](./saga-pattern) — distributed transaction çözümü
-- [Outbox Pattern](./outbox-pattern) — atomic write + event publish
-- [Domain Servisleri — 10 Microservice](../01-tenancy-and-domain-model/02-domain-services-overview) — Lumix servislerinin tek tek listesi
-- [gRPC Service Communication](../03-backend/03-grpc-service-communication) — sync iletişim detayı
-- [Genel Mimari](../00-overview/03-overall-architecture) — kuş bakışı resim
+- [Domain-Driven Design](./02-domain-driven-design.md) — servis sınırlarını nasıl çiziyoruz?
+- [Hexagonal Architecture](./03-hexagonal-architecture.md) — her servisin iç yapısı
+- [Event-Driven Architecture](./04-event-driven-architecture.md) — async iletişim modeli
+- [Saga Pattern](./05-saga-pattern.md) — distributed transaction çözümü
+- [Outbox Pattern](./06-outbox-pattern.md) — atomic write + event publish
+- [Domain Servisleri — 10 Microservice](../01-tenancy-and-domain-model/02-domain-services-overview.md) — Lumix servislerinin tek tek listesi
+- [gRPC Service Communication](../03-backend/03-grpc-service-communication.md) — sync iletişim detayı
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — kuş bakışı resim
 
 ## 9. Daha derine inmek için
 

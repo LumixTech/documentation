@@ -311,12 +311,12 @@ argocd cluster add customer-y-context --name customer-y \
 
 ## 8. Diğer konularla ilişkisi
 
-- [Internal Admin Panel](./internal-admin-panel) — provisioning wizard tetikleyici
-- [Customer Admin Panel](./customer-admin-panel) — müşterinin görmediği panel
-- [Genel Mimari](../00-overview/03-overall-architecture) — Lumix sağlayıcı tarafı
-- [Container & Orchestration (tech stack §18)](../00-overview/02-technology-stack-decisions) — K3s, Rancher kararı
-- [CI/CD (tech stack §19)](../00-overview/02-technology-stack-decisions) — ArgoCD GitOps
-- [Infrastructure as Code (tech stack §20)](../00-overview/02-technology-stack-decisions) — Terraform + Ansible
+- [Internal Admin Panel](./02-internal-admin-panel.md) — provisioning wizard tetikleyici
+- [Customer Admin Panel](./01-customer-admin-panel.md) — müşterinin görmediği panel
+- [Genel Mimari](../00-overview/03-overall-architecture.md) — Lumix sağlayıcı tarafı
+- [Container & Orchestration (tech stack §18)](../00-overview/02-technology-stack-decisions.md) — K3s, Rancher kararı
+- [CI/CD (tech stack §19)](../00-overview/02-technology-stack-decisions.md) — ArgoCD GitOps
+- [Infrastructure as Code (tech stack §20)](../00-overview/02-technology-stack-decisions.md) — Terraform + Ansible
 
 ## 9. Daha derine
 

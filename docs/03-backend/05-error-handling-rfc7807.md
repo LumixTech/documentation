@@ -871,11 +871,11 @@ gRPC `Status.NOT_FOUND` direkt 500 olarak frontend'e iletilir.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Validation Strategy](./04-validation-strategy) — validation hatalarının exception'a dönüşümü
-- [gRPC Service Communication](./03-grpc-service-communication) — gRPC status → exception mapping
-- [Spring Boot Foundation](./01-spring-boot-foundation) — `@ControllerAdvice` Spring entegrasyonu
-- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture) — cross-service error format tutarlılığı
-- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture) — exception domain'de, mapping adapter'da
+- [Validation Strategy](./04-validation-strategy.md) — validation hatalarının exception'a dönüşümü
+- [gRPC Service Communication](./03-grpc-service-communication.md) — gRPC status → exception mapping
+- [Spring Boot Foundation](./01-spring-boot-foundation.md) — `@ControllerAdvice` Spring entegrasyonu
+- [Microservices Architecture](../02-architecture-patterns/01-microservices-architecture.md) — cross-service error format tutarlılığı
+- [Hexagonal Architecture](../02-architecture-patterns/03-hexagonal-architecture.md) — exception domain'de, mapping adapter'da
 
 ## 9. Daha derine inmek için
 

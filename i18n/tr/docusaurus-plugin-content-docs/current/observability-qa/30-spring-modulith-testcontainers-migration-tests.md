@@ -164,8 +164,8 @@ test_migration(version):
 
 - İlk etapta en az iki module için Modulith skeleton hazırlanmalıdır: attendance ve messaging.
 - Persistence ve migration testleri için PostgreSQL Testcontainers kullanılmalıdır.
-- Migration testleri [Flyway Migrations ve Zero-Downtime DB Changes](../database-architecture/flyway-zero-downtime-migration-strategy) güvenlik beklentilerini desteklemelidir.
-- Module testleri [Modular Monolith ve Spring Modulith](../engineering-notes/modular-monolith-and-spring-modulith) boundary yaklaşımıyla uyumlu olmalıdır.
+- Migration testleri [Flyway Migrations ve Zero-Downtime DB Changes](../database-architecture/14-flyway-zero-downtime-migration-strategy.md) güvenlik beklentilerini desteklemelidir.
+- Module testleri [Modular Monolith ve Spring Modulith](../engineering-notes/17-modular-monolith-and-spring-modulith.md) boundary yaklaşımıyla uyumlu olmalıdır.
 
 ## Harici Referanslar
 

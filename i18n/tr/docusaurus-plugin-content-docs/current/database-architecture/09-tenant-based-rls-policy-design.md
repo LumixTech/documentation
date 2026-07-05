@@ -1,4 +1,4 @@
-﻿---
+---
 title: Tenant Tabanlı Row-Level Security (RLS)
 description: tenant_id temelli RLS policy tasarımıyla veritabanı seviyesinde tenant izolasyonu.
 sidebar_position: 3
@@ -70,7 +70,7 @@ on QUERY(table):
 
 - RLS policy'ler `tenant_id` bazlı yazılacak.
 - Tenant izolasyonu hem uygulama hem DB katmanında garanti altına alınacak.
-- Yetki tarafında [Hibrit Yetkilendirme Modeli - RBAC + ABAC](../security-compliance/hybrid-rbac-abac-authorization) ile birlikte çalışacak.
+- Yetki tarafında [Hibrit Yetkilendirme Modeli - RBAC + ABAC](../security-compliance/03-hybrid-rbac-abac-authorization.md) ile birlikte çalışacak.
 
 ## Sözlük
 

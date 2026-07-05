@@ -297,7 +297,7 @@ Birlikte:
 - 12-A'ya yoklama yazmaya kalkarsa permission var, scope yok → deny.
 - 11-A için yoklama? Permission var, scope var → allow.
 
-Detay: [Hibrit Authorization Model](../security-compliance/hybrid-rbac-abac-authorization).
+Detay: [Hibrit Authorization Model](../04-authentication-authorization/04-rbac-abac-hybrid.md).
 
 ## 9. Pratik tasarım kararları
 
@@ -349,11 +349,11 @@ Multi-tenant API: `/api/v1/admin/students?tenant_id=...` — header veya query p
 
 ## 12. Diğer konularla ilişkisi
 
-- [Domain Servisleri](./domain-services-overview) — bu modelin servislere yansıması
-- [Hibrit Authorization (RBAC + ABAC)](../security-compliance/hybrid-rbac-abac-authorization) — scope resolver detayı
+- [Domain Servisleri](./02-domain-services-overview.md) — bu modelin servislere yansıması
+- [Hibrit Authorization (RBAC + ABAC)](../04-authentication-authorization/04-rbac-abac-hybrid.md) — scope resolver detayı
 - [Tenant-based RLS](../database-architecture/tenant-based-rls-policy-design) — PostgreSQL RLS implementation
 - [Composite Index Design](../database-architecture/postgresql-index-ordering-and-query-design) — tenant_id-first index
-- [Stateful Token Modeli](../security-compliance/auth-jwt-refresh-flow) — JWT'de tenant claim
+- [Stateful Token Modeli](../04-authentication-authorization/01-stateful-token-model.md) — JWT'de tenant claim
 
 ## 13. Daha derine inmek için
 

@@ -445,9 +445,9 @@ Application'ın yazımı/okuma alias üzerinden olduğu için **kesintisiz**.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Elasticsearch Temelleri](./elasticsearch-fundamentals) — alt yapı
-- [Spring Data Elasticsearch](./spring-data-elasticsearch) — Java kullanım
-- [Outbox Pattern](../engineering-notes/dlq-and-outbox-pattern-event-processing-retry-and-error-handling)
+- [Elasticsearch Temelleri](./01-elasticsearch-fundamentals.md) — alt yapı
+- [Spring Data Elasticsearch](./03-spring-data-elasticsearch.md) — Java kullanım
+- [Outbox Pattern](../02-architecture-patterns/06-outbox-pattern.md)
 - [Kafka Topic Design](../event-driven-architecture)
 - [Schema Evolution](../engineering-notes) — backward compatibility
 

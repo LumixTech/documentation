@@ -42,21 +42,21 @@ Bu şablonu her doc'ta görürsen kafan karışmaz, ne aradığını biliyorsun.
 
 İlk gelenler için sırayla okuma yolu:
 
-1. [Vizyon ve Hedefler](./overview/vision-and-goals) — projeyi neden yapıyoruz, müşteri kim, hangi sorunu çözüyor
-2. [Teknoloji Kararları](./overview/technology-stack-decisions) — tek sayfada tüm yığın
-3. [Genel Mimari](./overview/overall-architecture) — sistemin kuş bakışı görünümü
-4. [Öğrenme Yolu](./overview/learning-path) — konuları hangi sırada okumalısın
+1. [Vizyon ve Hedefler](./00-overview/01-vision-and-goals.md) — projeyi neden yapıyoruz, müşteri kim, hangi sorunu çözüyor
+2. [Teknoloji Kararları](./00-overview/02-technology-stack-decisions.md) — tek sayfada tüm yığın
+3. [Genel Mimari](./00-overview/03-overall-architecture.md) — sistemin kuş bakışı görünümü
+4. [Öğrenme Yolu](./00-overview/04-learning-path.md) — konuları hangi sırada okumalısın
 
 Ardından domain modeline gir:
 
-5. [Installation / Tenant / Scope](./tenancy-and-domain-model/installation-tenant-scope) — multi-tenancy modeli, "Hüseyin öğretmen / bölge müdürü" örnekleri
-6. [Domain Servisleri](./tenancy-and-domain-model/domain-services-overview) — 10 microservice ve sorumlulukları
+5. [Installation / Tenant / Scope](./01-tenancy-and-domain-model/01-installation-tenant-scope.md) — multi-tenancy modeli, "Hüseyin öğretmen / bölge müdürü" örnekleri
+6. [Domain Servisleri](./01-tenancy-and-domain-model/02-domain-services-overview.md) — 10 microservice ve sorumlulukları
 
 Sonrası kendi ilgi alanına göre kategoriler arasında gezinebilirsin.
 
 ## Sözlük her zaman elinizin altında
 
-Bilmediğin terim gördüğünde: [Sözlük](./glossary/glossary) sayfası tüm proje terimlerinin tek listesi. Yeni terim eklenirken önce sözlüğe yazılır, sonra başka doc'larda kullanılır.
+Bilmediğin terim gördüğünde: [Sözlük](./glossary/00-glossary.md) sayfası tüm proje terimlerinin tek listesi. Yeni terim eklenirken önce sözlüğe yazılır, sonra başka doc'larda kullanılır.
 
 ## Bu doc'lar kim için yazıldı?
 

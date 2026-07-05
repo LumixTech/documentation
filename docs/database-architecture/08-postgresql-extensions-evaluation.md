@@ -80,7 +80,7 @@ evaluate_extension(name):
 - We will review PostgreSQL plugins/extensions and add only what is needed.
 - Extension decisions must be based on actual need and operational fit.
 - We will investigate required `pg_*` lifecycle-related tooling only when a concrete use case exists.
-- Extension adoption must remain aligned with [Read / Write Replica Rules](./read-write-replica-strategy) and overall operations model.
+- Extension adoption must remain aligned with [Read / Write Replica Rules](./10-read-write-replica-strategy.md) and overall operations model.
 
 ## Glossary
 

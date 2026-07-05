@@ -7,10 +7,10 @@ draft: true
 
 :::warning Bu sayfa arşivlendi
 Güncel sayfalar **09 · Cache ve State (Redis)** kategorisinde:
-- [Cache-Aside Pattern](../08-caching-redis/cache-aside-pattern)
-- [Cache Invalidation](../08-caching-redis/cache-invalidation)
-- [TTL Strategy](../08-caching-redis/ttl-strategy)
-- [Distributed Lock Redisson](../08-caching-redis/distributed-lock-redisson)
+- [Cache-Aside Pattern](../08-caching-redis/03-cache-aside-pattern.md)
+- [Cache Invalidation](../08-caching-redis/04-cache-invalidation.md)
+- [TTL Strategy](../08-caching-redis/05-ttl-strategy.md)
+- [Distributed Lock Redisson](../08-caching-redis/06-distributed-lock-redisson.md)
 
 Bu eski sürüm referans olarak repository'de kalıyor.
 :::

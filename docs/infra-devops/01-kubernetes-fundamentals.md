@@ -44,7 +44,7 @@ Lumix gibi 10 microservice + ~12 altyapı bileşeni olan bir sistem **K8s olmada
 | **Sağlık kontrolü** | Cron + Slack alert | Liveness/Readiness probe gömülü |
 | **Çoklu müşteri** | Müşteri başına ayrı VM, manuel | Müşteri başına ayrı cluster (Lumix kararı) |
 
-Lumix'in **müşteri başına izole installation** kararı (bkz. [Installation/Tenant/Scope](../tenancy-and-domain-model/installation-tenant-scope)), bir müşterinin tüm yığınını **tek bir K8s cluster içine paketlemeyi** doğal kılar. Cluster = installation sınırı.
+Lumix'in **müşteri başına izole installation** kararı (bkz. [Installation/Tenant/Scope](../01-tenancy-and-domain-model/01-installation-tenant-scope.md)), bir müşterinin tüm yığınını **tek bir K8s cluster içine paketlemeyi** doğal kılar. Cluster = installation sınırı.
 
 ### Patlamış üretim hikayesi (anti-pattern)
 
@@ -122,7 +122,7 @@ Bu yüzden K8s'te **command vermezsin**, **istek belirtirsin**. "Reboot et" yok;
 | **Job / CronJob** | Tek seferlik / zamanlı görev | Flyway migration job, retention CronJob |
 | **Service** | Pod'lara stable IP/DNS verir | `academic-service.default.svc.cluster.local` |
 | **Endpoint** | Service'in hedef Pod IP listesi (otomatik) | — |
-| **Ingress / IngressRoute** | L7 HTTP routing | Traefik IngressRoute (bkz. [Traefik](./traefik-ingress)) |
+| **Ingress / IngressRoute** | L7 HTTP routing | Traefik IngressRoute (bkz. [Traefik](./05-traefik-ingress.md)) |
 | **ConfigMap** | Plain config | `application.yml` parçaları |
 | **Secret** | base64 encoded sırlar | DB şifresi (ama biz Vault + ESO kullanırız) |
 | **PersistentVolume / PersistentVolumeClaim** | Disk talepleri | PostgreSQL veri diski |
@@ -167,7 +167,7 @@ Internet
 
 ### 4.1. Hangi K8s dağıtımı?
 
-Lumix'te **K3s** kullanılır. Production seviyesinde, sertifikalı, hafif (~80 MB binary) bir K8s dağıtımıdır. Detay için [K3s sayfasına](./k3s-lightweight-k8s) bakın. Karar gerekçesi: müşteri başına **VPS** kurulumunda full K8s (kubeadm) operasyonel ağırlık yaratır; K3s tek binary ile production-grade çalışır.
+Lumix'te **K3s** kullanılır. Production seviyesinde, sertifikalı, hafif (~80 MB binary) bir K8s dağıtımıdır. Detay için [K3s sayfasına](./02-k3s-lightweight-k8s.md) bakın. Karar gerekçesi: müşteri başına **VPS** kurulumunda full K8s (kubeadm) operasyonel ağırlık yaratır; K3s tek binary ile production-grade çalışır.
 
 ### 4.2. Cluster topolojisi (müşteri başına)
 
@@ -188,7 +188,7 @@ lumix-temporal        # Temporal cluster
 kube-system           # K3s'in kendi sistem pod'ları (CoreDNS, Traefik)
 ```
 
-Detaylı namespace politikası ve NetworkPolicy'ler [NetworkPolicy + mTLS](./networkpolicy-mtls) sayfasında.
+Detaylı namespace politikası ve NetworkPolicy'ler [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md) sayfasında.
 
 ### 4.4. Label / Selector standardı
 
@@ -273,7 +273,7 @@ startupProbe:
 | **HashiCorp Nomad** | Daha basit, ama ekosistem (Helm, ArgoCD, cert-manager, Prometheus operator) küçük. |
 | **Plain VMs + Ansible** | Reconciliation yok; scale manuel; ekip için yüksek operasyonel yük. |
 | **AWS ECS / Fargate** | Bulut-kilit. Lumix self-host odaklı (KVKK, on-prem). |
-| **Tam K8s (kubeadm)** | K3s ile aynı API; ama tek binary, küçük footprint, VPS uyumu daha iyi → K3s seçildi (detay: [K3s sayfası](./k3s-lightweight-k8s)). |
+| **Tam K8s (kubeadm)** | K3s ile aynı API; ama tek binary, küçük footprint, VPS uyumu daha iyi → K3s seçildi (detay: [K3s sayfası](./02-k3s-lightweight-k8s.md)). |
 | **OpenShift** | Lisans + Red Hat ekosistem kilidi. Self-host basitliği bozar. |
 
 ### Kabul ettiğimiz trade-off'lar
@@ -285,7 +285,7 @@ startupProbe:
 ### Tekrar değerlendirme tetikleyicileri
 
 - Müşteri sayısı 100+ olduğunda: tek dev sunucusu yerine **federation** veya **vCluster** modeli düşünülebilir.
-- Mesh ihtiyacı doğarsa (mTLS, observability per-call): Istio veya Linkerd (bkz. [NetworkPolicy + mTLS](./networkpolicy-mtls)).
+- Mesh ihtiyacı doğarsa (mTLS, observability per-call): Istio veya Linkerd (bkz. [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md)).
 
 ## 6. Pratik örnek
 
@@ -485,14 +485,14 @@ spec:
 ## 7. Dikkat edilecek tuzaklar
 
 - **`resources` belirtmeden deploy etmek**: HPA çalışmaz, scheduler optimum dağıtım yapamaz, OOMKill kaçınılmaz. Lumix CI policy: `requests` ve `limits` zorunlu (Conftest/Gatekeeper ile kontrol).
-- **`latest` tag kullanmak**: deterministik deploy yok, rollback zor. Lumix kuralı: SemVer tag, immutable image. Detay: [Helm versioning](../21-ci-cd/helm-versioning).
+- **`latest` tag kullanmak**: deterministik deploy yok, rollback zor. Lumix kuralı: SemVer tag, immutable image. Detay: [Helm versioning](../21-ci-cd/05-helm-versioning.md).
 - **Probe'ları yanlış kurmak**:
   - liveness'i DB bağlantısına bağlamak → DB hıçkırığı pod'u sürekli restart eder. Cascade fail. Liveness sadece **process içi** sağlığı kontrol etmeli. DB sağlığı readiness'a.
   - startupProbe yoksa yavaş Spring Boot başlangıcı liveness'i tetikler → sonsuz restart loop.
 - **Pod IP'sine bel bağlamak**: pod yeniden doğunca IP değişir. Servisler birbirini **Service DNS** ile çağırır.
 - **Tek replica + emptyDir state**: pod ölünce veri gider. State varsa StatefulSet + PVC.
 - **Privileged container**: Lumix politikası: `runAsNonRoot: true`, `readOnlyRootFilesystem: true`, `capabilities.drop: [ALL]`. Pod Security Standards "restricted" profili (admission controller ile zorunlu).
-- **`kubectl edit` ile prod düzenlemek**: cluster Git'ten sapar (drift). Lumix kuralı: değişiklikler **sadece Git repository'den ArgoCD ile** uygulanır. Detay: [ArgoCD GitOps](../21-ci-cd/argocd-gitops).
+- **`kubectl edit` ile prod düzenlemek**: cluster Git'ten sapar (drift). Lumix kuralı: değişiklikler **sadece Git repository'den ArgoCD ile** uygulanır. Detay: [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md).
 - **Namespace karışıklığı**: `default` namespace'e kaynak deploy etmek yasak. Her uygulamanın kendi namespace'i var.
 - **Çok büyük container image**: build cache yok, hızlı dağıtım yok. Lumix kuralı: &lt;250 MB image (distroless / Eclipse Temurin JRE base).
 - **CrashLoopBackOff hatasını liveness ile karıştırmak**: CrashLoop = container exit kodu ≠ 0. Liveness fail değil. Önce `kubectl logs --previous` ile gerçek hatayı oku.
@@ -500,14 +500,14 @@ spec:
 
 ## 8. Diğer konularla ilişkisi
 
-- [K3s — Lightweight K8s](./k3s-lightweight-k8s) — Lumix'in seçtiği dağıtım
-- [Helm Charts](./helm-charts) — Lumix manifest paketleme
-- [Rancher Multi-Cluster](./rancher-multi-cluster) — birden fazla installation cluster'ını yönetme
-- [Traefik Ingress](./traefik-ingress) — cluster içine HTTP trafiği
-- [Kong API Gateway](./kong-api-gateway) — uygulama-katmanı L7
-- [NetworkPolicy + mTLS](./networkpolicy-mtls) — pod-to-pod izolasyonu
-- [ArgoCD GitOps](../21-ci-cd/argocd-gitops) — manifest'leri Git'ten uygulamak
-- [Tilt local dev](../23-local-development/tilt-multi-service-dev) — geliştirici makinesinde K8s deneyimi
+- [K3s — Lightweight K8s](./02-k3s-lightweight-k8s.md) — Lumix'in seçtiği dağıtım
+- [Helm Charts](./03-helm-charts.md) — Lumix manifest paketleme
+- [Rancher Multi-Cluster](./04-rancher-multi-cluster.md) — birden fazla installation cluster'ını yönetme
+- [Traefik Ingress](./05-traefik-ingress.md) — cluster içine HTTP trafiği
+- [Kong API Gateway](./06-kong-api-gateway.md) — uygulama-katmanı L7
+- [NetworkPolicy + mTLS](./11-networkpolicy-mtls.md) — pod-to-pod izolasyonu
+- [ArgoCD GitOps](../21-ci-cd/04-argocd-gitops.md) — manifest'leri Git'ten uygulamak
+- [Tilt local dev](../23-local-development/01-tilt-multi-service-dev.md) — geliştirici makinesinde K8s deneyimi
 
 ## 9. Daha derine inmek için
 

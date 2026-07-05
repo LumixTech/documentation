@@ -45,7 +45,7 @@ The better approach:
 - use contract tests for API shape,
 - use Playwright for critical user journeys and role-visible behavior.
 
-This aligns with [Test Pyramid: Unit, Integration, Contract, and E2E Strategy](../observability-qa/test-pyramid-unit-integration-contract-e2e).
+This aligns with [Test Pyramid: Unit, Integration, Contract, and E2E Strategy](../observability-qa/29-test-pyramid-unit-integration-contract-e2e.md).
 
 ## Approach / Design
 

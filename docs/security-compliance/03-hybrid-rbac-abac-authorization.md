@@ -7,8 +7,8 @@ draft: true
 
 :::warning Bu sayfa arşivlendi
 Güncel sayfalar **04 · Authentication & Authorization** kategorisinde:
-- [RBAC + ABAC Hybrid Model](../04-authentication-authorization/rbac-abac-hybrid)
-- [Organizational Scope Resolver](../04-authentication-authorization/organizational-scope-resolver)
+- [RBAC + ABAC Hybrid Model](../04-authentication-authorization/04-rbac-abac-hybrid.md)
+- [Organizational Scope Resolver](../04-authentication-authorization/05-organizational-scope-resolver.md)
 
 Bu eski sürüm referans olarak repository'de kalıyor; güncel sayfalar Türkçe + 10 başlıklı şablon + Lumix kararlarıyla (school→class→student scope, multi-tenant bölge müdürü).
 :::

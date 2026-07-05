@@ -1,4 +1,4 @@
-﻿---
+---
 title: Ürün Geliştirme Problemleri ve Çözüm Kararları
 description: Onboarding ve mühendislik bloglarına dönüştürülebilir problem-çözüm odaklı mimari karar notları.
 sidebar_position: 1
@@ -72,8 +72,8 @@ for each major_problem:
 - Bu bölüm gelecekte blog formatına dönüştürülebilir olmalı.
 - Notlar yalnızca teknik detayı değil karar gerekçesini de içermeli.
 - İlgili referanslar:
-  - [JWT ve Refresh Token ile Spring Security Authentication Flow](../security-compliance/auth-jwt-refresh-flow)
-  - [Hibrit Yetkilendirme Modeli - RBAC + ABAC](../security-compliance/hybrid-rbac-abac-authorization)
+  - [JWT ve Refresh Token ile Spring Security Authentication Flow](../security-compliance/01-auth-jwt-refresh-flow.md)
+  - [Hibrit Yetkilendirme Modeli - RBAC + ABAC](../security-compliance/03-hybrid-rbac-abac-authorization.md)
   - [Tenant Tabanlı Row-Level Security (RLS)](../database-architecture/tenant-based-rls-policy-design)
 
 ## Sözlük

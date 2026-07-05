@@ -178,7 +178,7 @@ trace_business_operation(use_case, context):
 - Traces must cover async workflows and module-to-module flows.
 - The three initial span maps are attendance peak, chat message flow, and payment flow.
 - Manual spans should be added where product meaning would otherwise be invisible.
-- Trace context rules should follow [Observability: Logs, Metrics, Traces, and Correlation IDs](./observability-logs-metrics-traces-correlation-id).
+- Trace context rules should follow [Observability: Logs, Metrics, Traces, and Correlation IDs](./26-observability-logs-metrics-traces-correlation-id.md).
 
 ## External References
 

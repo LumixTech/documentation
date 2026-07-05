@@ -12,7 +12,7 @@ WebSocket Lumix'te neden "client hangi pod'a bağlı?" bilgisini tutuyoruz, bu R
 
 WebSocket bağlantısı **persistent TCP** olduğundan, bir kullanıcının soketi her zaman **tek bir pod'a** bağlıdır. "User-pod mapping" = hangi user hangi pod'a bağlı bilgisini tutan, Redis Hash tabanlı bir lookup table.
 
-Neden? Çünkü `convertAndSendToUser(userId, ...)` çağrısı, kullanıcının bağlı olduğu pod'u bilmeden mesajı doğru yere yönlendiremez. [Redis Pub/Sub Backplane](./redis-pubsub-backplane) sayfasındaki user-specific channel (`ws:user:{podName}`) için bu mapping gerek.
+Neden? Çünkü `convertAndSendToUser(userId, ...)` çağrısı, kullanıcının bağlı olduğu pod'u bilmeden mesajı doğru yere yönlendiremez. [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md) sayfasındaki user-specific channel (`ws:user:{podName}`) için bu mapping gerek.
 
 ```
 Redis Hash:  user:pod:{userId} → "academic-service-7d4-abcde"
@@ -469,11 +469,11 @@ export const realtimeRouter = (ev: RealtimeEvent) =>
 
 ## 8. Diğer konularla ilişkisi
 
-- [WebSocket Temelleri](./websocket-fundamentals) — heartbeat ve connection ownership
-- [STOMP Protokolü](./stomp-protocol) — `convertAndSendToUser` semantiği
-- [Redis Pub/Sub Backplane](./redis-pubsub-backplane) — backplane bu mapping'i kullanır
-- [Session & Device Lifecycle](../04-authentication-authorization/session-device-lifecycle) — WS session vs auth session ayrımı
-- [Cache Invalidation](../08-caching-redis/cache-invalidation) — event-driven UI updates
+- [WebSocket Temelleri](./01-websocket-fundamentals.md) — heartbeat ve connection ownership
+- [STOMP Protokolü](./02-stomp-protocol.md) — `convertAndSendToUser` semantiği
+- [Redis Pub/Sub Backplane](./03-redis-pubsub-backplane.md) — backplane bu mapping'i kullanır
+- [Session & Device Lifecycle](../04-authentication-authorization/02-session-device-lifecycle.md) — WS session vs auth session ayrımı
+- [Cache Invalidation](../08-caching-redis/04-cache-invalidation.md) — event-driven UI updates
 
 ## 9. Daha derine inmek için
 

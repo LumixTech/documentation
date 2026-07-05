@@ -136,7 +136,7 @@ Servis: realtimePublisher.publishToUser(userId, "/queue/notifications", payload)
 3. O pod'un subscriber'ı dinler, SimpleBroker.convertAndSendToUser local
 ```
 
-`user:pod:{userId}` Hash'i nasıl kuruluyor: kullanıcı bir pod'a WebSocket connect olunca o pod kendini bu Hash'e yazar (SubProtocol connect handler). Detay: [User-Pod Mapping](./user-pod-mapping-and-reconnect).
+`user:pod:{userId}` Hash'i nasıl kuruluyor: kullanıcı bir pod'a WebSocket connect olunca o pod kendini bu Hash'e yazar (SubProtocol connect handler). Detay: [User-Pod Mapping](./04-user-pod-mapping-and-reconnect.md).
 
 ### 3.4. Redis kanal yapısı
 
@@ -164,7 +164,7 @@ Bu interface implementasyon detayını gizler: dev/local'da SimpleBroker only, p
 
 ### 4.1. Hangi Redis cluster?
 
-**cache-redis** cluster'ı kullanılır (pub/sub için persistence gereksiz, ephemeral). Auth-redis cluster'ı **kullanılmaz** (tokens için ayrıdır). Detay: [Redis Sentinel Topology](../08-caching-redis/redis-sentinel-topology).
+**cache-redis** cluster'ı kullanılır (pub/sub için persistence gereksiz, ephemeral). Auth-redis cluster'ı **kullanılmaz** (tokens için ayrıdır). Detay: [Redis Sentinel Topology](../08-caching-redis/02-redis-sentinel-topology.md).
 
 ### 4.2. Connection durumu
 
@@ -434,11 +434,11 @@ public class AttendanceRealtimeNotifier {
 
 ## 8. Diğer konularla ilişkisi
 
-- [WebSocket Temelleri](./websocket-fundamentals) — alt katman
-- [STOMP Protokolü](./stomp-protocol) — bridge'in temsil ettiği üst katman
-- [User-Pod Mapping & Reconnect](./user-pod-mapping-and-reconnect) — `user:pod:{userId}` Hash'inin nasıl kurulduğu
-- [Redis Sentinel Topology](../08-caching-redis/redis-sentinel-topology) — backplane'in altyapısı
-- [Redis Fundamentals](../08-caching-redis/redis-fundamentals) — Pub/Sub data structure
+- [WebSocket Temelleri](./01-websocket-fundamentals.md) — alt katman
+- [STOMP Protokolü](./02-stomp-protocol.md) — bridge'in temsil ettiği üst katman
+- [User-Pod Mapping & Reconnect](./04-user-pod-mapping-and-reconnect.md) — `user:pod:{userId}` Hash'inin nasıl kurulduğu
+- [Redis Sentinel Topology](../08-caching-redis/02-redis-sentinel-topology.md) — backplane'in altyapısı
+- [Redis Fundamentals](../08-caching-redis/01-redis-fundamentals.md) — Pub/Sub data structure
 
 ## 9. Daha derine inmek için
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: JWT ve Refresh Token ile Spring Security Authentication Flow
 description: Redis tabanlı stateful access token, refresh token ve device session yaşam döngüsü ile kimlik doğrulama mimarisi.
 sidebar_position: 1
@@ -14,7 +14,7 @@ Bu tasarım Redis tabanlı stateful model kullanır:
 - `refresh token`: stateful, revoke edilebilir, Redis'te rotation yönetimli
 - `session` ve `device session`: Redis'te yaşam döngüsü yönetimli
 
-Detaylı yaşam döngüsü için: [Session, Device ve Refresh Token Yaşam Döngüsü](./session-device-refresh-lifecycle).
+Detaylı yaşam döngüsü için: [Session, Device ve Refresh Token Yaşam Döngüsü](./02-session-device-refresh-lifecycle.md).
 
 ## Neden Önemli
 
@@ -142,7 +142,7 @@ on LOGOUT_ALL(user_id):
 - Runtime kontrol için tam stateful auth modeli kullanıyoruz: `access token`, `refresh token` ve `session` Redis'te takip ediliyor.
 - `logout-all` iş gereksinimidir, opsiyon değildir.
 - Revoke kararları açık token/session durum geçişleriyle izlenebilir olmalıdır.
-- Yetki davranışı [Hibrit Yetkilendirme Modeli: RBAC + ABAC](./hybrid-rbac-abac-authorization) ile uyumlu kalmalıdır.
+- Yetki davranışı [Hibrit Yetkilendirme Modeli: RBAC + ABAC](./03-hybrid-rbac-abac-authorization.md) ile uyumlu kalmalıdır.
 
 ## Sözlük
 

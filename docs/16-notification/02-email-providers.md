@@ -482,10 +482,10 @@ Ansible playbook bunu otomatize eder.
 
 ## 8. Diğer konularla ilişkisi
 
-- [Notification Adapter Pattern](./notification-adapter-pattern)
-- [MJML Template Rendering](./mjml-template-rendering)
-- [SMS Providers](./sms-providers) — parallel pattern
-- [Push Providers](./push-providers)
+- [Notification Adapter Pattern](./01-notification-adapter-pattern.md)
+- [MJML Template Rendering](./05-mjml-template-rendering.md)
+- [SMS Providers](./03-sms-providers.md) — parallel pattern
+- [Push Providers](./04-push-providers.md)
 - [Compliance](../security-compliance) — KVKK + suppression
 - [Audit Log](../security-compliance/audit-log-design) — email gönderim audit
 

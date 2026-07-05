@@ -164,8 +164,8 @@ test_migration(version):
 
 - At least two modules should receive Modulith test skeletons first: attendance and messaging.
 - PostgreSQL Testcontainers should be used for persistence and migration tests.
-- Migration tests should support the safety expectations from [Flyway Migrations and Zero-Downtime Database Changes](../database-architecture/flyway-zero-downtime-migration-strategy).
-- Module tests should support architectural boundaries described in [Modular Monolith and Spring Modulith](../engineering-notes/modular-monolith-and-spring-modulith).
+- Migration tests should support the safety expectations from [Flyway Migrations and Zero-Downtime Database Changes](../database-architecture/14-flyway-zero-downtime-migration-strategy.md).
+- Module tests should support architectural boundaries described in [Modular Monolith and Spring Modulith](../02-architecture-patterns/01-microservices-architecture.md).
 
 ## External References
 

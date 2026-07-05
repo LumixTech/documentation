@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Bu sayfa ne anlatıyor?
 
-Lumix 10+ microservice + altyapı bileşeni Helm chart'ı + tek umbrella chart yönetir. "Hangi versiyon hangi ortamda?" sorusuna **deterministik** cevap vermek için disiplinli **versioning** gerekir. Bu sayfa **chart version vs app version** ayrımını sıfırdan açıklar, **SemVer** uygulamasını, **promotion pipeline (dev → staging → prod)**, **umbrella chart pinning**, **OCI registry** (Helm 3.8+) kullanımı, ve **rollback compatibility** kurallarını gösterir. Hedef kitle: Helm temellerini bilen ([Helm Charts](../infra-devops/helm-charts)), CI/CD'yi tasarlayan ekip lideri.
+Lumix 10+ microservice + altyapı bileşeni Helm chart'ı + tek umbrella chart yönetir. "Hangi versiyon hangi ortamda?" sorusuna **deterministik** cevap vermek için disiplinli **versioning** gerekir. Bu sayfa **chart version vs app version** ayrımını sıfırdan açıklar, **SemVer** uygulamasını, **promotion pipeline (dev → staging → prod)**, **umbrella chart pinning**, **OCI registry** (Helm 3.8+) kullanımı, ve **rollback compatibility** kurallarını gösterir. Hedef kitle: Helm temellerini bilen ([Helm Charts](../infra-devops/03-helm-charts.md)), CI/CD'yi tasarlayan ekip lideri.
 
 ## 1. Bu nedir? (Sıfırdan)
 
@@ -459,13 +459,13 @@ Bazı müşteriler "stay on 1.4.1" diyebilir; bu durumda overlay'le pin. Ama Lum
 
 ## 8. Diğer konularla ilişkisi
 
-- [Helm Charts](../infra-devops/helm-charts) — chart yapısı
-- [GitLab CI Pipelines](./gitlab-ci-pipelines) — versioning pipeline
-- [ArgoCD GitOps](./argocd-gitops) — `targetRevision` ile chart version pin
-- [GitLab CE Self-Hosted](./gitlab-ce-self-hosted) — OCI registry
-- [Trivy Image Scanning](./trivy-image-scanning) — version'ı bilinen image scan
+- [Helm Charts](../infra-devops/03-helm-charts.md) — chart yapısı
+- [GitLab CI Pipelines](./02-gitlab-ci-pipelines.md) — versioning pipeline
+- [ArgoCD GitOps](./04-argocd-gitops.md) — `targetRevision` ile chart version pin
+- [GitLab CE Self-Hosted](./01-gitlab-ce-self-hosted.md) — OCI registry
+- [Trivy Image Scanning](./03-trivy-image-scanning.md) — version'ı bilinen image scan
 - [Database Architecture](../database-architecture) — schema migration version uyumu
-- [Customer Onboarding Pipeline](../20-iac-provisioning/customer-onboarding-pipeline) — umbrella chart version deploy
+- [Customer Onboarding Pipeline](../20-iac-provisioning/03-customer-onboarding-pipeline.md) — umbrella chart version deploy
 
 ## 9. Daha derine inmek için
 
