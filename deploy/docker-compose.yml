@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   docs:
-    image: registry.gitlab.hsoylu.dev/lumix/documentation:latest
+    image: registry.hsoylu.dev/lumix/documentation:latest
     container_name: lumix-docs
     restart: always
     ports:
@@ -14,5 +14,5 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root/.docker/config.json:/config.json
+      - /home/huseyinsoylu/.docker/config.json:/config.json
     command: --interval 300 --cleanup lumix-docs
