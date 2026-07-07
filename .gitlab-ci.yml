@@ -1,14 +1,11 @@
-# Docusaurus statik sitesini derleyip GitLab Pages'e yayınlar.
-# Bu dosyanın varlığı Auto DevOps'u (buildpack + docker-in-docker) devre dışı bırakır;
-# statik site için Docker'a/dind'e gerek yok.
-
-image: node:20
-
 stages:
-  - deploy
+  - build
+  - docker
+  - pages
 
-# npm cache'i proje içinde tut ki GitLab CI cache'leyebilsin
 variables:
+  SITE_URL: "https://lumixdoc.hsoylu.dev"
+  BASE_URL: "/"
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
 
 cache:
@@ -18,18 +15,44 @@ cache:
   paths:
     - .npm/
 
-# GitLab Pages job'ı "pages" adında olmalı ve çıktı "public/" klasöründe artifact olmalı.
-pages:
-  stage: deploy
+build-site:
+  stage: build
+  image: node:20
   script:
     - npm ci
-    # Docusaurus varsayılan olarak build/'e yazar; GitLab Pages public/ ister, yönlendiriyoruz.
-    - npm run build -- --out-dir public
+    - npm run build
+  artifacts:
+    paths:
+      - build
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+docker-build:
+  stage: docker
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -t "$CI_REGISTRY_IMAGE:latest" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+pages:
+  stage: pages
+  image: alpine:latest
+  script:
+    - cp -r build public
   artifacts:
     paths:
       - public
   environment:
     name: pages
-    url: $CI_PAGES_URL   # Pipeline bitince GitLab arayüzünde tıklanabilir canlı URL gösterir
+    url: $CI_PAGES_URL
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH   # sadece main'e push'ta çalışır
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

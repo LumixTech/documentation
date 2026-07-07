@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  docs:
+    image: registry.gitlab.hsoylu.dev/lumix/documentation:latest
+    container_name: lumix-docs
+    restart: always
+    ports:
+      - "8080:80"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 300 --cleanup lumix-docs
