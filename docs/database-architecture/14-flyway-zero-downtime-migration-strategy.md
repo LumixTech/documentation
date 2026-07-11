@@ -45,6 +45,29 @@ Migrations run as a dedicated **`<service>_migrator`** role (DDL-capable), separ
 See [DB-per-service Topology & Connection Pooling](./26-db-per-service-topology-and-connection-pooling.md)
 for the full model, and `campus/infra/postgres/` for the reference implementation.
 
+## Naming Convention & Tooling
+
+Versioned migrations follow a fixed, lintable naming pattern:
+
+```
+V<NNN>__<service>_<feature>_<action>.sql
+```
+
+- `V<NNN>` — sequential 3-digit version (`V001`, `V014`); `<service>` owns the migration
+  (`identity`, `academic`); `<feature>` is the aggregate/area; `<action>` is what it does
+  (`create`, `add_note`, `backfill`, `drop_old`).
+- `R__<name>.sql` (repeatable) — **only** for views/functions (re-runs when checksum changes).
+- `U__` (undo) is **not used** — production is **forward-only**; a rollback is a new forward migration.
+- Each service owns its `adapter-persistence/src/main/resources/db/migration/` folder.
+
+Enforcement (two independent gates):
+
+- **`MigrationNamingConventionTest`** — DB-free unit test (runs in `./gradlew check`) asserting the
+  naming pattern and the absence of `U__` files.
+- **`./gradlew :service-template:adapter-persistence:flywayValidate`** — applies + validates migrations
+  against an ephemeral PostgreSQL in CI (`backend:flyway-validate`), catching bad SQL, ordering and
+  checksum drift. Operational contract: repo `CONTRIBUTING.md` › "Veritabanı Migration'ları".
+
 ## Problem in Real Product Development
 
 Real deployments are rarely atomic. During rolling deploys, some pods run old code while others run new code. If migration assumes single-version runtime, actions like column rename or table split can break reads/writes mid-release.
@@ -56,13 +79,17 @@ Real deployments are rarely atomic. During rolling deploys, some pods run old co
 - Use one migration unit per irreversible schema step.
 - Keep migrations idempotent where possible (`IF NOT EXISTS`, guarded updates).
 - Review lock impact before production (`ALTER TABLE` type, index build strategy, table rewrite risk).
-- Use timestamp-based versioning if multiple teams release in parallel.
+- Use sequential 3-digit versioning per service (`V001`, `V002`, ...). Because Lumix is
+  **DB-per-service**, each database has a single migration stream owned by one service, so
+  parallel-team version collisions cannot occur within a database — timestamp versioning is not needed.
 
-Example naming:
+Naming convention: `V<NNN>__<service>_<feature>_<action>.sql` (enforced by `MigrationNamingConventionTest`
+and `flywayValidate`; see repo `CONTRIBUTING.md` › "Veritabanı Migration'ları"). Example expand →
+backfill → contract sequence for the `academic` service:
 
-- `V2026041801__expand_add_student_display_name.sql`
-- `V2026041802__expand_create_student_profile_table.sql`
-- `V2026041803__contract_drop_legacy_student_columns.sql`
+- `V012__academic_student_add_display_name.sql`      (expand)
+- `V013__academic_student_backfill_display_name.sql` (backfill, separate release)
+- `V018__academic_student_drop_full_name.sql`        (contract, later release)
 
 ### Expand and Contract Playbook
 
@@ -89,7 +116,7 @@ Target: rename `students.full_name` to `students.display_name`.
 Stage 1 (`expand + compatibility`)
 
 ```sql
--- V2026041801__expand_add_display_name.sql
+-- V012__academic_student_add_display_name.sql
 ALTER TABLE students ADD COLUMN IF NOT EXISTS display_name text;
 
 -- Backfill in batches from application job or controlled SQL window
@@ -107,7 +134,7 @@ Application behavior in Stage 1:
 Stage 2 (`contract`)
 
 ```sql
--- V2026041804__contract_drop_full_name.sql
+-- V018__academic_student_drop_full_name.sql
 ALTER TABLE students DROP COLUMN IF EXISTS full_name;
 ```
 
@@ -123,7 +150,7 @@ Target: split `students` table and move profile fields to `student_profiles`.
 Stage 1 (`expand + dual-write + backfill`)
 
 ```sql
--- V2026041802__expand_create_student_profiles.sql
+-- V013__academic_student_create_profiles.sql
 CREATE TABLE IF NOT EXISTS student_profiles (
   student_id uuid PRIMARY KEY REFERENCES students(id),
   bio text,
@@ -142,7 +169,7 @@ Application behavior in Stage 1:
 Stage 2 (`contract`)
 
 ```sql
--- V2026041805__contract_drop_profile_columns_from_students.sql
+-- V019__academic_student_drop_profile_columns.sql
 ALTER TABLE students
   DROP COLUMN IF EXISTS bio,
   DROP COLUMN IF EXISTS avatar_url;
