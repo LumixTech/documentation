@@ -32,7 +32,7 @@ Lumix'in tüm kodu **tek git deposunda** yaşar: backend mikroservisleri, fronte
 ```
 campus/
 ├── backend/          ← tüm backend kodu (Gradle multi-module)
-├── infra/            ← altyapı tanımları (şimdilik: Apicurio compose)
+├── infra/            ← altyapı tanımları (Apicurio + PostgreSQL/PgBouncer compose)
 ├── scripts/          ← geliştirici betikleri (.sh + .ps1 ikizleri)
 ├── docs/             ← süreç dokümanları (git akışı, review listesi)
 ├── .githooks/        ← git hook'ları (commit/push kapıları)
@@ -80,26 +80,30 @@ backend/
 ├── gradlew / gradlew.bat      ← wrapper başlatıcıları (Linux / Windows)
 ├── buf.yaml                   ← Protobuf lint + breaking-change kuralları (CI bekçisi)
 ├── config/checkstyle/         ← statik analiz kuralları + test bastırmaları
-└── service-template/          ← HER YENİ SERVİSİN KOPYALANACAĞI iskelet (7 modül)
+├── service-template/          ← HER YENİ SERVİSİN KOPYALANACAĞI iskelet (7 modül, dokunma)
+└── organization-service/      ← ilk türetilen servis (multi-tenancy: installation/tenant/school/class)
 ```
 
 Bu dosyaların her birinin derin anlatımı: [Gradle Build Sistemi](02-gradle-build-sistemi.md).
 `service-template/`'in dosya dosya turu: [Service Template Turu](03-service-template-turu.md).
 
-Gelecekte her mikroservis buraya kardeş klasör olarak gelecek:
+Her mikroservis buraya kardeş klasör olarak gelir (`service-template`'ten türetilerek):
 
 ```
 backend/
 ├── service-template/     ← iskelet (dokunma, kopyala)
+├── organization-service/ ← ✅ Sprint 1 (ilk türetilen; multi-tenancy hiyerarşisi)
 ├── identity-service/     ← Sprint 2-3
-├── organization-service/ ← Sprint 4
 └── academic-service/     ← Sprint 6 ...
 ```
 
 ## 4. `infra/` — altyapı tanımları
 
-Şimdilik tek bileşen var: `infra/apicurio/` — Protobuf şema kayıt sunucusunun
-(Apicurio Registry) Docker Compose kurulumu.
+- **`infra/apicurio/`** — Protobuf şema kayıt sunucusu (Apicurio Registry) Docker Compose kurulumu.
+- **`infra/postgres/`** — PostgreSQL 17 + PgBouncer; DB-per-service (`lumix_<servis>` + `<servis>_migrator`/`_app`
+  kullanıcıları, transaction-mode havuz). Kurulum/konvansiyon: `infra/postgres/README.md`.
+
+Aşağıdaki tablo Apicurio bileşenini açıklar (postgres için bkz. kendi README'si):
 
 | Dosya | Ne işe yarar |
 |---|---|
