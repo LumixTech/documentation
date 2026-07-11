@@ -255,6 +255,7 @@ Sabit değer kümeleri (okul seviyesi, atama rolü) **hard-coded enum değil**, 
 `assignment_roles` **typed reference tabloları**dır (config-driven seed; `schools.level_id` /
 `class_assignments.role_id` FK) — kurulum başına özelleştirilebilir, deploy gerektirmeden değer eklenir,
 ve yanlış kategoriye referans DB tarafından engellenir (generic tek "parameters" tablosu tercih edilmedi).
+**Karar:** [ADR-008](../adr/0008-reference-data-typed-lookup-tables.md).
 
 Kullanıcı↔tenant/scope tabloları (`user_tenant_assignments`,
 `user_scope_assignments`) ise DB-per-service gereği **identity-service**'e aittir (cross-service FK yok).

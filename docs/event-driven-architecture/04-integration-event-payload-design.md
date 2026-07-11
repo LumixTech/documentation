@@ -124,7 +124,7 @@ This creates unclear ownership and makes the producer responsible for downstream
   `trace_id` **Kafka header'ları** publish anında adapter'da (`KafkaDomainEventPublisher`) eklenir —
   domain katmanı altyapıdan bağımsız kalsın diye. `tenant_id` gövdede değil header'da taşınır (tüketici
   body'yi deserialize etmeden filtreler/route eder). `eventId` outbox gelince outbox-insert'te **bir kez**
-  üretilecek (retry'da aynı kalmalı → dedup).
+  üretilecek (retry'da aynı kalmalı → dedup). **Karar:** [ADR-009](../adr/0009-event-envelope-minimal-domain-event.md).
 
 ## Research Keywords
 
