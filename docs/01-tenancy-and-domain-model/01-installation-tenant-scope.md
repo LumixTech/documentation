@@ -243,6 +243,18 @@ CREATE TABLE user_scope_assignments (
 
 ScopeResolver bu tabloyu okur, kullanıcının effective scope'unu hesaplar, request context'e koyar.
 
+### Somut implementasyon: organization-service
+
+Yukarıdaki modelin **organization-service** tarafında implemente edilmiş hali (Sprint 1):
+`installations`, `tenants` (cross-tenant) + `schools`, `branches`, `classes`, `class_assignments`
+(tenant-scoped). **UUID v7** PK (zaman-sıralı, IDOR'a dirençli), `tenant_id`-first index,
+`class_assignments` **composite PK** `(tenant_id, class_id, user_id)`, audit baseline
+(`created_at/by`, `updated_at/by`). Kullanıcı↔tenant/scope tabloları (`user_tenant_assignments`,
+`user_scope_assignments`) ise DB-per-service gereği **identity-service**'e aittir (cross-service FK yok).
+
+ER diyagramı + FK (`ON DELETE`) gerekçeleri: `campus/backend/organization-service/README.md`.
+Migration'lar: `.../adapter-persistence/src/main/resources/db/migration/` (V001–V003, forward-only).
+
 ## 7. Request lifecycle'da üç katmanın yolu
 
 ```
