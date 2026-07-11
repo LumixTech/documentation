@@ -167,13 +167,17 @@ management:
 ```yaml
 # application-prod.yml (prod-specific)
 spring:
-  datasource:
-    url: jdbc:postgresql://${DB_HOST}:5432/academic_db
-    username: ${DB_USER}
+  datasource:                                # runtime (DML) → PgBouncer (6432)
+    url: jdbc:postgresql://${DB_HOST}:6432/lumix_academic
+    username: ${DB_USER}                      # academic_app
     password: ${DB_PASSWORD}
     hikari:
       maximum-pool-size: 20
       minimum-idle: 5
+  flyway:                                     # migration (DDL) → doğrudan Postgres (5432), PgBouncer bypass
+    url: jdbc:postgresql://${DB_MIGRATION_HOST}:5432/lumix_academic
+    user: ${DB_MIGRATION_USER}                # academic_migrator
+    password: ${DB_MIGRATION_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: validate
@@ -247,9 +251,9 @@ spring:
       staging: staging, observability-staging
       dev: dev, observability-dev
 
-  datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:academic_db}
-    username: ${DB_USER:academic}
+  datasource:                                              # runtime (DML) → PgBouncer (6432)
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:6432}/${DB_NAME:lumix_academic}
+    username: ${DB_USER:academic_app}
     password: ${DB_PASSWORD:academic}
     hikari:
       maximum-pool-size: ${DB_POOL_SIZE:10}
@@ -257,6 +261,9 @@ spring:
       connection-timeout: 30000
       idle-timeout: 600000
       max-lifetime: 1800000
+      leak-detection-threshold: ${DB_LEAK_DETECTION_MS:30000}  # kapatılmayan bağlantı uyarısı
+      data-source-properties:
+        prepareThreshold: 0                                  # PgBouncer transaction mode workaround
 
   jpa:
     hibernate:
@@ -271,6 +278,9 @@ spring:
     locations: classpath:db/migration
     schemas: public
     baseline-on-migrate: true
+    # NOT: Migration ayrı <svc>_migrator kullanıcısıyla + doğrudan Postgres'e (5432) bağlanır
+    # (PgBouncer BYPASS; Flyway advisory lock ↔ transaction pooling uyumsuz).
+    # spring.flyway.url/user dev & prod profilinde set edilir (aşağıya bakın).
 
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
@@ -339,9 +349,13 @@ lumix:
 
 ```yaml
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/academic_db
-    username: academic
+  datasource:                                     # runtime → PgBouncer (6432)
+    url: jdbc:postgresql://localhost:6432/lumix_academic
+    username: academic_app
+    password: academic
+  flyway:                                         # migration → doğrudan Postgres (5432), migrator
+    url: jdbc:postgresql://localhost:5432/lumix_academic
+    user: academic_migrator
     password: academic
   jpa:
     show-sql: true

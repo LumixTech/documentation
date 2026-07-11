@@ -361,7 +361,7 @@ Aşağıdaki bölümlerde her servis için: sorumluluk, sahip olduğu veriler, d
 - Tamper-evident storage
 
 **Sahip olduğu veri:**
-- `audit_logs` — append-only, sadece INSERT yetkili DB user
+- `audit_logs` — append-only; `audit_app` yalnızca **SELECT + INSERT** (UPDATE/DELETE reddedilir → immutable). SELECT, sorgu API'si (`QueryAuditLogs`) için gerekli.
 
 **gRPC API:**
 - `QueryAuditLogs(filters)` → sadece yetkili kullanıcılara

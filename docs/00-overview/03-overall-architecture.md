@@ -44,10 +44,10 @@ Bu üçü **çakışmaz, üst üste oturur**. Detay: [Installation/Tenant/Scope 
 │   ┌──────── Traefik Ingress ──────── Kong API Gateway ───────┐         │
 │   │            (TLS, routing)         (rate limit, auth)      │         │
 │   │                                                            │         │
-│   │   ┌─────────────── 10 Microservice ─────────────────┐    │         │
+│   │   ┌─────────────── 12 Microservice ─────────────────┐    │         │
 │   │   │  identity  organization  academic  assessment    │    │         │
 │   │   │  counseling  performance  communication  finance │    │         │
-│   │   │  file  audit  compliance                         │    │         │
+│   │   │  file  audit  compliance  notification           │    │         │
 │   │   │                                                  │    │         │
 │   │   │  Each: Spring Boot 4.x + Java 25 + gRPC server  │    │         │
 │   │   │        + Kafka producer/consumer                 │    │         │
@@ -89,11 +89,11 @@ Her müşteri kurulumu **kendi içinde kapalı bir sistemdir**. Şunları içeri
 - **K3s K8s cluster** (1-3 node, müşteri boyutuna göre)
 - **Kong Gateway** — dış istekler için L7 router + rate limit + auth header validation
 - **Traefik Ingress** — TLS terminasyon + cluster içine yönlendirme
-- **10 microservice pod**'u (her biri 1-N replica)
+- **12 microservice pod**'u (her biri 1-N replica)
 
 ### 3.2. Veri katmanı
 - **PostgreSQL** — her microservice'in **kendi DB**'si (DB-per-service)
-- **PgBouncer** — connection pool (her DB önünde)
+- **PgBouncer** — tek connection pool (transaction mode), tüm `lumix_*` DB'lerini wildcard ile havuzlar
 - **Redis Sentinel × 2** — bir cluster auth/session için (persistent), diğeri cache için (eviction'lı)
 - **Elasticsearch** — search + log analytics
 - **RustFS** — dosya/medya objesi (S3-compatible)
@@ -146,8 +146,8 @@ Bir öğretmen "yoklama gönder" butonuna bastığında neler olur?
    - SecurityFilterChain: JWT decode
    - Redis check: token status = 'active'?
    - Redis check: session status = 'active'?
-   - SET app.tenant_id session variable
-   - SET app.tenant_ids[] for multi-tenant roles
+   - SET LOCAL app.tenant_id  (transaction-scoped; PgBouncer transaction mode'da zorunlu)
+   - SET LOCAL app.tenant_ids[] for multi-tenant roles
                                       │
                                       ▼
 5. AttendanceController.markAttendance
@@ -223,7 +223,7 @@ Bu konular **tek bir servise ait değil**, sistemin her yerinde:
 | **Logging** | structlog (Spring) + Promtail → Loki |
 | **Metrics** | Micrometer + Prometheus scrape |
 | **Audit** | Her kritik aksiyon Kafka audit topic + audit-service tüketir |
-| **Tenant context** | JWT → `tenant_id` → MDC + Redis + DB session variable + Kafka header |
+| **Tenant context** | JWT → `tenant_id` → MDC + Redis + DB `SET LOCAL` (transaction-scoped, PgBouncer uyumu) + Kafka header |
 
 ## 8. Sistem büyüdükçe neresi nasıl ölçeklenir?
 

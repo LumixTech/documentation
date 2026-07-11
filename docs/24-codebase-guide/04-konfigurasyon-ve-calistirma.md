@@ -39,12 +39,15 @@ spring:
       enabled: true      # Java 25 virtual threads: her istek ucuz bir sanal thread'de.
                          # Bloklanan I/O (DB, HTTP) OS thread'i kilitlemez.
 
-  datasource:            # PostgreSQL + Hikari connection pool
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:template_db}
-    username: ${DB_USER:template}
+  datasource:            # Runtime (DML) → PgBouncer transaction pooling (6432)
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:6432}/${DB_NAME:template_db}
+    username: ${DB_USER:template_app}        # runtime app kullanıcısı (yalnızca DML)
     password: ${DB_PASSWORD:template}        # gerçek ortamda Secret'tan gelir
     hikari:
       maximum-pool-size: ${DB_POOL_SIZE:10}  # havuzdaki maks. bağlantı
+      leak-detection-threshold: 30000        # kapatılmayan bağlantı uyarısı
+      data-source-properties:
+        prepareThreshold: 0                  # PgBouncer transaction mode: server-side prepared stmt KAPALI
 
   jpa:
     hibernate:
@@ -56,6 +59,8 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration   # V1__*.sql dosyalarının yeri
+    # Migration = DDL → ayrı <svc>_migrator kullanıcısı + doğrudan Postgres (5432), PgBouncer BYPASS.
+    # (spring.flyway.url dev/prod profilinde 5432/<svc>_migrator'a bakar; bkz. DB-per-service dokümanı.)
 
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
@@ -143,9 +148,10 @@ koymak) hiçbir şeyi çözmez; trafiği kesmek (readiness) doğru davranıştı
 Ön koşul: Docker (Postgres/Kafka için) + JDK 25 (yoksa Gradle indirir).
 
 ```bash
-# 1) Bağımlılıkları kaldır (hızlı yol — compose dosyası gelene dek):
-docker run -d --name lumix-pg  -e POSTGRES_USER=template -e POSTGRES_PASSWORD=template \
-  -e POSTGRES_DB=template_db -p 5432:5432 postgres:17
+# 1) PostgreSQL + PgBouncer (per-service DB'ler + template_db, migrator/app kullanıcıları):
+( cd campus/infra/postgres && cp -n .env.example .env && docker compose --env-file .env up -d )
+#    İlk açılışta 12 lumix_<servis> DB + template_db provizyonlanır (runtime 6432, migration 5432).
+#    Doğrulama (opsiyonel): bash campus/infra/postgres/verify.sh
 docker run -d --name lumix-kafka -p 9092:9092 apache/kafka:3.9.0   # KRaft, tek node
 
 # 2) Servisi başlat (dev profili varsayılan):

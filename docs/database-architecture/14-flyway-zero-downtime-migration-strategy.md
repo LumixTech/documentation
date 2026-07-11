@@ -30,6 +30,21 @@ Zero-downtime migration design reduces this risk by separating schema evolution 
 - Backfill: controlled batch process that migrates historical data.
 - Contract phase: cleanup step (drop old columns/tables) only after traffic fully moves.
 
+## Migration Connection Model (Dedicated Migrator User + PgBouncer Bypass)
+
+Migrations run as a dedicated **`<service>_migrator`** role (DDL-capable), separate from the runtime
+**`<service>_app`** role (DML-only). Two rules follow from the DB-per-service topology:
+
+- **Flyway connects directly to PostgreSQL (port 5432), bypassing PgBouncer.** Flyway takes a
+  **session-level advisory lock** to serialize concurrent migrators; under PgBouncer `transaction` pooling
+  the lock and the migration statements can land on different backend connections, so pooling is
+  incompatible with migration. Runtime (DML) traffic still flows through PgBouncer (6432).
+- **Least privilege.** The runtime `_app` role cannot execute DDL, so an application-level SQL injection
+  cannot alter the schema; the migrator credential exists only in the migration job.
+
+See [DB-per-service Topology & Connection Pooling](./26-db-per-service-topology-and-connection-pooling.md)
+for the full model, and `campus/infra/postgres/` for the reference implementation.
+
 ## Problem in Real Product Development
 
 Real deployments are rarely atomic. During rolling deploys, some pods run old code while others run new code. If migration assumes single-version runtime, actions like column rename or table split can break reads/writes mid-release.

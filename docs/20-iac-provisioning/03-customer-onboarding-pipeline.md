@@ -357,6 +357,10 @@ seed-kafka:
     - cd ansible
     - ansible-playbook -i inventories/${CUSTOMER_ID}/hosts.ini playbooks/05-customer-seed.yml --tags kafka
 
+# postgres seed = servis-başına DB (lumix_<svc>) + <svc>_migrator/<svc>_app rolleri
+# (her kullanıcıya AYRI Vault sırrı) + ilk tenant satırı + RLS aktivasyonu.
+# Model: database-architecture/26-db-per-service-topology-and-connection-pooling.md
+# Dev karşılığı (referans): campus/infra/postgres/initdb/20-provision-services.sh
 seed-postgres-tenant:
   <<: *ansible-template
   stage: seed

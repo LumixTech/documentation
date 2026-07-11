@@ -35,7 +35,7 @@ Bunu netleştirmek için önce iki kavramı tek tek anlatalım.
 
 - Bir installation = bir K8s cluster
 - Bir installation = bir Vault instance
-- Bir installation = ayrı PostgreSQL'ler (servis başına ama o cluster'a ait)
+- Bir installation = tek PostgreSQL cluster + servis başına ayrı **veritabanı** (DB-per-service: `lumix_<servis>`)
 - Bir installation = ayrı Kafka cluster
 - Bir installation = ayrı Redis, ayrı Elasticsearch, ayrı her şey
 
@@ -83,7 +83,7 @@ Aynı installation içindeler. Aynı `students` tablosunu paylaşıyorlar. Ama h
 | Katman | Nasıl |
 |---|---|
 | **Application** | İstek başında `tenant_id` JWT'den çekilir, MDC/context'e konur |
-| **Database** | PostgreSQL session variable: `SET app.tenant_id = '...'` |
+| **Database** | PostgreSQL session variable: `SET LOCAL app.tenant_id = '...'` (transaction-scoped — PgBouncer transaction mode'da düz `SET` havuzda sızar) |
 | **RLS Policy** | Her tenant-scoped tablo: `USING (tenant_id = current_setting('app.tenant_id')::uuid)` |
 | **Index** | Composite index'lerde `tenant_id` lider sütun |
 | **Kafka header** | Her event'in metadata'sında `tenant_id` |
