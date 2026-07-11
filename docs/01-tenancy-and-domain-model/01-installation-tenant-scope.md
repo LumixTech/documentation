@@ -249,7 +249,14 @@ Yukarıdaki modelin **organization-service** tarafında implemente edilmiş hali
 `installations`, `tenants` (cross-tenant) + `schools`, `branches`, `classes`, `class_assignments`
 (tenant-scoped). **UUID v7** PK (zaman-sıralı, IDOR'a dirençli), `tenant_id`-first index,
 `class_assignments` **composite PK** `(tenant_id, class_id, user_id)`, audit baseline
-(`created_at/by`, `updated_at/by`). Kullanıcı↔tenant/scope tabloları (`user_tenant_assignments`,
+(`created_at/by`, `updated_at/by`).
+
+Sabit değer kümeleri (okul seviyesi, atama rolü) **hard-coded enum değil**, `school_levels` /
+`assignment_roles` **typed reference tabloları**dır (config-driven seed; `schools.level_id` /
+`class_assignments.role_id` FK) — kurulum başına özelleştirilebilir, deploy gerektirmeden değer eklenir,
+ve yanlış kategoriye referans DB tarafından engellenir (generic tek "parameters" tablosu tercih edilmedi).
+
+Kullanıcı↔tenant/scope tabloları (`user_tenant_assignments`,
 `user_scope_assignments`) ise DB-per-service gereği **identity-service**'e aittir (cross-service FK yok).
 
 ER diyagramı + FK (`ON DELETE`) gerekçeleri: `campus/backend/organization-service/README.md`.

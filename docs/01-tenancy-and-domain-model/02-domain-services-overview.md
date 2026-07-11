@@ -107,6 +107,7 @@ Aşağıdaki bölümlerde her servis için: sorumluluk, sahip olduğu veriler, d
 - `branches` — şube
 - `classes` — sınıflar (11-A, 12-B gibi)
 - `class_assignments` — kim hangi sınıfa atandı
+- `school_levels` / `assignment_roles` — reference (lookup) verisi; hard-coded enum yerine config-driven seed (typed FK, installation-global)
 
 **gRPC API:**
 - `GetTenant(tenant_id)`

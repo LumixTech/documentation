@@ -119,6 +119,12 @@ This creates unclear ownership and makes the producer responsible for downstream
 - It is correct to include the data integration consumers need.
 - That does not mean the event should be shaped only around the current consumer's request.
 - The payload should represent the stable business fact the producer wants to expose externally.
+- **Lumix implementasyonu (organization-service):** domain event MINIMAL tutulur (`occurredAt` +
+  `eventType` + iş alanları); envelope metadata'sı (`eventId` / `version` / `source`) ve `tenant_id` /
+  `trace_id` **Kafka header'ları** publish anında adapter'da (`KafkaDomainEventPublisher`) eklenir —
+  domain katmanı altyapıdan bağımsız kalsın diye. `tenant_id` gövdede değil header'da taşınır (tüketici
+  body'yi deserialize etmeden filtreler/route eder). `eventId` outbox gelince outbox-insert'te **bir kez**
+  üretilecek (retry'da aynı kalmalı → dedup).
 
 ## Research Keywords
 
